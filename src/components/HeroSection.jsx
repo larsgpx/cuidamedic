@@ -1,72 +1,97 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useState, useEffect } from "react";
+import { Righteous } from "next/font/google";
 
 export function HeroSection() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("https://api.cuidamedic.com/data");
+      const data = await response.json();
+      setData(data);
+    };
+    // fetchData();
+    setData({
+      title: "En Cuidamedic Diseñamos los mejores tratamientos médicos estéticos para ti",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      btnUrl: "https://www.cuidamedic.com/evaluacion-gratuita",
+      backgroundImage: "/bg1.jpg"
+    });
+
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat" style={{...style.banner, backgroundImage: `url(${data?.backgroundImage})` }}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-r from-pink-100/80 to-purple-100/80 bg-cover bg-center bg-no-repeat" 
-             style={{
-               backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIiBmaWxsPSIjRkZGRkZGIi8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0idXJsKCNncmFkaWVudCkiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIHgxPSIwIiB5MT0iMCIgeDI9IjEyMDAiIHkyPSI4MDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0ZGRkZGRiIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkZGRkZGIiBzdG9wLW9wYWNpdHk9IjAuOSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=')"
-             }}>
+        <div className="w-full h-full bg-gradient-to-r from-pink-100/80 to-purple-100/80 bg-cover bg-center bg-no-repeat">
         </div>
         <div className="absolute inset-0 bg-white/20"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl text-left">
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-            En{" "}
-            <span className="text-yellow-500">cuidamedic</span>{" "}
-            Diseñamos los mejores tratamientos médicos estéticos{" "}
-            <span className="text-yellow-500">para ti</span>
+          <h1 className="pt-5 text-4xl md:text-5xl mb-6 font-semibold">
+            {data?.title}
           </h1>
 
           {/* Sub-text */}
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <p className="text-lg text-gray-600 mb-8 mx-auto leading-relaxed font-regular">
+            {data?.description}
           </p>
-
-          {/* Statistics/Features */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-500 mb-2">+3200</div>
-              <div className="text-sm font-semibold text-gray-800">Pacientes Satisfechos</div>
-              <div className="text-xs text-gray-600 mt-1">Resultados comprobados</div>
-            </div>
-            
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-500 mb-2">100%</div>
-              <div className="text-sm font-semibold text-gray-800">Marcas Seguras</div>
-              <div className="text-xs text-gray-600 mt-1">y de Prestigio</div>
-            </div>
-            
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-500 mb-2">15+</div>
-              <div className="text-sm font-semibold text-gray-800">Médicos Expertos</div>
-              <div className="text-xs text-gray-600 mt-1">y Garantizados</div>
-            </div>
-            
-            <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-500 mb-2">✓</div>
-              <div className="text-sm font-semibold text-gray-800">Consultas</div>
-              <div className="text-xs text-gray-600 mt-1">Gratuitas</div>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <div className="mt-12">
-            <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 text-lg rounded-full">
-              Solicita tu evaluación gratuita
-            </Button>
-          </div>
         </div>
+          {/* Estadísticas/Características */}
+          <div className="max-w-4xl flex self-end">
+            <div
+              className="grid grid-cols-2 md:grid-cols-4 gap-2 max-w-4xl mx-auto"
+              style={style.stats}
+            >
+              <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
+                <div className="text-2xl font-bold text-gray-600">+3200</div>
+                <div className="text-xl text-gray-600 px-6">Pacientes Satisfechos</div>
+            </div>
+            
+            <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
+              <div className="text-xl text-gray-600 px-6">Marcas Seguras y de Prestigio</div>
+            </div>
+            
+            <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
+              <div className="text-xl text-gray-600 px-6">Médicos Expertos y Garantizados</div>
+            </div>
+            
+            <div className="text-center flex align-center flex-col self-center">
+              <div className="text-xl text-gray-600 px-6">Consultas Gratuitas</div>
+            </div>
+          </div>
+          </div>
       </div>
+      <div className="absolute -bottom-2 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
     </section>
   );
+}
+
+const style = {
+  banner: {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat"
+  },
+  stats: {
+    background: "rgba(255, 255, 255, 0.25)",
+    backdropFilter: "blur(10px)",
+    borderRadius: "20px 20px 0 0",
+    border: "1px solid rgba(255, 255, 255, 0.18)",
+    justifySelf: "end",
+    marginBottom: "-50px",
+    padding: "20px",
+    position: "absolute",
+    right: 0,
+  }
 }

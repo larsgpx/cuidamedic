@@ -40,8 +40,8 @@ export function BrandsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-16 bg-white w-full overflow-hidden">
+      <div className="mx-auto bg-orange-500 py-10">
         <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
           Marcas con las que Trabajamos
         </h2>
