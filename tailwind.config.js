@@ -22,6 +22,7 @@ module.exports = {
       colors: {
         'orange-light': '#FCF8F0',
         'orange-primary': '#DC9F25',
+        'base-gray': '#565656',
       },
     },
   },

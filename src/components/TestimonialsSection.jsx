@@ -1,78 +1,74 @@
+"use client"
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
+import ReactCompareImage from 'react-compare-image';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
 
 export function SuccessCasesSection() {
   const cases = [
     {
       id: 1,
       title: "Bioestimulador de Colágeno",
-      image: "bg-gradient-to-br from-pink-200 to-rose-200"
+      image: "/bg1.jpg",
+      afterImage: "/bg2.jpg"
     },
     {
       id: 2,
       title: "Rinomodelación",
-      image: "bg-gradient-to-br from-blue-200 to-indigo-200"
+      image: "/bg1.jpg",
+      afterImage: "/bg2.jpg"
     },
     {
       id: 3,
       title: "Entrecejo",
-      image: "bg-gradient-to-br from-green-200 to-emerald-200"
+      image: "/bg1.jpg",
+      afterImage: "/bg2.jpg"
     },
     {
       id: 4,
       title: "Plasma Rico en Plaquetas",
-      image: "bg-gradient-to-br from-purple-200 to-violet-200"
+      image: "/bg1.jpg",
+      afterImage: "/bg2.jpg"
     }
   ];
 
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">
-            Casos de{" "}
-            <span className="text-yellow-500">Éxito</span>
+    <section className="py-10 bg-white flex justify-center mx-auto">
+      <div className="container flex md:flex-row flex-col items-center justify-center px-4 gap-20">
+        <div className="relative text-left mb-16 md:w-[25%] w-[100%] md:h-[36rem] h-[16rem] bg-orange-light rounded-3xl p-8 shadow-lg">
+          <h2 className="text-4xl font-semibold mb-6">
+            Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Nuestros pacientes confían en nuestra precisión y dedicación para lograr 
-            resultados naturales y satisfactorios que transforman vidas.
+          <p className="text-md text-gray-600 text-left max-w-3xl mx-auto">
+          Pacientes que confiaron en nuestra precisión y dedicación logrando resultados naturales que reflejan lo mejor de ti.
           </p>
-        </div>
-
-        {/* Syringe Image */}
-        <div className="flex justify-center mb-12">
-          <div className="w-32 h-32 bg-yellow-500 rounded-full flex items-center justify-center transform rotate-12">
-            <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19 7h-3V6a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1zM10 6h4v1h-4V6zm8 13H6V9h12v10z"/>
-            </svg>
+          <div className="relative md:top-90 top-35">
+            <Image src="/inyection.png" alt="inyection" width={350} height={350} className="absolute block bottom-0 md:-right-30 right-25 mx-auto md:max-w-[350px] max-w-[150px] md:max-h-[350px] max-h-[150px]" />
           </div>
         </div>
-
         {/* Before & After Images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {cases.map((caseItem) => (
-            <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
-              <CardContent className="p-0">
-                <div className={`h-64 ${caseItem.image} relative`}>
-                  {/* Before/After Slider Effect */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full h-full bg-gradient-to-r from-transparent via-gray-300 to-transparent opacity-50"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+        <div className="md:w-[80%] w-[100%] relative md:-top-10 top-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {cases.map((caseItem) => (
+              <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
+                <CardContent className="p-0">
+                  <div className={`h-64 ${caseItem.image} relative`}>
+                    {/* Before/After Slider Effect */}
+                    <ReactCompareImage leftImage={caseItem.image} rightImage={caseItem.afterImage} />
+                    
+                    {/* Label */}
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                        <span className="text-sm font-semibold text-gray-800">{caseItem.title}</span>
                       </div>
                     </div>
                   </div>
-                  
-                  {/* Label */}
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
-                      <span className="text-sm font-semibold text-gray-800">{caseItem.title}</span>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -80,59 +76,103 @@ export function SuccessCasesSection() {
 }
 
 export function TestimonialsSection() {
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
   const testimonials = [
     {
       id: 1,
       name: "Alexandra L.",
-      text: "Excelente atención y resultados increíbles. El equipo de Cuidamedic es muy profesional y los tratamientos son de primera calidad."
+      text: "Me encantó el trato y los resultados, mi piel luce renovada."
     },
     {
       id: 2,
       name: "Giorgio B.",
-      text: "Estoy muy satisfecho con los resultados obtenidos. La atención personalizada y el cuidado en cada detalle hacen la diferencia."
+      text: "Excelente atención médica, resultados visibles y naturales."
     },
     {
       id: 3,
       name: "Fiorella G.",
-      text: "Recomiendo totalmente Cuidamedic. Los médicos son expertos y los tratamientos superaron mis expectativas completamente."
+      text: "Profesionales muy capacitados, recomiendo totalmente."
+    },
+    {
+      id: 4,
+      name: "María R.",
+      text: "Profesionales muy capacitados, recomiendo totalmente.2"
+    },
+    {
+      id: 5,
+      name: "Carlos M.",
+      text: "Profesionales muy capacitados, recomiendo totalmente."
+    },
+    {
+      id: 6,
+      name: "Ana S.",
+      text: "Profesionales muy capacitados, recomiendo totalmente."
     }
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 bg-[#f8f8f8]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-6">
-            Testimonios{" "}
-            <span className="text-yellow-500">Reales</span>
+          <h2 className="text-4xl font-semibold mb-6">
+            Testimonios <b className="text-yellow-500 font-semibold">Reales</b>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                {/* Quote Icon */}
-                <div className="flex justify-start mb-6">
-                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-                    </svg>
-                  </div>
-                </div>
+        <div className="mx-auto">
+        <Carousel
+         swipeable={true}
+         draggable={false}
+         showDots={true}
+         responsive={responsive}
+         ssr={true}
+         infinite={false}
+         keyBoardControl={true}
+         removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+         sliderClass="gap-8 h-[350px]"
+         centerMode={true}
+         partialVisible={false}
+        >
+          {testimonials.map((testimonial, index) => (
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow max-h-[300px] bg-white">
+                    <CardContent className="p-6 h-fit flex flex-col">
+                      {/* Quote Icon */}
+                      <div className="flex justify-start mb-6">
+                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                          <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+                          </svg>
+                        </div>
+                      </div>
 
-                {/* Testimonial Text */}
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  "{testimonial.text}"
-                </p>
+                      {/* Testimonial Text */}
+                      <p className="text-gray-600 text-sm mb-5 leading-relaxed flex-grow">
+                        "{testimonial.text}"
+                      </p>
 
-                {/* Author */}
-                <div className="text-right">
-                  <span className="text-gray-800 font-semibold">- {testimonial.name}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                      {/* Author */}
+                      <div className="text-right mt-auto">
+                        <span className="text-gray-800 font-semibold">- {testimonial.name}</span>
+                      </div>
+                    </CardContent>
+                  </Card>
+              ))}
+        </Carousel>
         </div>
       </div>
     </section>

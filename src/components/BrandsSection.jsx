@@ -41,9 +41,9 @@ export function BrandsSection() {
 
   return (
     <section className="py-16 bg-white w-full overflow-hidden">
-      <div className="mx-auto bg-orange-500 py-10">
-        <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-          Marcas con las que Trabajamos
+      <div className="mx-auto bg-orange-light py-10">
+        <h2 className="text-3xl font-semibold text-center mb-12">
+          Marcas con las que <span className="highlight font-semibold">Trabajamos</span>
         </h2>
         
         <div 
@@ -55,7 +55,7 @@ export function BrandsSection() {
           {[...brands, ...brands].map((brand, index) => (
             <div 
               key={`${brand}-${index}`}
-              className="flex-shrink-0 flex items-center justify-center min-w-[200px] h-20 bg-gray-100 rounded-lg"
+              className="flex-shrink-0 flex items-center justify-center min-w-[200px] h-20 bg-orange-100 rounded-lg"
             >
               <span className="text-gray-600 font-semibold text-lg">{brand}</span>
             </div>
