@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Social Media */}
           <div>
-            <div className="flex items-center mb-2">
+            <div className="flex items-center mb-2 justify-center md:justify-start">
               <Image src="/cuidamedic-logo.png" alt="Cuidamedic" width={180} height={100} />
             </div>
             
