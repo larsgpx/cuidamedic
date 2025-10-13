@@ -145,8 +145,8 @@ export function TestimonialsSection() {
          infinite={false}
          keyBoardControl={true}
          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-         sliderClass="gap-8 h-[350px]"
-         centerMode={true}
+         sliderClass="gap-4 h-[300px]"
+         centerMode={false}
          partialVisible={false}
         >
           {testimonials.map((testimonial, index) => (
