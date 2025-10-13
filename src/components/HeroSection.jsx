@@ -26,7 +26,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat" style={{...style.banner, backgroundImage: `url(${data?.backgroundImage})` }}>
+    <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat" style={{...style.banner, backgroundImage: `url(${data?.backgroundImage})` }}>
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-gradient-to-r from-pink-100/80 to-purple-100/80 bg-cover bg-center bg-no-repeat">
@@ -38,7 +38,7 @@ export function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-2xl text-left">
           {/* Main Heading */}
-          <h1 className="pt-5 text-4xl md:text-5xl mb-6 font-semibold">
+          <h1 className="pt-20 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold">
             {data?.title}
           </h1>
 
@@ -50,7 +50,7 @@ export function HeroSection() {
           {/* Estadísticas/Características */}
           <div className="max-w-4xl flex self-end">
             <div
-              className="grid grid-cols-2 md:grid-cols-4 gap-2 max-w-4xl mx-auto"
+              className="grid grid-cols-2 md:grid-rows-1 grid-rows-2 md:grid-cols-4 gap-2 max-w-4xl mx-auto relative md:absolute"
               style={style.stats}
             >
               <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
@@ -58,7 +58,7 @@ export function HeroSection() {
                 <div className="text-xl text-gray-600 px-6">Pacientes Satisfechos</div>
             </div>
             
-            <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
+            <div className="text-center flex align-center flex-col self-center border-r-0 md:border-r border-gray-300">
               <div className="text-xl text-gray-600 px-6">Marcas Seguras y de Prestigio</div>
             </div>
             
@@ -91,7 +91,6 @@ const style = {
     justifySelf: "end",
     marginBottom: "-50px",
     padding: "20px",
-    position: "absolute",
     right: 0,
   }
 }

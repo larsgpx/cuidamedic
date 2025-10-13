@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
+import Slider from 'react-infinite-logo-slider'
+
 
 export function BrandsSection() {
   const brands = [
-    "SkinFill", "LENISNA", "Rejeunesse", "Botox", "HYACORP",
-    "Juvederm", "Restylane", "Radiesse", "Sculptra", "Belotero"
+    "/marcas/skinFill.png",
+    "/marcas/botox.png", 
+    "/marcas/lanluma.png",
+    "/marcas/profhilo.webp",
+    "/marcas/pbserum.webp",
+    "/marcas/esthemax.webp",
+    "/marcas/ellanse.png",
   ];
 
   const scrollContainerRef = useRef(null);
@@ -16,7 +24,7 @@ export function BrandsSection() {
 
     let animationId;
     let scrollPosition = 0;
-    const scrollSpeed = 1;
+    const scrollSpeed = 0.5;
 
     const animate = () => {
       scrollPosition += scrollSpeed;
@@ -40,9 +48,9 @@ export function BrandsSection() {
   }, []);
 
   return (
-    <section className="py-16 bg-white w-full overflow-hidden">
-      <div className="mx-auto bg-orange-light py-10">
-        <h2 className="text-3xl font-semibold text-center mb-12">
+    <section className="py-5 md:py-16 bg-white w-full overflow-hidden">
+      <div className="mx-auto bg-orange-light py-5 md:py-10">
+        <h2 className="text-3xl font-semibold text-center pt-5 md:pt-0 mb-12">
           Marcas con las que <span className="highlight font-semibold">Trabajamos</span>
         </h2>
         
@@ -51,15 +59,19 @@ export function BrandsSection() {
           className="flex space-x-12 items-center overflow-hidden"
           style={{ scrollBehavior: 'smooth' }}
         >
-          {/* Duplicate brands for infinite scroll effect */}
+          <Slider
+            width="250px"
+            duration={40}
+            pauseOnHover={true}
+            blurBorders={false}
+            blurBorderColor={'#fff'}
+        >
           {[...brands, ...brands].map((brand, index) => (
-            <div 
-              key={`${brand}-${index}`}
-              className="flex-shrink-0 flex items-center justify-center min-w-[200px] h-20 bg-orange-100 rounded-lg"
-            >
-              <span className="text-gray-600 font-semibold text-lg">{brand}</span>
-            </div>
-          ))}
+            <Slider.Slide>
+                <img src={brand} alt={`Marca ${index + 1}`} className='w-36' />
+            </Slider.Slide>
+            ))}
+        </Slider>
         </div>
       </div>
     </section>
