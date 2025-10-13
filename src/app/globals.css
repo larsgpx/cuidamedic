@@ -92,6 +92,7 @@ button,
 button span {
   font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400; /* Regular */
+  cursor: pointer;
 }
 
 .navbar-btn {

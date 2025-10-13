@@ -36,8 +36,8 @@ export function SuccessCasesSection() {
 
   return (
     <section className="py-10 bg-white flex justify-center mx-auto">
-      <div className="container flex md:flex-row flex-col items-center justify-center px-4 gap-20">
-        <div className="relative text-left mb-16 md:w-[25%] w-[100%] md:h-[36rem] h-[16rem] bg-orange-light rounded-3xl p-8 shadow-lg">
+      <div className="container grid md:grid-cols-[20%_80%] grid-cols-1 items-center justify-center px-4 gap-4">
+        <div className="relative text-center md:text-left mb-16 w-full md:h-[36rem] h-[16rem] bg-orange-light rounded-3xl p-8 shadow-lg">
           <h2 className="text-4xl font-semibold mb-6">
             Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
@@ -49,8 +49,8 @@ export function SuccessCasesSection() {
           </div>
         </div>
         {/* Before & After Images */}
-        <div className="md:w-[80%] w-[100%] relative md:-top-10 top-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="w-full relative md:-top-10 top-0 md:ml-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {cases.map((caseItem) => (
               <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
                 <CardContent className="p-0">

@@ -223,11 +223,12 @@ export function Header() {
                       </NavigationMenuContent>
                     </>
                   ) : (
-                    <Link href={item.href}>
-                      <NavigationMenuLink className="text-gray-700 hover:text-yellow-600 transition-colors font-medium text-md cursor-pointer">
-                        {item.title}
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuLink 
+                      href={item.href}
+                      className="text-gray-700 hover:text-yellow-600 transition-colors font-medium text-md cursor-pointer"
+                    >
+                      {item.title}
+                    </NavigationMenuLink>
                   )}
                 </NavigationMenuItem>
               ))}

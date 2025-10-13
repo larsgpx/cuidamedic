@@ -79,7 +79,7 @@ export function ServicesSection() {
       backgroundImage: "/bg2.jpg",
       featured: true,
       position: "bottom-right", // 5 columnas
-      overlay: null
+      overlay: "from-red-100/80 to-cyan-100/80"
     }
   ];
 
@@ -130,33 +130,55 @@ export function ServicesSection() {
           <div className={getRowClasses('top-left')}>
             {topRowServices.map((service) => (
               <div key={service.id} className={getPositionClasses(service.position)}>
-                <Card className={`overflow-hidden border-0 shadow-lg h-64 relative ${
+                <Card className={`overflow-hidden border-0 shadow-lg h-64 relative group cursor-pointer transition-all duration-300 ${
                   service.featured ? 'bg-orange-primary' : 'bg-white'
                 }`}>
                   <CardContent className="p-0 h-full">
                     <div 
-                      className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat ${
+                      className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300 ${
                         service.featured 
                           ? 'flex items-start justify-start p-6' 
                           : 'bg-gradient-to-br from-gray-100 to-gray-200'
                       }`}
                       style={{ backgroundImage: `url(${service.backgroundImage})` }}
                     >
-                      {/* Overlay solo si no es featured */}
+                      {/* Overlay para cards normales */}
                       {!service.featured && service.overlay && (
-                        <div className={`absolute inset-0 bg-gradient-to-br ${service.overlay}`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${service.overlay} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                       )}
                       
-                      <div className={`relative z-10 ${
-                        service.featured ? 'text-white' : 'text-center px-4'
-                      }`}>
-                        <h3 className={`text-xl font-semibold mb-2 ${
-                          service.featured ? 'mb-4' : 'text-gray-800 mb-2'
+                      {/* Overlay base para featured card */}
+                      {service.featured && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-100/80 to-cyan-100/80 transition-all duration-300 group-hover:backdrop-blur-sm"></div>
+                      )}
+                      
+                      {/* Blur overlay que aparece en hover */}
+                      {!service.featured && (
+                        <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/40 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
+                      )}
+                      
+                      {/* Blur overlay para featured card */}
+                      {service.featured && (
+                        <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/30 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
+                      )}
+                      
+                      {/* Título centrado absolutamente */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <h3 className={`text-xl font-semibold transition-all duration-300 text-center ${
+                          service.featured 
+                            ? 'text-white opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8' 
+                            : 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'
                         }`}>
                           {service.title}
                         </h3>
-                        <p className={`text-sm ${
-                          service.featured ? 'leading-relaxed' : 'text-gray-600'
+                      </div>
+                      
+                      {/* Descripción centrada absolutamente */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <p className={`text-sm transition-all duration-300 text-center px-4 ${
+                          service.featured 
+                            ? 'leading-relaxed text-white opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0' 
+                            : 'text-gray-600 opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0'
                         }`}>
                           {service.description}
                         </p>
@@ -172,33 +194,55 @@ export function ServicesSection() {
           <div className={getRowClasses('bottom-left')}>
             {bottomRowServices.map((service) => (
               <div key={service.id} className={getPositionClasses(service.position)}>
-                <Card className={`overflow-hidden border-0 shadow-lg h-64 relative ${
+                <Card className={`overflow-hidden border-0 shadow-lg h-64 relative group cursor-pointer transition-all duration-300 ${
                   service.featured ? 'bg-orange-primary' : 'bg-white'
                 }`}>
                   <CardContent className="p-0 h-full">
                     <div 
-                      className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat ${
+                      className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300 ${
                         service.featured 
                           ? 'flex items-start justify-start p-6' 
                           : 'bg-gradient-to-br from-gray-100 to-gray-200'
                       }`}
                       style={{ backgroundImage: `url(${service.backgroundImage})` }}
                     >
-                      {/* Overlay solo si no es featured */}
+                      {/* Overlay para cards normales */}
                       {!service.featured && service.overlay && (
-                        <div className={`absolute inset-0 bg-gradient-to-br ${service.overlay}`}></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${service.overlay} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                       )}
                       
-                      <div className={`relative z-10 ${
-                        service.featured ? 'text-white' : 'text-center px-4'
-                      }`}>
-                        <h3 className={`text-xl font-semibold mb-2 ${
-                          service.featured ? 'mb-4' : 'text-gray-800 mb-2'
+                      {/* Overlay base para featured card */}
+                      {service.featured && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-red-100/80 to-cyan-100/80 transition-all duration-300 group-hover:backdrop-blur-sm"></div>
+                      )}
+                      
+                      {/* Blur overlay que aparece en hover */}
+                      {!service.featured && (
+                        <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/40 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
+                      )}
+                      
+                      {/* Blur overlay para featured card */}
+                      {service.featured && (
+                        <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/30 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
+                      )}
+                      
+                      {/* Título centrado absolutamente */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <h3 className={`text-xl font-semibold transition-all duration-300 text-center ${
+                          service.featured 
+                            ? 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8' 
+                            : 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'
                         }`}>
                           {service.title}
                         </h3>
-                        <p className={`text-sm ${
-                          service.featured ? 'leading-relaxed' : 'text-gray-600'
+                      </div>
+                      
+                      {/* Descripción centrada absolutamente */}
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <p className={`text-sm transition-all duration-300 text-center px-4 ${
+                          service.featured 
+                            ? 'leading-relaxed text-white opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0' 
+                            : 'text-gray-600 opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0'
                         }`}>
                           {service.description}
                         </p>
@@ -213,13 +257,13 @@ export function ServicesSection() {
 
         {/* Doctors Section */}
         <div className="text-center pt-12 my-12 w-full">
-          <Card className="relative bg-orange-light border-0 shadow-lg w-[100%] h-56 mx-auto rounded-3xl">
+          <Card className="relative bg-orange-light border-0 shadow-lg w-[100%] md:h-56 h-110 mx-auto rounded-3xl">
             <div className="absolute bottom-0 left-0 flex flex-row items-center justify-center">
-              <Image src="/doctor1.png" alt="Doctor1" className="relative left-20 scale-x-[-1]" width={200} height={110} />
-              <Image src="/doctor2.png" alt="Doctor2" className="relative left-10 -bottom-1" width={185} height={105} />
+              <Image src="/doctor1.png" alt="Doctor1" className="relative md:left-20 left-5 scale-x-[-1]" width={200} height={110} />
+              <Image src="/doctor2.png" alt="Doctor2" className="relative md:left-10 left-0 -bottom-1" width={185} height={105} />
             </div>
             <CardContent className="p-8 text-center w-80 flex flex-col items-center absolute right-[15%]">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4 pt-5">
+              <h3 className="text-2xl font-semibold text-gray-600 mb-4 pt-5">
                 ¿No sabes cuál es tu tratamiento ideal?
               </h3>
               <Button className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 mt-2 rounded-xl">
