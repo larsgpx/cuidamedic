@@ -116,3 +116,7 @@ button span {
 .bg-orange-light {
   background-color: var(--orange-light);
 }
+
+.text-color-orange {
+  color: var(--orange-primary);
+}
