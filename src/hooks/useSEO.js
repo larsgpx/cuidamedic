@@ -124,7 +124,7 @@ export const SEO_CONFIGS = {
     url: "https://www.cuidamedic.com/servicios",
     type: "website"
   },
-  about: {
+  nosotros: {
     title: "Sobre Nosotros - Cuidamedic",
     description: "Conoce más sobre Cuidamedic, nuestro equipo de médicos expertos y nuestra experiencia en medicina estética.",
     keywords: "sobre nosotros, médicos expertos, experiencia, medicina estética",

@@ -1,15 +1,14 @@
-import { HeroSection } from "@/components/HeroSection";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+'use client';
+import { Layout } from "@/components/Layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { BrandsSection } from "@/components/BrandsSection";
-
+import { useSEO, SEO_CONFIGS } from "@/hooks/useSEO";
 
 export function Nosotros() {
+  useSEO(SEO_CONFIGS.nosotros);
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <Layout>
       
       {/* Hero Banner Section */}
       <section className="relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-center">
@@ -19,6 +18,7 @@ export function Nosotros() {
             Sobre <b className="font-semibold text-color-orange text-left">Nosotros</b>
           </h1>
         </div>
+        <div className="absolute -bottom-2 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* Three-Column Feature Section */}
@@ -174,8 +174,6 @@ export function Nosotros() {
       <section className="bg-white">
         <BrandsSection />
       </section>
-
-      <Footer />
-    </div>
+    </Layout>
   );
 }
