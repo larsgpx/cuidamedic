@@ -15,26 +15,26 @@ export function LocationsSection() {
       address: "Calle Monte Rosa 284, Of. 403, Chacarilla",
       phone: "(+51) 951375222"
     },
-    {
-      id: 3,
-      name: "Lince",
-      address: "Avenida Canevaro 116, Of. 602",
-      phone: "(+51) 992802065"
-    }
+    // {
+    //   id: 3,
+    //   name: "Lince",
+    //   address: "Avenida Canevaro 116, Of. 602",
+    //   phone: "(+51) 992802065"
+    // }
   ];
 
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6">
-            Nuestras <b className="text-yellow-500 font-semibold">Sucursales</b>
+          <h2 className="text-4xl font-semibold mb-6 title-orange">
+            Nuestras <span>Sucursales</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="container grid grid-cols-1 md:grid-cols-2 gap-10 px-4 max-w-6xl mx-auto">
           {locations.map((location) => (
-            <div key={location.id}  className="flex flex-col gap-4 pt-4 md:pt-0">
+            <div key={location.id}  className="flex flex-col gap-4 pt-4 md:pt-0 justify-center">
             <Card className="rounded-3xl bg-orange-light border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8 text-center relative">
                 {/* Map Pin Icon */}

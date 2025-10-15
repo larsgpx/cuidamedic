@@ -131,5 +131,13 @@ export const SEO_CONFIGS = {
     image: "/bg3.jpg",
     url: "https://www.cuidamedic.com/nosotros",
     type: "website"
+  },
+  contactanos: {
+    title: "Contáctanos - Cuidamedic",
+    description: "Contáctanos en Cuidamedic. Ubicados en Miraflores, Surco y Lince. Horarios de atención y agendamiento de citas. Medicina estética de calidad.",
+    keywords: "contacto, ubicaciones, Miraflores, Surco, Lince, agendar cita, horarios de atención",
+    image: "/bg1.jpg",
+    url: "https://www.cuidamedic.com/contactanos",
+    type: "website"
   }
 };
