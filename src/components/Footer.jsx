@@ -29,13 +29,13 @@ export function Footer() {
           <div className='text-center md:text-left'>
             <h3 className="text-lg font-semibold mb-4 text-orange-primary">Enlaces</h3>
             <div className="space-y-2">
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors">
+              <a href="/politica-privacidad" className="block text-gray-300 hover:text-white transition-colors">
                 Política de Privacidad
               </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors">
+              <a href="https://app.reclamovirtual.com/cuidamedic/" target="_blank" className="block text-gray-300 hover:text-white transition-colors">
                 Libro de Reclamaciones - Miraflores
               </a>
-              <a href="#" className="block text-gray-300 hover:text-white transition-colors">
+              <a href="https://s06.claimbook.pe/empresa/cuidamedic/" target='_blank' className="block text-gray-300 hover:text-white transition-colors">
                 Libro de Reclamaciones - Surco
               </a>
             </div>
