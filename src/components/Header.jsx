@@ -49,6 +49,7 @@ export function Header() {
         ],
     },
     { title: "Nosotros", href: "/nosotros" },
+    { title: "Blog", href: "/blog" },
     { title: "Contáctanos", href: "/contactanos" },
 ];
 
