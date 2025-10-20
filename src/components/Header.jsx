@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,6 +12,15 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileMenus, setOpenMobileMenus] = useState({});
+  const pathname = usePathname();
+
+  // Función para determinar si un elemento específico del menú debe tener la clase naranja
+  const isActiveMenuItem = (href) => {
+    if (!href) return false;
+    
+    // Si es la ruta exacta o si la ruta actual empieza con esta ruta
+    return pathname === href || pathname.startsWith(href + '/');
+  };
 
   const menuItems = [
     { title: "Inicio", href: "/" },
@@ -102,7 +112,10 @@ export function Header() {
                 <NavigationMenuItem key={index}>
                   {item.submenu ? (
                     <>
-                      <NavigationMenuTrigger className="navbar-btn text-gray-700 bg-transparent hover:text-yellow-600 transition-colors font-light text-md">
+                      <NavigationMenuTrigger className={cn(
+                        "navbar-btn bg-transparent hover:text-yellow-600 transition-colors font-light text-md",
+                        "text-gray-700"
+                      )}>
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent className="overflow-visible navbar-structure">
@@ -226,7 +239,10 @@ export function Header() {
                   ) : (
                     <NavigationMenuLink 
                       href={item.href}
-                      className="text-gray-700 hover:text-yellow-600 transition-colors font-medium text-md cursor-pointer"
+                      className={cn(
+                        "hover:text-yellow-600 transition-colors font-medium text-md cursor-pointer",
+                        isActiveMenuItem(item.href) ? "text-color-orange" : "text-gray-700"
+                      )}
                     >
                       {item.title}
                     </NavigationMenuLink>
@@ -309,7 +325,10 @@ export function Header() {
                                 ) : (
                                   <Link
                                     href={subItem.href}
-                                    className="block text-gray-600 hover:text-yellow-600 transition-colors py-1"
+                                    className={cn(
+                                      "block hover:text-yellow-600 transition-colors py-1",
+                                      isActiveMenuItem(subItem.href) ? "text-color-orange" : "text-gray-600"
+                                    )}
                                     onClick={closeMobileMenu}
                                   >
                                     {subItem.title}
@@ -323,7 +342,10 @@ export function Header() {
                     ) : (
                       <Link
                         href={item.href}
-                        className="block text-gray-700 hover:text-yellow-600 transition-colors font-medium text-md py-2"
+                        className={cn(
+                          "block hover:text-yellow-600 transition-colors font-medium text-md py-2",
+                          isActiveMenuItem(item.href) ? "text-color-orange" : "text-gray-700"
+                        )}
                         onClick={closeMobileMenu}
                       >
                         {item.title}

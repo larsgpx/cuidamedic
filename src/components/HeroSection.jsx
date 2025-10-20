@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 import { Righteous } from "next/font/google";
 
 export function HeroSection() {
-
-  const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState(null);
 
   useEffect(() => {

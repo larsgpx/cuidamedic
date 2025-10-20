@@ -16,21 +16,23 @@ export function WhyChooseUsSection() {
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              En Cuidamedic, tu bienestar y confianza son nuestra prioridad. Somos un centro médico estético en Lima, con sedes en Surco y Miraflores, especializado en tratamientos faciales y corporales con tecnología avanzada y respaldo médico certificado.
               </p>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-                culpa qui officia deserunt mollit anim id est laborum.
+              Pilares de nuestra atención:
               </p>
+              <ul>
+                <li><span className="text-color-orange">Profesionales especializados:</span> médicos con formación internacional y amplia experiencia</li>
+                <li><span className="text-color-orange">Tecnología de vanguardia:</span> equipos como Exion, líderes mundiales en rejuvenecimiento y modelado corporal.</li>
+                <li><span className="text-color-orange">Resultados naturales y seguros:</span> tratamientos personalizados para cada tipo de piel y necesidad</li>
+              </ul>
+              <p>Descubre una experiencia estética médica única, donde la ciencia y la belleza se unen para uidar de ti.</p>
             </div>
           </div>
 
           {/* Image Placeholder */}
-          <div className="flex justify-center">
-            <div className="w-full max-w-md h-80 bg-gray-200 rounded-lg flex items-center justify-center">
+          <div className="flex justify-center rounded-xl">
+            <div className="w-full max-w-md h-80 bg-gray-200 rounded-3xl flex items-center justify-center">
               <span className="text-gray-500 text-lg">Imagen del Producto</span>
             </div>
           </div>
@@ -44,7 +46,7 @@ export function ServicesSection() {
   const services = [
     {
       id: 1,
-      title: "Tratamiento Facial",
+      title: "Limpieza Faciales",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "bg-gradient-to-br from-pink-200 to-purple-200",
       backgroundImage: "/bg1.jpg",
@@ -54,7 +56,7 @@ export function ServicesSection() {
     },
     {
       id: 2,
-      title: "Medicina Estética",
+      title: "Tratamientos Estéticos Corporales",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "bg-gradient-to-br from-blue-200 to-cyan-200",
       backgroundImage: "/bg1.jpg",
@@ -64,7 +66,7 @@ export function ServicesSection() {
     },
     {
       id: 3,
-      title: "Tratamiento Ocular",
+      title: "Tratamientos Estéticos Faciales",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "bg-gradient-to-br from-green-200 to-emerald-200",
       backgroundImage: "/bg1.jpg",
@@ -74,7 +76,7 @@ export function ServicesSection() {
     },
     {
       id: 4,
-      title: "Tratamiento Premium",
+      title: "Tratamientos con Radiofrecuencia",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       image: "bg-yellow-500",
       backgroundImage: "/bg2.jpg",

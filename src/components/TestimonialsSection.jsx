@@ -41,8 +41,8 @@ export function SuccessCasesSection() {
           <h2 className="text-4xl font-semibold mb-6">
             Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
-          <p className="text-md text-gray-600 text-left max-w-3xl mx-auto">
-          Pacientes que confiaron en nuestra precisión y dedicación logrando resultados naturales que reflejan lo mejor de ti.
+          <p className="text-md text-gray-600 text-left max-w-3xl mx-auto text-with-colors">
+          Pacientes que confiaron en nuestra <span>precisión</span> y <span>dedicación</span> logrando resultados naturales que reflejan lo <span>mejor</span> de ti.
           </p>
           <div className="relative md:top-90 top-35">
             <Image src="/inyection.png" alt="inyection" width={350} height={350} className="absolute block bottom-0 md:-right-30 right-25 mx-auto md:max-w-[350px] max-w-[150px] md:max-h-[350px] max-h-[150px]" />

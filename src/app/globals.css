@@ -136,3 +136,20 @@ button span {
   font-weight: 500; 
   color: var(--orange-primary);
 }
+
+.text-with-colors span {
+  color: var(--orange-primary);
+}
+
+.react-multi-carousel-dot--active button {
+  background-color: var(--orange-primary) !important;
+  border: 1px solid #dadada!important;
+  border-radius: 35%!important;
+  min-width: 20px;
+}
+
+.react-multi-carousel-dot button {
+  border-width: 1px!important;
+  border-radius: 35%!important;
+  min-width: 20px;
+}
