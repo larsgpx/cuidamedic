@@ -127,7 +127,7 @@ export function BlogPost({ postId }) {
       <Header />
       
       {/* Breadcrumb */}
-      <div className="bg-gray-50 py-4">
+      <div className="bg-gray-50 py-4 mt-20">
         <div className="container mx-auto px-4">
           <nav className="flex items-center space-x-2 text-sm">
             <Link href="/" className="text-gray-600 hover:text-yellow-600">Inicio</Link>
@@ -168,12 +168,6 @@ export function BlogPost({ postId }) {
                   <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
                 </svg>
                 {post.date}
-              </div>
-              <div className="flex items-center">
-                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                {post.readTime} min de lectura
               </div>
             </div>
 

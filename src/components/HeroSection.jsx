@@ -52,7 +52,7 @@ export function HeroSection() {
   if (!data) return null;
 
   return (
-    <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
       {/* Carousel Container */}
       <div className="absolute inset-0">
         <div 

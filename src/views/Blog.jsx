@@ -73,17 +73,12 @@ export function Blog() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-yellow-50 to-orange-50 py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-left max-w-4xl pt-10">
-            <h1 className="text-4xl md:text-5xl title-orange mb-6">
-              Blog
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed">
-              Descubre las últimas tendencias en medicina estética, consejos de cuidado de la piel 
-              y novedades en tratamientos para mantenerte informado sobre tu bienestar.
-            </p>
-          </div>
+      <section className="relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-start">
+        <div className="absolute inset-0 bg-[url('/cuidamedic-blog.jpg')] bg-cover bg-center bg-no-repeat opacity-20"></div>
+        <div className="relative z-10 text-left container mx-auto">
+          <h1 className="text-5xl md:text-5xl font-semibold text-gray-600">
+            Contáctanos
+          </h1>
         </div>
         <div className="absolute -bottom-2 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
       </section>
