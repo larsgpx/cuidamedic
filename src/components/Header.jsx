@@ -36,12 +36,16 @@ export function Header() {
                 href: "/tratamientos/endovenosos",
             },
             {
+              title: "Mesoterapia & Cocktails",
+              href: "/tratamientos/mesoterapia-cocktails",
+            },
+            {
                 title: "Estéticos - Faciales",
                 submenu: [
                     { title: "Toxina", href: "/tratamientos/esteticos-faciales/toxina" },
                     { title: "AH", href: "/tratamientos/esteticos-faciales/ah" },
                     { title: "Enzimas", href: "/tratamientos/esteticos-faciales/enzimas" },
-                    { title: "Exosomos", href: "/tratamientos/esteticos-faciales/exosomos" },
+                    { title: "Exosomas", href: "/tratamientos/esteticos-faciales/exosomas" },
                     { title: "Biorem + Bioest.", href: "/tratamientos/esteticos-faciales/biorem-bioest" },
                     { title: "Mesoterapias", href: "/tratamientos/esteticos-faciales/mesoterapias" },
                     { title: "Bioremodelador", href: "/tratamientos/esteticos-faciales/bioremodelador" },
@@ -131,8 +135,11 @@ export function Header() {
                                     className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                                   >
                                     <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mt-1">
-                                      <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                      
+                                      <svg className="w-4 h-4 text-blue-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                                        <path d="M15.9998 10.5004C15.9998 11.3288 15.5521 12.0004 14.9998 12.0004C14.4475 12.0004 13.9998 11.3288 13.9998 10.5004C13.9998 9.67196 14.4475 9.00039 14.9998 9.00039C15.5521 9.00039 15.9998 9.67196 15.9998 10.5004Z" fill="#1C274C"/>
+                                        <path d="M9.99982 10.5004C9.99982 11.3288 9.5521 12.0004 8.99982 12.0004C8.44753 12.0004 7.99982 11.3288 7.99982 10.5004C7.99982 9.67196 8.44753 9.00039 8.99982 9.00039C9.5521 9.00039 9.99982 9.67196 9.99982 10.5004Z" fill="#1C274C"/>
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M13.2648 2.05116C13.3472 1.64522 13.7431 1.38294 14.149 1.46533C18.3625 2.32056 21.6797 5.63763 22.535 9.85114C22.6173 10.2571 22.3551 10.6529 21.9491 10.7353C21.5432 10.8177 21.1473 10.5555 21.0649 10.1495C20.3295 6.52642 17.4738 3.67075 13.8506 2.93535C13.4447 2.85296 13.1824 2.45709 13.2648 2.05116ZM10.735 2.05121C10.8174 2.45714 10.5551 2.85301 10.1492 2.93541C6.52602 3.6708 3.67032 6.52647 2.93486 10.1496C2.85246 10.5555 2.45659 10.8178 2.05065 10.7354C1.64472 10.653 1.38244 10.2571 1.46484 9.85119C2.32014 5.63769 5.63726 2.32061 9.85079 1.46538C10.2567 1.38299 10.6526 1.64527 10.735 2.05121ZM2.05081 13.2654C2.45675 13.183 2.85262 13.4453 2.93502 13.8512C3.67048 17.4743 6.52618 20.33 10.1493 21.0654C10.5553 21.1478 10.8175 21.5436 10.7351 21.9496C10.6528 22.3555 10.2569 22.6178 9.85095 22.5354C5.63742 21.6802 2.3203 18.3631 1.465 14.1496C1.3826 13.7437 1.64488 13.3478 2.05081 13.2654ZM21.9491 13.2654C22.3551 13.3478 22.6173 13.7437 22.535 14.1496C21.6797 18.3631 18.3625 21.6802 14.149 22.5354C13.7431 22.6178 13.3472 22.3555 13.2648 21.9496C13.1824 21.5436 13.4447 21.1478 13.8506 21.0654C17.4738 20.33 20.3295 17.4743 21.0649 13.8512C21.1473 13.4453 21.5432 13.183 21.9491 13.2654ZM8.39729 15.5538C8.64395 15.221 9.11366 15.1512 9.44643 15.3979C10.1748 15.9377 11.0539 16.2504 11.9998 16.2504C12.9457 16.2504 13.8249 15.9377 14.5532 15.3979C14.886 15.1512 15.3557 15.221 15.6023 15.5538C15.849 15.8865 15.7792 16.3563 15.4464 16.6029C14.474 17.3237 13.2848 17.7504 11.9998 17.7504C10.7148 17.7504 9.52562 17.3237 8.55321 16.6029C8.22044 16.3563 8.15063 15.8865 8.39729 15.5538Z" fill="#1C274C"/>
                                       </svg>
                                     </div>
                                     <div>
@@ -145,13 +152,23 @@ export function Header() {
                                     className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                                   >
                                     <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mt-1">
-                                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                      </svg>
+                                      <img src="/icons/endovenosa.svg" alt="Endovenosos" width={24} height={24} />
                                     </div>
                                     <div>
                                       <h4 className="font-semibold text-gray-900 text-sm">Endovenosos</h4>
                                       <p className="text-xs text-gray-500 mt-1">Terapias de vitaminas y minerales por vía intravenosa</p>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/tratamientos/mesoterapia-cocktails"
+                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                                  >
+                                    <div className="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center mt-1">
+                                      <img src="/icons/mesoterapia.svg" alt="Mesoterapia & Cocktails" width={20} height={20} />
+                                    </div>
+                                    <div>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Mesoterapia & Cocktails</h4>
+                                      <p className="text-xs text-gray-500 mt-1">Vitaminas y terapias regenerativas que revitalizan tu piel desde el interior</p>
                                     </div>
                                   </Link>
                                 </div>
@@ -168,9 +185,7 @@ export function Header() {
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                                        <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
+                                        <img src="/icons/injection.svg" alt="Estéticos - Faciales" width={20} height={20} />
                                       </div>
                                       <div>
                                         <h4 className="font-semibold text-gray-900 text-sm">Estéticos - Faciales</h4>
@@ -202,9 +217,7 @@ export function Header() {
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                                        <svg className="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                        </svg>
+                                      <img src="/icons/corporal.svg" alt="Estéticos - Corporales" width={20} height={20} />
                                       </div>
                                       <div>
                                         <h4 className="font-semibold text-gray-900 text-sm">Estéticos - Corporales</h4>

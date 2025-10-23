@@ -30,8 +30,9 @@ export function Nosotros() {
               <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Image src="/icons/quality.svg" alt="Calidad" width={64} height={64} />
               </div>
-              <p className="text-gray-600 leading-relaxed pt-4 text-left">
-                En CUIDAMEDIC, garantizamos tratamientos de medicina estética con la más alta calidad. Nuestros doctores especializados utilizan productos de primera y tecnología avanzada para asegurar resultados seguros y efectivos en cada procedimiento.
+              <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">Excelencia médica y tecnología avanzada</h3>
+              <p className="text-gray-600 leading-relaxed pt-4">
+                En CUIDAMEDIC, garantizamos tratamientos de medicina estética con tecnología de última generación y productos certificados para ofrecer resultados seguros y efectivos.
               </p>
             </div>
 
@@ -40,8 +41,9 @@ export function Nosotros() {
               <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
               <Image src="/icons/expert.svg" alt="Calidad" width={64} height={64} />
               </div>
-              <p className="text-gray-600 leading-relaxed pt-4 text-left">
-                Nuestros doctores cuentan con años de experiencia en la medicina estética, con habilidades excepcionales en procedimientos como botox, ácido hialurónico, bioestimuladores de colágeno y más. Cada tratamiento está diseñado para ofrecerte resultados precisos y naturales.
+              <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">Experiencia profesional y resultados naturales</h3>
+              <p className="text-gray-600 leading-relaxed pt-4">
+                Nuestros médicos estéticos cuentan con experiencia y dominio en todos nuestros procedimientos, asegurando resultados precisos y armónicos a nuestros pacientes.
               </p>
             </div>
 
@@ -50,8 +52,9 @@ export function Nosotros() {
               <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Image src="/icons/heart.svg" alt="Calidad" width={64} height={64} />
               </div>
-              <p className="text-gray-600 leading-relaxed pt-4 text-left">
-                La pasión por el bienestar de nuestros pacientes es lo que nos mueve. En CUIDAMEDIC, nuestros médicos estéticos están comprometidos a brindarte una experiencia única, ayudándote a reflejar tu mejor versión a través de tratamientos personalizados y seguros.
+              <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">Compromiso con tu bienestar</h3>
+              <p className="text-gray-600 leading-relaxed pt-4 ">
+                La pasión por el bienestar de nuestros pacientes nos impulsa a ofrecer una atención cálida, profesional y personalizada, cuidando cada detalle de tu experiencia estética.
               </p>
             </div>
           </div>
@@ -77,7 +80,7 @@ export function Nosotros() {
                   <TabsTrigger className="data-[state=active]:bg-[#DC9F25] rounded-xl" value="password">Historia</TabsTrigger>
                 </TabsList>
                 <TabsContent value="account">{/* Main Title */}
-                  <h2 className="text-3xl font-semibold text-gray-800 mb-6">
+                  <h2 className="text-3xl font-semibold text-gray-600 mb-6">
                     ¿Quiénes <b className="font-semibold text-color-orange">somos</b>?
                   </h2>
 
@@ -89,7 +92,7 @@ export function Nosotros() {
                       exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </p>
                     <p>
-                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                       fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
                       culpa qui officia deserunt mollit anim id est laborum.
                     </p>
