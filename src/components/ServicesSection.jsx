@@ -51,56 +51,69 @@ export function ServicesSection() {
       image: "bg-gradient-to-br from-pink-200 to-purple-200",
       backgroundImage: "/bg1.jpg",
       featured: false,
-      position: "top-left", // 5 columnas
+      position: "top-small-1",
       overlay: "from-pink-100/80 to-purple-100/80"
     },
     {
       id: 2,
-      title: "Tratamientos Estéticos Corporales",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      image: "bg-gradient-to-br from-blue-200 to-cyan-200",
-      backgroundImage: "/bg1.jpg",
-      featured: false,
-      position: "bottom-left", // 7 columnas
-      overlay: "from-green-100/80 to-emerald-100/80"
-    },
-    {
-      id: 3,
-      title: "Tratamientos Estéticos Faciales",
+      title: "Tratamientos Endovenosos",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       image: "bg-gradient-to-br from-green-200 to-emerald-200",
       backgroundImage: "/bg1.jpg",
       featured: false,
-      position: "top-right", // 7 columnas
+      position: "top-small-2",
+      overlay: "from-green-100/80 to-emerald-100/80"
+    },
+    {
+      id: 3,
+      title: "Mesoterapia & Cocktails",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      image: "bg-gradient-to-br from-blue-200 to-cyan-200",
+      backgroundImage: "/bg1.jpg",
+      featured: false,
+      position: "top-small-3",
       overlay: "from-blue-100/80 to-cyan-100/80"
     },
     {
       id: 4,
-      title: "Tratamientos con Radiofrecuencia",
+      title: "Tratamientos Estéticos Corporales",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      image: "bg-yellow-500",
+      image: "bg-gradient-to-br from-orange-200 to-red-200",
       backgroundImage: "/bg2.jpg",
       featured: true,
-      position: "bottom-right", // 5 columnas
-      overlay: "from-red-100/80 to-cyan-100/80"
+      position: "bottom-large-1",
+      overlay: "from-orange-100/80 to-red-100/80"
+    },
+    {
+      id: 5,
+      title: "Tratamientos Estéticos Faciales",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      image: "bg-gradient-to-br from-purple-200 to-indigo-200",
+      backgroundImage: "/bg2.jpg",
+      featured: true,
+      position: "bottom-large-2",
+      overlay: "from-purple-100/80 to-indigo-100/80"
     }
   ];
 
   // Función helper para obtener las clases CSS basadas en la posición
   const getPositionClasses = (position) => {
     const positionMap = {
-      'top-left': 'col-span-12 md:col-span-5',
-      'top-right': 'col-span-12 md:col-span-7',
-      'bottom-left': 'col-span-12 md:col-span-7',
-      'bottom-right': 'col-span-12 md:col-span-5'
+      // Servicios pequeños (arriba)
+      'top-small-1': 'col-span-12 md:col-span-4',
+      'top-small-2': 'col-span-12 md:col-span-4',
+      'top-small-3': 'col-span-12 md:col-span-4',
+      // Servicios grandes (abajo)
+      'bottom-large-1': 'col-span-12 md:col-span-6',
+      'bottom-large-2': 'col-span-12 md:col-span-6'
     };
     return positionMap[position] || 'col-span-12';
   };
 
   // Función helper para obtener las clases del contenedor de fila
   const getRowClasses = (position) => {
-    const topPositions = ['top-left', 'top-right'];
-    const bottomPositions = ['bottom-left', 'bottom-right'];
+    const topPositions = ['top-small-1', 'top-small-2', 'top-small-3'];
+    const bottomPositions = ['bottom-large-1', 'bottom-large-2'];
     
     if (topPositions.includes(position)) {
       return 'grid grid-cols-12 gap-6 mb-6';
@@ -112,11 +125,14 @@ export function ServicesSection() {
 
   // Agrupar servicios por fila
   const topRowServices = services.filter(service => 
-    service.position === 'top-left' || service.position === 'top-right'
+    service.position === 'top-small-1' || 
+    service.position === 'top-small-2' || 
+    service.position === 'top-small-3'
   );
   
   const bottomRowServices = services.filter(service => 
-    service.position === 'bottom-left' || service.position === 'bottom-right'
+    service.position === 'bottom-large-1' || 
+    service.position === 'bottom-large-2'
   );
 
   return (
@@ -129,11 +145,11 @@ export function ServicesSection() {
 
         {/* Service Cards - Layout dinámico */}
         <div className="mb-16">
-          {/* Fila superior */}
-          <div className={getRowClasses('top-left')}>
+          {/* Fila superior - 3 servicios pequeños */}
+          <div className={getRowClasses('top-small-1')}>
             {topRowServices.map((service) => (
               <div key={service.id} className={getPositionClasses(service.position)}>
-                <Card className={`overflow-hidden border-0 shadow-lg h-64 relative group cursor-pointer transition-all duration-300 ${
+                <Card className={`overflow-hidden border-0 shadow-lg h-48 relative group cursor-pointer transition-all duration-300 ${
                   service.featured ? 'bg-orange-primary' : 'bg-white'
                 }`}>
                   <CardContent className="p-0 h-full">
@@ -167,7 +183,7 @@ export function ServicesSection() {
                       
                       {/* Título centrado absolutamente */}
                       <div className="absolute inset-0 flex items-center justify-center z-10">
-                        <h3 className={`text-xl font-semibold transition-all duration-300 text-center ${
+                        <h3 className={`text-lg font-semibold transition-all duration-300 text-center ${
                           service.featured 
                             ? 'text-white opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8' 
                             : 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'
@@ -193,8 +209,8 @@ export function ServicesSection() {
             ))}
           </div>
 
-          {/* Fila inferior */}
-          <div className={getRowClasses('bottom-left')}>
+          {/* Fila inferior - 2 servicios grandes */}
+          <div className={getRowClasses('bottom-large-1')}>
             {bottomRowServices.map((service) => (
               <div key={service.id} className={getPositionClasses(service.position)}>
                 <Card className={`overflow-hidden border-0 shadow-lg h-64 relative group cursor-pointer transition-all duration-300 ${
