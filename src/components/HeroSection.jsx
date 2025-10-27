@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { useState, useEffect } from "react";
 import { Righteous } from "next/font/google";
 
-export function HeroSection() {
+export function HeroSection(dataBanners) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [data, setData] = useState(null);
 
@@ -32,6 +32,7 @@ export function HeroSection() {
 
   useEffect(() => {
     setData(carouselData);
+    console.log('dataBanners', dataBanners);
   }, []);
 
   // Auto-avance del carousel cada 5 segundos
