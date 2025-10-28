@@ -14,29 +14,28 @@ export function Home() {
   useSEO(SEO_CONFIGS.home);
 
   // Obtener datos de la API de Strapi
-  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner][populate]=*';
-  const API_MARCAS = process.env.NEXT_PUBLIC_API_MARCA || '/api/marcas';
-  const API_SUCURSALES = process.env.NEXT_PUBLIC_API_SUCURSALES || '/api/sucursales';
+  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner]=true&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true';
+  const API_MARCAS = process.env.NEXT_PUBLIC_API_MARCA + '?populate=*' || '/api/marcas?populate=*';
+  const API_SUCURSALES = process.env.NEXT_PUBLIC_API_SUCURSALES + '?populate=*' || '/api/sucursales?populate=*';
   const { data, loading, error } = useAPI(API_HOME);
   const { data: dataMarcas, loading: loadingMarcas} = useAPI(API_MARCAS);
   const { data: dataLocations, loading: loadingLocations } = useAPI(API_SUCURSALES);
 
   // Console log para verificar los datos
   if (data) {
-    console.log('📊 Datos de Home desde Strapi:', data);
-    console.log('📊 Datos de Banner desde Strapi:', data?.data?.Banner);
-  //   console.log('📊 Datos de marcas desde Strapi:', dataMarcas);
-  //   console.log('📊 Datos de sucursales desde Strapi:', dataLocations);
-  //   console.log('base url', process.env.NEXT_PUBLIC_BASE_URL + API_SUCURSALES);
+    // console.log('📊 Datos de Home desde Strapi:', data);
+    
+    console.log('📊 Datos de sucursales desde Strapi:', dataLocations);
+    
   }
 
   return (
     <Layout>
-      <HeroSection data={data?.data?.Banner} />
-      <WhyChooseUsSection img={data?.data?.porqueElegirnosImage} title={data?.data?.titlePorqueElegirnos} description={data?.data?.porqueElegirnosDescription} />
-      <BrandsSection data={dataMarcas?.data} />
-      <ServicesSection data={data?.data?.Servicios} />
-      <SuccessCasesSection data={data?.data?.casosDeExito} />
+      <HeroSection dataBanners={data?.data?.Banner} />
+      <WhyChooseUsSection image={data?.data?.porqueElegirnosImage?.url} description={data?.data?.porqueElegirnosDescription} />
+      <BrandsSection brandsData={dataMarcas?.data} />
+      <ServicesSection servicesData={data?.data?.Servicios} />
+      <SuccessCasesSection casosTexto={data?.data?.casosDeExitoDescription} casosData={data?.data?.casosDeExito} />
       <TestimonialsSection data={data?.data?.testimonios} />
       <LocationsSection data={dataLocations?.data} />
     </Layout>

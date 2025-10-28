@@ -4,35 +4,15 @@ import Image from "next/image";
 import ReactCompareImage from 'react-compare-image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-
-export function SuccessCasesSection() {
-  const cases = [
-    {
-      id: 1,
-      title: "Bioestimulador de Colágeno",
-      image: "/bg1.jpg",
-      afterImage: "/bg2.jpg"
-    },
-    {
-      id: 2,
-      title: "Rinomodelación",
-      image: "/bg1.jpg",
-      afterImage: "/bg2.jpg"
-    },
-    {
-      id: 3,
-      title: "Entrecejo",
-      image: "/bg1.jpg",
-      afterImage: "/bg2.jpg"
-    },
-    {
-      id: 4,
-      title: "Plasma Rico en Plaquetas",
-      image: "/bg1.jpg",
-      afterImage: "/bg2.jpg"
-    }
-  ];
+export function SuccessCasesSection({ casosTexto, casosData }) {
+  const cases = casosData?.map((caso) => ({
+    id: caso.id,
+    title: caso.titulo,
+    image: caso.antes?.url,
+    afterImage: caso.despues?.url
+  }));
 
   return (
     <section className="py-10 bg-white flex justify-center mx-auto">
@@ -41,9 +21,14 @@ export function SuccessCasesSection() {
           <h2 className="text-4xl font-semibold mb-6">
             Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
-          <p className="text-md text-gray-600 text-left max-w-3xl mx-auto text-with-colors">
-          Pacientes que confiaron en nuestra <span>precisión</span> y <span>dedicación</span> logrando resultados naturales que reflejan lo <span>mejor</span> de ti.
-          </p>
+          <div className="text-md text-gray-600 text-left max-w-3xl mx-auto [&>p>strong]:text-[#DC9F25]">
+            {casosTexto && (
+              <BlocksRenderer content={casosTexto} />
+            )}
+            {!casosTexto && (
+              <p>Pacientes que confiaron en nuestra precisión y dedicación logrando resultados naturales que reflejan lo mejor de ti.</p>
+            )}
+          </div>
           <div className="relative md:top-90 top-35">
             <Image src="/inyection.png" alt="inyection" width={350} height={350} className="absolute block bottom-0 md:-right-30 right-25 mx-auto md:max-w-[350px] max-w-[150px] md:max-h-[350px] max-h-[150px]" />
           </div>
@@ -51,13 +36,16 @@ export function SuccessCasesSection() {
         {/* Before & After Images */}
         <div className="w-full relative md:-top-10 top-0 md:ml-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {cases.map((caseItem) => (
+            {cases?.map((caseItem) => (
               <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
                 <CardContent className="p-0">
-                  <div className={`h-64 ${caseItem.image} relative`}>
+                  <div className={`h-64 relative`}>
                     {/* Before/After Slider Effect */}
-                    <ReactCompareImage leftImage={caseItem.image} rightImage={caseItem.afterImage} />
-                    
+                    <ReactCompareImage 
+                      leftImage={`${process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
+                      rightImage={`${process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
+                    />
+                   
                     {/* Label */}
                     <div className="absolute bottom-4 left-4 right-4">
                       <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
@@ -75,7 +63,7 @@ export function SuccessCasesSection() {
   );
 }
 
-export function TestimonialsSection() {
+export function TestimonialsSection({ data }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -126,6 +114,15 @@ export function TestimonialsSection() {
     }
   ];
 
+  // Usar data de Strapi si existe, sino usar datos por defecto
+  const testimonialsToUse = data && Array.isArray(data) && data.length > 0 
+    ? data.map((testimonial) => ({
+        id: testimonial.id,
+        name: testimonial.title || testimonial.name,
+        text: testimonial.body || testimonial.text
+      }))
+    : testimonials;
+
   return (
     <section className="py-12 bg-[#f8f8f8]">
       <div className="container mx-auto px-4">
@@ -149,8 +146,8 @@ export function TestimonialsSection() {
          centerMode={false}
          partialVisible={false}
         >
-          {testimonials.map((testimonial, index) => (
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow max-h-[300px] bg-white">
+          {testimonialsToUse?.map((testimonial, index) => (
+                  <Card key={testimonial.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow min-h-[240px] max-h-[300px] bg-white">
                     <CardContent className="p-6 h-fit flex flex-col">
                       {/* Quote Icon */}
                       <div className="flex justify-start mb-6">

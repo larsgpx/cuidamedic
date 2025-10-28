@@ -106,7 +106,12 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
+            <Link
+              href="/"
+              className="cursor-pointer"
+            >
             <img src="/logo.png" alt="Cuidamedic" className="w-24 h-20 mt-8" />
+            </Link>
           </div>
 
           {/* Desktop Navigation */}

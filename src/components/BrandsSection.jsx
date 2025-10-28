@@ -5,8 +5,12 @@ import Image from "next/image";
 import Slider from 'react-infinite-logo-slider'
 
 
-export function BrandsSection() {
-  const brands = [
+export function BrandsSection({ brandsData }) {
+  // Base URL de Strapi
+  const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  
+  // Marcas por defecto
+  const defaultBrands = [
     "/marcas/skinFill.png",
     "/marcas/botox.png", 
     "/marcas/lanluma.png",
@@ -15,6 +19,17 @@ export function BrandsSection() {
     "/marcas/esthemax.webp",
     "/marcas/ellanse.png",
   ];
+
+  // Usar datos de Strapi si existen, sino usar datos por defecto
+  const brandsToUse = brandsData && Array.isArray(brandsData) && brandsData.length > 0
+    ? brandsData.map((brand) => ({
+        id: brand.id || brand.documentId,
+        nombre: brand?.nombre,
+        imagen: brand?.imagen?.url 
+          ? `${STRAPI_BASE_URL}${brand?.imagen?.url}` 
+          : `/marcas/${brand?.nombre?.toLowerCase()}`
+      }))
+    : defaultBrands;
 
   const scrollContainerRef = useRef(null);
 
@@ -37,7 +52,6 @@ export function BrandsSection() {
       
       animationId = requestAnimationFrame(animate);
     };
-
     animate();
 
     return () => {
@@ -66,12 +80,32 @@ export function BrandsSection() {
             blurBorders={false}
             blurBorderColor={'#fff'}
         >
-          {[...brands, ...brands].map((brand, index) => (
-            <Slider.Slide>
-                <img src={brand} alt={`Marca ${index + 1}`} className='w-36' />
+          
+          {[...brandsToUse, ...brandsToUse].map((brand, index) => (
+            <Slider.Slide key={brand.id || index}>
+                <img 
+                  src={typeof brand === 'string' ? brand : brand.imagen} 
+                  alt={typeof brand === 'string' ? `Marca ${index + 1}` : brand.nombre} 
+                  className='w-36 h-auto object-contain' 
+                />
             </Slider.Slide>
-            ))}
+          ))}
         </Slider>
+
+        {/* <Slider
+            width="250px"
+            duration={40}
+            pauseOnHover={true}
+            blurBorders={false}
+            blurBorderColor={'#fff'}
+        >
+          
+        {brandsData && brandsData.map((brand) => (
+            <Slider.Slide>
+              <img src={process.env.NEXT_PUBLIC_BASE_URL + brand.Imagen.url} alt={`Marca ${brand.id}`} className='w-36' />
+            </Slider.Slide>
+        ))}
+        </Slider> */}
         </div>
       </div>
     </section>

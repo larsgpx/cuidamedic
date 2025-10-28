@@ -137,10 +137,6 @@ button span {
   color: var(--orange-primary);
 }
 
-.text-with-colors span {
-  color: var(--orange-primary);
-}
-
 .react-multi-carousel-dot--active button {
   background-color: var(--orange-primary) !important;
   border: 1px solid #dadada!important;
@@ -154,13 +150,21 @@ button span {
   min-width: 20px;
 }
 
-.tab-list-orange button[aria-selected="true"]{
+.tab-list-orange button[aria-selected="true"] {
   background-color: var(--orange-primary);
   color: white;
   border: 1px solid var(--orange-primary);
   border-radius: 20px;
 }
 
-.banner-title {
-  
+.titulo-hero p {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600; 
+  color: var(--base-gray);
+}
+
+.titulo-hero p strong { 
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 500; 
+  color: var(--orange-primary) !important;
 }

@@ -1,15 +1,17 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { useState, useEffect } from "react";
-import { Righteous } from "next/font/google";
 
-export function HeroSection(dataBanners) {
+import { useState, useEffect } from "react";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+
+export function HeroSection({ dataBanners = undefined }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [data, setData] = useState(null);
 
-  // Datos para múltiples banners del carousel
-  const carouselData = [
+  // Base URL de Strapi para las imágenes
+  const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://refined-candy-35961bcadd.strapiapp.com';
+
+  // Datos por defecto para múltiples banners del carousel
+  const defaultCarouselData = [
     {
       title: "En Cuidamedic Diseñamos los mejores tratamientos médicos estéticos para ti",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -31,9 +33,26 @@ export function HeroSection(dataBanners) {
   ];
 
   useEffect(() => {
-    setData(carouselData);
-    console.log('dataBanners', dataBanners);
-  }, []);
+    // Si dataBanners existe (aunque esté vacío), intentar usarlo
+    if (dataBanners !== undefined) {
+      if (Array.isArray(dataBanners) && dataBanners.length > 0) {
+        // Hay datos, transformarlos
+        const transformedData = dataBanners.map((banner) => ({
+          Titulo: banner.Titulo || banner.titulo,
+          Subtitulo: banner.Subtitulo || banner.subtitulo,
+          Banner: banner.Banner?.url ? `${STRAPI_BASE_URL}${banner.Banner.url}` : banner.Banner?.data?.url ? `${STRAPI_BASE_URL}${banner.Banner.data.url}` : banner.backgroundImage || '/bg1.jpg'
+        }));
+        
+        setData(transformedData);
+      } else {
+        // Existe pero está vacío, usar datos por defecto
+        setData(defaultCarouselData);
+      }
+    } else {
+      // No existe dataBanners, usar datos por defecto
+      setData(defaultCarouselData);
+    }
+  }, [dataBanners]);
 
   // Auto-avance del carousel cada 5 segundos
   useEffect(() => {
@@ -59,7 +78,7 @@ export function HeroSection(dataBanners) {
         <div 
           className="w-full h-full transition-all duration-1000 ease-in-out bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${data[currentSlide]?.backgroundImage})`,
+            backgroundImage: `url(${data[currentSlide]?.Banner || data[currentSlide]?.backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat"
@@ -73,31 +92,39 @@ export function HeroSection(dataBanners) {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center w-full">
-        <div className="max-w-2xl text-left">
+        <div className="max-w-1xl md:max-w-2xl text-left">
           {/* Main Heading */}
-          <h1 className="pt-20 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500">
-            {data[currentSlide]?.title}
+          <h1 className="pt-20 pr-4 md:pr-0 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9F25]">
+            {data[currentSlide]?.Titulo ? (
+              <BlocksRenderer content={data[currentSlide].Titulo} />
+            ) : (
+              data[currentSlide]?.title
+            )}
           </h1>
 
           {/* Sub-text */}
-          <p className="text-lg text-gray-600 mb-8 mx-auto leading-relaxed font-regular transition-all duration-500">
-            {data[currentSlide]?.description}
-          </p>
+          <div className="text-lg mb-8 mx-auto leading-relaxed  transition-all duration-500">
+            {data[currentSlide]?.Subtitulo ? (
+              data[currentSlide].Subtitulo.toString()
+            ) : (
+              data[currentSlide]?.description
+            )}
+          </div>
 
           <div className="relative block md:hidden bottom-6 z-20 flex space-x-2">
-        {data.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-6 h-3 rounded-xl transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-orange-dark shadow-lg scale-110' 
-                : 'bg-[#f3d69a] hover:bg-orange-dark'
-            }`}
-            aria-label={`Ir al slide ${index + 1}`}
-          />
-        ))}
-      </div>
+            {data.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-6 h-3 rounded-xl transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'bg-orange-dark shadow-lg scale-110' 
+                    : 'bg-[#f3d69a] hover:bg-orange-dark'
+                }`}
+                aria-label={`Ir al slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
         
         {/* Estadísticas/Características - Fijas, no se ven afectadas por las transiciones */}
@@ -127,7 +154,7 @@ export function HeroSection(dataBanners) {
       </div>
 
       {/* Dots Navigation - Esquina inferior izquierda */}
-      <div className="absolute hidden md:block bottom-6 left-20 z-20 flex space-x-2">
+      <div className="absolute hidden md:block bottom-6 left-20  flex space-x-2 z-1">
         {data.map((_, index) => (
           <button
             key={index}
@@ -143,7 +170,7 @@ export function HeroSection(dataBanners) {
       </div>
 
       {/* Gradient Bottom */}
-      <div className="absolute -bottom-2 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
+      <div className="absolute -bottom-2 md:-bottom-0 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
     </section>
   );
 }
