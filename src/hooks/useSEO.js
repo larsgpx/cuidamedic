@@ -66,7 +66,7 @@ export const useSEO = (seoConfig) => {
       updateMetaTag('og:url', seoConfig.url, true);
     }
 
-    updateMetaTag('og:type', seoConfig?.type || 'website', true);
+    updateMetaTag('og:type', 'website', true);
     updateMetaTag('og:site_name', 'Cuidamedic', true);
 
     // Twitter Card tags
@@ -81,7 +81,7 @@ export const useSEO = (seoConfig) => {
     }
 
     if (seoConfig?.image) {
-      updateMetaTag('twitter:image', seoConfig.image);
+      updateMetaTag('twitter:image', '/cuidamedic-logo.png');
     }
 
     // URL canónica

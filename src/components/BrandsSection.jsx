@@ -11,9 +11,6 @@ export function BrandsSection() {
 
   const API_MARCAS = process.env.NEXT_PUBLIC_API_MARCA + '?populate=*' || '/api/marcas?populate=*';
   const { data: brandsData, loading: loadingMarcas} = useAPI(API_MARCAS);
-
-  console.log('📊 brandsData recibido:', brandsData);
-  
   // Marcas por defecto
   const defaultBrands = [
     "/marcas/skinFill.png",

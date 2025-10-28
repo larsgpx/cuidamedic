@@ -8,12 +8,18 @@ import { useAPI } from "@/hooks/useAPI";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 export function Nosotros() {
-  const API_NOSOTROS = (process.env.NEXT_PUBLIC_API_NOSOTROS || '/api/nosotros') + '?populate[highlights][populate][icon]=true&populate[Doctores][populate][Imagen]=true&populate[ImagenBanner]=true&populate[Imagen]=true';
+  const API_NOSOTROS = (process.env.NEXT_PUBLIC_API_NOSOTROS || '/api/nosotros') + '?populate[highlights][populate][icon]=true&populate[Doctores][populate][Imagen]=true&populate[ImagenBanner]=true&populate[Imagen]=true&populate[Seo]=true';
   const { data, loading, error } = useAPI(API_NOSOTROS);
 
   console.log('📊 Datos de Nosotros desde Strapi:', data);
 
-  useSEO(SEO_CONFIGS.nosotros);
+  useSEO({
+      title: data?.data?.Seo?.title || 'Nosotros - Cuidamedic',
+      description: data?.data?.Seo?.descripcion || 'Conoce más sobre Cuidamedic, nuestro equipo de médicos expertos y nuestra experiencia en medicina estética.',
+      keywords: data?.data?.Seo?.keywords || 'sobre nosotros, médicos expertos, experiencia, medicina estética',
+      url: process.env.NEXT_PUBLIC_URL + '/nosotros',
+  });
+
   return (
     <Layout>
       
@@ -53,7 +59,7 @@ export function Nosotros() {
             <div className="order-2 lg:order-1">
               <div className={`w-full h-80 rounded-4xl flex items-center justify-center ${data?.data?.Imagen ? 'bg-white' : 'bg-gray-200'}`}>
                 {data?.data?.Imagen && (
-                  <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.Imagen?.url}`} className="rounded-4xl" alt={data?.data?.Imagen?.alt} width={500} height={500} objectFit="cover" />
+                  <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.Imagen?.url}`} alt="Cuidamedic nosotros" className="rounded-4xl" width={500} height={500} objectFit="cover" />
                 )}
               </div>
             </div>

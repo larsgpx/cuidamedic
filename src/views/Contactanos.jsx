@@ -5,8 +5,18 @@ import GoogleMapReact from 'google-map-react';
 import Marker from '@/components/Marker';
 import Image from "next/image";
 import { LocationsSection } from "@/components/LocationsSection";
+import { useAPI } from "@/hooks/useAPI";
+
 export function Contactanos() {
-  useSEO(SEO_CONFIGS.contactanos);
+  const API_CONTACTANOS = (process.env.NEXT_PUBLIC_API_CONTACTO || '/api/contacto') + '?populate[Seo]=true';
+  const { data } = useAPI(API_CONTACTANOS);
+  console.log('📊 dataContactanos recibido:', data);
+  useSEO({
+    title: data?.data?.Seo?.title || 'Contáctanos - Cuidamedic',
+    description: data?.data?.Seo?.descripcion || 'Contáctanos en Cuidamedic. Ubicados en Miraflores, Surco y Lince. Horarios de atención y agendamiento de citas. Medicina estética de calidad.',
+    keywords: data?.data?.Seo?.keywords || 'contacto, ubicaciones, Miraflores, Surco, Lince, agendar cita, horarios de atención',
+    url: process.env.NEXT_PUBLIC_URL + '/contactanos',
+  });
 
   const contactInfo = [
     {
@@ -17,8 +27,8 @@ export function Contactanos() {
       ),
       title: "Horario",
       content: [
-        "Lunes a Viernes: 11:00 am a 8:00pm",
-        "Sábado: 9:00 a 5:00 pm"
+        data?.data?.Horario,
+        data?.data?.Horario2
       ]
     },
     {
@@ -28,7 +38,7 @@ export function Contactanos() {
         </svg>
       ),
       title: "Telefono",
-      content: ["+51 912 309 300"]
+      content: [data?.data?.Telefono]
     },
     {
       icon: (
@@ -37,7 +47,7 @@ export function Contactanos() {
         </svg>
       ),
       title: "Correo",
-      content: ["administración@cuidamedic.pe"]
+      content: [data?.data?.Correo]
     }
   ];
 

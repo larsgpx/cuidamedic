@@ -6,9 +6,6 @@ import { useAPI } from "@/hooks/useAPI";
 export function LocationsSection() {
   const API_SUCURSALES = process.env.NEXT_PUBLIC_API_SUCURSALES + '?populate=*' || '/api/sucursales?populate=*';
   const { data, loading } = useAPI(API_SUCURSALES);
-
-  console.log('📊 dataLocations recibido:', data);
-
   const locations = [
     {
       id: 1,

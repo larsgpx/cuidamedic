@@ -10,13 +10,16 @@ import { useSEO, SEO_CONFIGS } from "@/hooks/useSEO";
 import { useAPI } from "@/hooks/useAPI";
 
 export function Home() {
-  // Configurar SEO específico para la página de inicio
-  useSEO(SEO_CONFIGS.home);
-
   // Obtener datos de la API de Strapi
-  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner]=true&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true';
+  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner]=true&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true&populate[Seo]=true';
   const { data } = useAPI(API_HOME);
 
+  useSEO({
+    title: data?.data?.Seo?.title || 'Cuidamedic - Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
+    description: data?.data?.Seo?.descripcion || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',
+    keywords: data?.data?.Seo?.keywords || 'tratamientos médicos estéticos, medicina estética, evaluación gratuita, dermatología, cirugía estética, Cuidamedic',
+    url: process.env.NEXT_PUBLIC_URL + '/',
+  });
   return (
     <Layout>
       <HeroSection dataBanners={data?.data?.Banner} />
