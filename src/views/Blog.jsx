@@ -1,9 +1,22 @@
+'use client';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { BlogCard } from "@/components/BlogCard";
 import { DoctorEvaluationCard } from "@/components/DoctorEvaluationCard";
+import { useAPI } from "@/hooks/useAPI";
+import { useSEO } from "@/hooks/useSEO";
 
 export function Blog() {
+  const API_BLOG = (process.env.NEXT_PUBLIC_API_BLOGS || '/api/articles') + '?populate[Seo]=true&populate[cover]=true&populate[author]=true&populate[category]=true';
+  const { data } = useAPI(API_BLOG);
+  
+  useSEO({
+    title: data?.data?.Seo?.title || 'Blog - Cuidamedic',
+    description: data?.data?.Seo?.descripcion || 'Descubre los últimos artículos y noticias sobre medicina estética en Cuidamedic.',
+    keywords: data?.data?.Seo?.keywords || 'blog, medicina estética, noticias, Cuidamedic',
+    url: process.env.NEXT_PUBLIC_URL + '/blog',
+  });
+
   // Datos de ejemplo para los artículos del blog
   const blogPosts = [
     {
@@ -87,19 +100,22 @@ export function Blog() {
       <section className="pt-10 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {data?.data?.length > 0 ? (
+              data?.data?.map((post) => (
               <BlogCard
                 key={post.id}
-                id={post.id}
+                id={post.slug}
                 title={post.title}
-                excerpt={post.excerpt}
-                image={post.image}
-                author={post.author}
-                date={post.date}
-                category={post.category}
-                readTime={post.readTime}
+                excerpt={post.resumen}
+                image={ `${process.env.NEXT_PUBLIC_BASE_URL}${post.cover?.url}`}
+                author={post.author.name}
+                date={new Date(post.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                category={post.category.name}
               />
-            ))}
+            ))) : (
+              <div className="text-center text-gray-500">No hay artículos disponibles</div>
+            )};
+       
           </div>
         </div>
       </section>
