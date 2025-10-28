@@ -1,8 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useAPI } from "@/hooks/useAPI";
 
-export function LocationsSection({ data }) {
+export function LocationsSection() {
+  const API_SUCURSALES = process.env.NEXT_PUBLIC_API_SUCURSALES + '?populate=*' || '/api/sucursales?populate=*';
+  const { data, loading } = useAPI(API_SUCURSALES);
+
+  console.log('📊 dataLocations recibido:', data);
+
   const locations = [
     {
       id: 1,
@@ -21,8 +27,8 @@ export function LocationsSection({ data }) {
   ];
 
   // Usar data de Strapi si existe, sino usar datos por defecto
-  const locationsToUse = data && Array.isArray(data) && data.length > 0 
-    ? data.map((location) => ({
+  const locationsToUse = data?.data && Array.isArray(data?.data) && data?.data?.length > 0 
+    ? data?.data?.map((location) => ({
         id: location.id,
         name: location.Lugar,
         address: location.Direccion,
@@ -59,7 +65,7 @@ export function LocationsSection({ data }) {
         </div>
 
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-10 px-4 max-w-6xl mx-auto">
-          {data && Array.isArray(data) && data.length > 0 && locationsToUse.map((location) => (
+          {data?.data && Array.isArray(data?.data) && data?.data?.length > 0 && locationsToUse.map((location) => (
             <div key={location.id}  className="flex flex-col gap-4 pt-4 md:pt-0 justify-center">
             <Card className="rounded-3xl bg-orange-light border-0 shadow-lg hover:shadow-xl transition-shadow">
               <CardContent className="p-8 text-center relative">

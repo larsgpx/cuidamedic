@@ -3,11 +3,16 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Slider from 'react-infinite-logo-slider'
+import { useAPI } from "@/hooks/useAPI";
 
-
-export function BrandsSection({ brandsData }) {
+export function BrandsSection() {
   // Base URL de Strapi
   const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+  const API_MARCAS = process.env.NEXT_PUBLIC_API_MARCA + '?populate=*' || '/api/marcas?populate=*';
+  const { data: brandsData, loading: loadingMarcas} = useAPI(API_MARCAS);
+
+  console.log('📊 brandsData recibido:', brandsData);
   
   // Marcas por defecto
   const defaultBrands = [
@@ -21,8 +26,8 @@ export function BrandsSection({ brandsData }) {
   ];
 
   // Usar datos de Strapi si existen, sino usar datos por defecto
-  const brandsToUse = brandsData && Array.isArray(brandsData) && brandsData.length > 0
-    ? brandsData.map((brand) => ({
+  const brandsToUse = brandsData?.data && Array.isArray(brandsData?.data) && brandsData?.data?.length > 0
+    ? brandsData?.data?.map((brand) => ({
         id: brand.id || brand.documentId,
         nombre: brand?.nombre,
         imagen: brand?.imagen?.url 

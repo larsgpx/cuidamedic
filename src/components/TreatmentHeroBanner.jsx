@@ -25,8 +25,13 @@ export function TreatmentHeroBanner({ title, subtitle, backgroundImage }) {
   }, [title]);
 
   return (
-    <section className={`relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-start ${backgroundImage}`}>
-    <div className="absolute inset-0 bg-[url('/bg1.jpg')] bg-cover bg-center bg-no-repeat opacity-20"></div>
+    <section className={`relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-start`}>
+    <div 
+      className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+      style={{
+        backgroundImage: `url(${backgroundImage || '/bg1.jpg'})`
+      }}
+    ></div>
     <div className="relative z-10 text-left container mx-auto">
       <h1 ref={titleRef} className="text-5xl md:text-5xl font-semibold text-gray-600 title-orange">
         {title}

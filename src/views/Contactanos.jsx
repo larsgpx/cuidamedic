@@ -125,7 +125,7 @@ export function Contactanos() {
                   defaultCenter={{ lat: -12.1004, lng: -77.0295 }} // Centro de Lima
                   defaultZoom={12}
                   yesIWantToUseGoogleMapApiInternals
-                  onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+                  onGoogleApiLoaded={(props) => props && handleApiLoaded(props.map, props.maps)}
                 >
                   {branches.map((branch, index) => (
                     <Marker

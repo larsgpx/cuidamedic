@@ -15,29 +15,17 @@ export function Home() {
 
   // Obtener datos de la API de Strapi
   const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner]=true&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true';
-  const API_MARCAS = process.env.NEXT_PUBLIC_API_MARCA + '?populate=*' || '/api/marcas?populate=*';
-  const API_SUCURSALES = process.env.NEXT_PUBLIC_API_SUCURSALES + '?populate=*' || '/api/sucursales?populate=*';
-  const { data, loading, error } = useAPI(API_HOME);
-  const { data: dataMarcas, loading: loadingMarcas} = useAPI(API_MARCAS);
-  const { data: dataLocations, loading: loadingLocations } = useAPI(API_SUCURSALES);
-
-  // Console log para verificar los datos
-  if (data) {
-    // console.log('📊 Datos de Home desde Strapi:', data);
-    
-    console.log('📊 Datos de sucursales desde Strapi:', dataLocations);
-    
-  }
+  const { data } = useAPI(API_HOME);
 
   return (
     <Layout>
       <HeroSection dataBanners={data?.data?.Banner} />
       <WhyChooseUsSection image={data?.data?.porqueElegirnosImage?.url} description={data?.data?.porqueElegirnosDescription} />
-      <BrandsSection brandsData={dataMarcas?.data} />
+      <BrandsSection />
       <ServicesSection servicesData={data?.data?.Servicios} />
       <SuccessCasesSection casosTexto={data?.data?.casosDeExitoDescription} casosData={data?.data?.casosDeExito} />
       <TestimonialsSection data={data?.data?.testimonios} />
-      <LocationsSection data={dataLocations?.data} />
+      <LocationsSection />
     </Layout>
   );
 }

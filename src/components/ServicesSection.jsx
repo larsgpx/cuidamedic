@@ -200,7 +200,7 @@ export function ServicesSection({ servicesData }) {
           {/* Fila superior - 3 servicios pequeños */}
           <div className={getRowClasses('top-small-1')}>
             {servicesData?.map((service, index) => (
-              <div key={service.id} className={getPositionClasses(overlays[index].position)}>
+              <div key={service.id} className={`${getPositionClasses(overlays[index].position)} testing-${index}`}>
                 <Card onClick={() => handleNavigate(service.url)} className={`overflow-hidden border-0 shadow-lg h-56 relative group cursor-pointer transition-all duration-300 bg-orange-primary`}>
                   <CardContent className="p-0 h-full">
                     <div 
@@ -208,12 +208,12 @@ export function ServicesSection({ servicesData }) {
                       style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${service?.imagen?.url})` }}
                     >
                       {/* Overlay para cards normales */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.overlay} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br  transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                       
                       
                       {/* Overlay base para featured card */}
                       
-                        <div className="absolute inset-0 bg-gradient-to-br from-red-100/80 to-cyan-100/80 transition-all duration-300 group-hover:backdrop-blur-sm"></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${overlays[index].overlay} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                       
                       
                       {/* Blur overlay que aparece en hover */}
