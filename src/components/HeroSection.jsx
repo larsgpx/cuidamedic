@@ -139,15 +139,16 @@ export function HeroSection({ dataBanners = undefined }) {
             </div>
             
             <div className="text-center flex align-center flex-col self-center border-r-0 md:border-r border-gray-300">
-              <div className="text-xl text-gray-600 px-6">Marcas Seguras y de Prestigio</div>
+              <div className="text-xl text-gray-600 px-6">Médicos Expertos y Certificados</div>
             </div>
             
             <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
-              <div className="text-xl text-gray-600 px-6">Médicos Expertos y Garantizados</div>
+              <div className="text-xl text-gray-600 px-6">Marcas Seguras y de Prestigio</div>
             </div>
             
             <div className="text-center flex align-center flex-col self-center">
-              <div className="text-xl text-gray-600 px-6">Consultas Gratuitas</div>
+              <div className="text-xl text-gray-600 px-6">Consultas Personalizadas
+              Gratuitas</div>
             </div>
           </div>
         </div>

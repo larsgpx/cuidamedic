@@ -1,9 +1,28 @@
+'use client';
 import { Header } from "@/components/Header";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
 import { TreatmentCard } from "@/components/TreatmentCard";
 import { Footer } from "@/components/Footer";
+import { useAPI } from "@/hooks/useAPI";
+import { useEffect, useState } from "react";
+import { useSEO } from "@/hooks/useSEO";
 
 export function LimpiezasFaciales() {
+  const API_LIMPIEZAS_FACIALES = (process.env.NEXT_PUBLIC_API_LIMPIEZA_FACIAL || '/api/limpieza-facial') + '?populate[Tratamientos][populate][imagen]=true&populate[Seo]=true';
+  const { data: dataLimpiezasFacialesAPI } = useAPI(API_LIMPIEZAS_FACIALES);
+  const [dataLimpiezasFaciales, setDataLimpiezasFaciales] = useState('');
+  
+  useSEO({
+    title: dataLimpiezasFaciales?.data?.Seo?.title || 'Cuidamedic- Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
+    description: dataLimpiezasFaciales?.data?.Seo?.descripcion || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',
+    keywords: dataLimpiezasFaciales?.data?.Seo?.keywords || 'tratamientos médicos estéticos, medicina estética, evaluación gratuita, dermatología, cirugía estética, Cuidamedic',
+    url: process.env.NEXT_PUBLIC_URL + '/tratamientos/limpiezas-faciales',
+  });
+  useEffect(() => {
+    if (dataLimpiezasFacialesAPI) {
+      setDataLimpiezasFaciales(dataLimpiezasFacialesAPI?.data);
+    }
+  }, [dataLimpiezasFacialesAPI]);
   // Datos específicos para limpiezas faciales
   const facialTreatments = [
     {
@@ -64,19 +83,20 @@ export function LimpiezasFaciales() {
     <div className="min-h-screen">
       <Header />
       <TreatmentHeroBanner 
-        title="Tratamientos"
-        subtitle="Limpiezas Faciales"
+        title={dataLimpiezasFaciales?.titulo}
+        subtitle={dataLimpiezasFaciales?.subtitulo}
+        backgroundImage={dataLimpiezasFaciales?.Banner?.url ? `${process.env.NEXT_PUBLIC_BASE_URL || 'https://refined-candy-35961bcadd.strapiapp.com'}${dataLimpiezasFaciales.Banner.url}` : undefined}
       />
       
       {/* Secciones de tratamientos faciales */}
-      {facialTreatments.map((treatment, index) => (
+      {Array.isArray(dataLimpiezasFaciales?.Tratamientos) && dataLimpiezasFaciales.Tratamientos.map((treatment, index) => (
         <TreatmentCard
-          key={index}
-          title={treatment.title}
+          key={treatment.id}
+          title={treatment.titulo}
           description={treatment.description}
-          features={treatment.features}
+          boton={treatment?.boton}
           isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
-          imagePlaceholder={treatment.imagePlaceholder}
+          img={treatment?.imagen?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${treatment.imagen.url}` : undefined}
         />
       ))}
       

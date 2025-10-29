@@ -1,14 +1,24 @@
+'use client';
 import { InternaTratamiento } from "@/views/InternaTratamiento";
+import { useAPI } from "@/hooks/useAPI";
+import { useState, useEffect } from "react";
+import { useSEO } from "@/hooks/useSEO";
+
 export function AH() {
-  const data = {
-    title: "AH",
-    subtitle: "AH es una terapia que se utiliza para rejuvenecer la piel y mejorar la salud de la piel.",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    image: "/bg1.jpg",
-    backgroundImage: "/bg1.jpg",
-    featured: false,
-    position: "bottom-left",
-    overlay: "from-green-100/80 to-emerald-100/80"
-}
-return <InternaTratamiento data={data} />
+  const API_AH = '/api/acido-hialurico?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs]=true&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true';
+  const { data: dataAHAPI } = useAPI(API_AH);
+  const [dataAH, setDataAH] = useState(null);
+  useEffect(() => {
+    if (dataAHAPI) {
+      setDataAH(dataAHAPI?.data);
+    }
+  }, [dataAHAPI]);
+  console.log('dataAH', dataAH);
+  useSEO({
+    title: dataAH?.Interna?.Seo?.titulo || 'AH - Cuidamedic',
+    description: dataAH?.data?.Seo?.descripcion || 'Descubre los beneficios de la AH botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    keywords: dataAH?.data?.Seo?.keywords || 'AH, botulínica, cuidados, tratamiento, Cuidamedic',
+    url: process.env.NEXT_PUBLIC_URL + '/tratamientos/AH',
+  });
+return <InternaTratamiento data={dataAH} title='Tratamientos Estéticos Faciales'  />
 }

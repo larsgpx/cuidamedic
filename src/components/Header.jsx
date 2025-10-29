@@ -32,10 +32,6 @@ export function Header() {
                 href: "/tratamientos/limpiezas-faciales",
             },
             {
-                title: "Endovenosos",
-                href: "/tratamientos/endovenosos",
-            },
-            {
               title: "Mesoterapia & Cocktails",
               href: "/tratamientos/mesoterapia-cocktails",
             },
@@ -150,18 +146,6 @@ export function Header() {
                                     <div>
                                       <h4 className="font-semibold text-gray-900 text-sm">Limpiezas Faciales</h4>
                                       <p className="text-xs text-gray-500 mt-1">Tratamientos de limpieza profunda para tu piel</p>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/tratamientos/endovenosos"
-                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
-                                  >
-                                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mt-1">
-                                      <img src="/icons/endovenosa.svg" alt="Endovenosos" width={24} height={24} />
-                                    </div>
-                                    <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">Endovenosos</h4>
-                                      <p className="text-xs text-gray-500 mt-1">Terapias de vitaminas y minerales por vía intravenosa</p>
                                     </div>
                                   </Link>
                                   <Link

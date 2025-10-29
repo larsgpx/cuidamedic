@@ -10,7 +10,7 @@ import { useAPI } from "@/hooks/useAPI";
 export function Contactanos() {
   const API_CONTACTANOS = (process.env.NEXT_PUBLIC_API_CONTACTO || '/api/contacto') + '?populate[Seo]=true';
   const { data } = useAPI(API_CONTACTANOS);
-  console.log('📊 dataContactanos recibido:', data);
+  
   useSEO({
     title: data?.data?.Seo?.title || 'Contáctanos - Cuidamedic',
     description: data?.data?.Seo?.descripcion || 'Contáctanos en Cuidamedic. Ubicados en Miraflores, Surco y Lince. Horarios de atención y agendamiento de citas. Medicina estética de calidad.',
