@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { TabsTrigger } from "./ui/tabs";
+import { Tabs, TabsList, TabsContent } from "./ui/tabs";
 
-export function TreatmentCard({ 
+export function TreatmentCardEspecial({ 
   title, 
-  description, 
+  tabs, 
   boton,
   isEven = false,
   img,
@@ -58,11 +60,26 @@ export function TreatmentCard({
               <h2 className="text-2xl font-semibold text-gray-700 mb-6">
                 {title}
               </h2>
+              <Tabs defaultValue={0} className="w-full">
+                <TabsList className="grid w-full grid-cols-3 tab-list-orange">
+                    {
+                        tabs && tabs?.map((tab, index) => (
+                            <TabsTrigger key={index} value={index}>{tab.Titulo}</TabsTrigger>
+                        ))
+                    }
+                </TabsList>
+                {
+                    tabs?.map((tab, index) => (
+                        <TabsContent key={index} className="mt-6 pb-4" value={index}>
+                            {tab.descripcion && (
+                                <BlocksRenderer content={tab.descripcion} />
+                            )}
+                        </TabsContent>
+                    ))
+                }                
+              </Tabs>
 
-              {/* Descripción */}
-              <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
-                <BlocksRenderer content={description} />
-              </div>
+
 
               {boton && (
                 <Button onClick={() => handleNavigate(boton)} className="bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg px-8 py-3 flex items-center space-x-2 text-md">

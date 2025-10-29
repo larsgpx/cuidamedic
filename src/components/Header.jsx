@@ -32,6 +32,10 @@ export function Header() {
                 href: "/tratamientos/limpiezas-faciales",
             },
             {
+                title: "Radiofrecuencia",
+                href: "/tratamientos/tecnologia-avanzada",
+            },
+            {
               title: "Mesoterapia & Cocktails",
               href: "/tratamientos/mesoterapia-cocktails",
             },
@@ -158,6 +162,18 @@ export function Header() {
                                     <div>
                                       <h4 className="font-semibold text-gray-900 text-sm">Mesoterapia & Cocktails</h4>
                                       <p className="text-xs text-gray-500 mt-1">Vitaminas y terapias regenerativas que revitalizan tu piel desde el interior</p>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/tratamientos/tecnologia-avanzada"
+                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
+                                  >
+                                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mt-1">
+                                      <img src="/icons/ondas.svg" alt="Endovenosos" width={20} height={20} />
+                                    </div>
+                                    <div>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Radiofrecuencia</h4>
+                                      <p className="text-xs text-gray-500 mt-1">Terapias de radiofrecuencia para la piel</p>
                                     </div>
                                   </Link>
                                 </div>

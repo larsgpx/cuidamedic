@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Layout } from "@/components/Layout";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import { useEffect, useRef } from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 
 export function InternaTratamiento({ data, title }) {
+    const titleRef = useRef(null);
     const info = data?.Interna || data?.Contenido;
     const handleNavigate = (url) => {
         if (!url) return;
@@ -28,6 +30,26 @@ export function InternaTratamiento({ data, title }) {
           router.push(`/${url}`);
         }
       };
+
+      useEffect(() => {
+        if (info?.Titulo) {
+          const titleText = info?.Titulo.trim();
+          const words = titleText.split(' ');
+          
+          // Solo aplicar la lógica si hay más de una palabra
+          if (words.length > 1) {
+            const lastWord = words[words.length - 1];
+            const otherWords = words.slice(0, -1).join(' ');
+            
+            titleRef.current.innerHTML = `
+              ${otherWords} <strong class="font-medium text-color-orange">${lastWord}</strong>
+            `;
+          } else {
+            // Si solo hay una palabra, dejar el texto original
+            titleRef.current.innerHTML = titleText;
+          }
+        }
+      }, [data]);
     return (
         <Layout>
             <div className="min-h-screen">
@@ -41,7 +63,7 @@ export function InternaTratamiento({ data, title }) {
             <section className="py-16 bg-white">
                 <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl font-semibold text-gray-600 mb-8">{info?.Titulo}</h2>
+                    <h2 ref={titleRef} className="text-4xl font-semibold text-gray-600 mb-8">{info?.Titulo}</h2>
                     {info?.Subtitulo && (
                         <p className="text-lg text-gray-600 mb-8">{info?.Subtitulo}</p>
                     )}
