@@ -152,7 +152,6 @@ export function BlogPost({ postId }) {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );

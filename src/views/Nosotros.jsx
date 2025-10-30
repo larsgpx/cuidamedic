@@ -27,7 +27,7 @@ export function Nosotros() {
       <TreatmentHeroBanner 
             title={data?.data?.title}
             subtitle={data?.data?.subtitulo}
-            backgroundImage={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.ImagenBanner?.url || '/bg2.jpg'}`}
+            backgroundImage={`${data?.data?.ImagenBanner?.url.includes('http') ? data?.data?.ImagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.ImagenBanner?.url || '/bg2.jpg'}`}
       />
 
       {/* Three-Column Feature Section */}
@@ -39,7 +39,7 @@ export function Nosotros() {
             {data?.data?.highlights?.map((highlight) => (
                <div key={highlight.id} className="bg-white relative rounded-lg shadow-lg p-8 text-center">
                 <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}${highlight.icon?.url}`} alt={highlight.titulo} width={64} height={64} />
+                  <Image src={`${highlight.icon?.url.includes('http') ? highlight.icon?.url : process.env.NEXT_PUBLIC_BASE_URL}${highlight.icon?.url}`} alt={highlight.titulo} width={64} height={64} />
                 </div>
                 <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">{highlight.titulo}</h3>
                 <p className="text-gray-600 leading-relaxed pt-4">
@@ -59,7 +59,7 @@ export function Nosotros() {
             <div className="order-2 lg:order-1">
               <div className={`w-full h-80 rounded-4xl flex items-center justify-center ${data?.data?.Imagen ? 'bg-white' : 'bg-gray-200'}`}>
                 {data?.data?.Imagen && (
-                  <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.Imagen?.url}`} alt="Cuidamedic nosotros" className="rounded-4xl" width={500} height={500} objectFit="cover" />
+                  <Image src={`${data?.data?.Imagen?.url.includes('http') ? data?.data?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.Imagen?.url}`} alt="Cuidamedic nosotros" className="rounded-4xl" width={500} height={500} objectFit="cover" />
                 )}
               </div>
             </div>

@@ -8,7 +8,7 @@ export function HeroSection({ dataBanners }) {
   const [data, setData] = useState(null);
 
   // Base URL de Strapi para las imágenes
-  const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://refined-candy-35961bcadd.strapiapp.com';
+  const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function HeroSection({ dataBanners }) {
         const transformedData = dataBanners.map((banner) => ({
           Titulo: banner.Titulo || banner.titulo,
           Subtitulo: banner.Subtitulo || banner.subtitulo,
-          Banner: banner.Banner?.url ? `${STRAPI_BASE_URL}${banner.Banner.url}` : banner.Banner?.data?.url ? `${STRAPI_BASE_URL}${banner.Banner.data.url}` : banner.backgroundImage || '/bg1.jpg'
+          Banner: banner.Banner?.url ? `${banner.Banner.url.includes('http') ? banner.Banner.url : STRAPI_BASE_URL}${banner.Banner.url}` : banner.Banner?.data?.url ? `${banner.Banner.data.url.includes('http') ? banner.Banner.data.url : STRAPI_BASE_URL}${banner.Banner.data.url}` : banner.backgroundImage || '/bg1.jpg'
         }));
         
         setData(transformedData);

@@ -31,7 +31,7 @@ export function LimpiezasFaciales() {
       <TreatmentHeroBanner 
         title={dataLimpiezasFaciales?.titulo}
         subtitle={dataLimpiezasFaciales?.subtitulo}
-        backgroundImage={dataLimpiezasFaciales?.Banner?.url ? `${dataLimpiezasFaciales.Banner.url.includes('http') ? dataLimpiezasFaciales.Banner.url : process.env.NEXT_PUBLIC_BASE_URL}${dataLimpiezasFaciales.Banner.url}` : undefined}
+        backgroundImage={dataLimpiezasFaciales?.Banner?.url ? `${dataLimpiezasFaciales?.Banner?.url.includes('http') ? dataLimpiezasFaciales?.Banner?.url : process.env.NEXT_PUBLIC_BASE_URL}${dataLimpiezasFaciales?.Banner?.url}` : undefined}
       />
       
       {/* Secciones de tratamientos faciales */}
@@ -42,7 +42,7 @@ export function LimpiezasFaciales() {
           description={treatment.description}
           boton={treatment?.boton}
           isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
-          img={treatment?.imagen?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${treatment.imagen.url}` : undefined}
+          img={treatment?.imagen?.url ? `${treatment?.imagen?.url.includes('http') ? treatment?.imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${treatment?.imagen?.url}` : undefined}
         />
       ))}
       
