@@ -1,5 +1,6 @@
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { GlobalLoader } from "@/components/GlobalLoader";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistMono.variable} antialiased overflow-x-hidden`}
       >
+        <GlobalLoader />
         {children}
       </body>
     </html>
