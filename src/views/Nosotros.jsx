@@ -7,16 +7,23 @@ import { useSEO, SEO_CONFIGS } from "@/hooks/useSEO";
 import { useAPI } from "@/hooks/useAPI";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useState, useEffect } from "react";
 export function Nosotros() {
+  const [dataNosotros, setDataNosotros] = useState(null);
   const API_NOSOTROS = '/api/nosotros?populate[highlights][populate][icon]=true&populate[Doctores][populate][Imagen]=true&populate[imagenBanner]=true&populate[Imagen]=true&populate[Seo]=true';
   const { data, loading, error } = useAPI(API_NOSOTROS);
-
-  console.log('📊 Datos de Nosotros desde Strapi:', data);
+  
+  useEffect(() => {
+    if (data) {
+      setDataNosotros(data?.data);
+    }
+  }, [data]);
+  console.log('📊 Datos de Nosotros desde Strapii:', dataNosotros);
 
   useSEO({
-      title: data?.data?.Seo?.title || 'Nosotros - Cuidamedic',
-      description: data?.data?.Seo?.descripcion || 'Conoce más sobre Cuidamedic, nuestro equipo de médicos expertos y nuestra experiencia en medicina estética.',
-      keywords: data?.data?.Seo?.keywords || 'sobre nosotros, médicos expertos, experiencia, medicina estética',
+      title: dataNosotros?.Seo?.title || 'Nosotros - Cuidamedic',
+      description: dataNosotros?.Seo?.descripcion || 'Conoce más sobre Cuidamedic, nuestro equipo de médicos expertos y nuestra experiencia en medicina estética.',
+      keywords: dataNosotros?.Seo?.keywords || 'sobre nosotros, médicos expertos, experiencia, medicina estética',
       url: process.env.NEXT_PUBLIC_URL + '/nosotros',
   });
 
@@ -25,9 +32,9 @@ export function Nosotros() {
       
       {/* Hero Section */}
       <TreatmentHeroBanner 
-            title={data?.data?.title}
-            subtitle={data?.data?.subtitulo}
-            backgroundImage={`${data?.data?.imagenBanner?.url.includes('http') ? data?.data?.imagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.imagenBanner?.url || '/bg2.jpg'}`}
+            title={dataNosotros?.title}
+            subtitle={dataNosotros?.subtitulo}
+            backgroundImage={`${dataNosotros?.imagenBanner?.url.includes('http') ? dataNosotros?.imagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${dataNosotros?.imagenBanner?.url || '/bg2.jpg'}`}
       />
 
       {/* Three-Column Feature Section */}
@@ -36,7 +43,7 @@ export function Nosotros() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
 
 
-            {data?.data?.highlights?.map((highlight) => (
+            {dataNosotros?.highlights?.map((highlight) => (
                <div key={highlight.id} className="bg-white relative rounded-lg shadow-lg p-8 text-center">
                 <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Image src={`${highlight.icon?.url.includes('http') ? highlight.icon?.url : process.env.NEXT_PUBLIC_BASE_URL}${highlight.icon?.url}`} alt={highlight.titulo} width={64} height={64} />
@@ -57,10 +64,8 @@ export function Nosotros() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             {/* Left Side - Image */}
             <div className="order-2 lg:order-1">
-              <div className={`w-full h-80 rounded-4xl flex items-center justify-center ${data?.data?.Imagen ? 'bg-white' : 'bg-gray-200'}`}>
-                {data?.data?.Imagen && (
-                  <Image src={data?.data?.Imagen?.url} alt="Cuidamedic nosotros" className="rounded-4xl" width={500} height={500} objectFit="cover" />
-                )}
+              <div className={`w-full h-80 md:h-110 rounded-4xl flex items-center justify-center bg-cover bg-center`} style={{ backgroundImage: `url(${dataNosotros?.Imagen?.url.includes('http') ? dataNosotros?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${dataNosotros?.Imagen?.url})` }}>
+                
               </div>
             </div>
 
@@ -78,8 +83,8 @@ export function Nosotros() {
 
                   {/* Text Content */}
                   <div className="text-sm space-y-4 text-gray-600 leading-relaxed">
-                    {data?.data?.quienesSomos && (
-                      <BlocksRenderer content={data?.data?.quienesSomos} />
+                    {dataNosotros?.quienesSomos && (
+                      <BlocksRenderer content={dataNosotros?.quienesSomos} />
                     )}
                   </div>
               </TabsContent>
@@ -90,8 +95,8 @@ export function Nosotros() {
 
                   {/* Text Content */}
                   <div className="text-sm space-y-4 text-gray-600 leading-relaxed">
-                    {data?.data?.Historia && (
-                      <BlocksRenderer content={data?.data?.Historia} />
+                    {dataNosotros?.Historia && (
+                      <BlocksRenderer content={dataNosotros?.Historia} />
                     )}
                   </div>
 
@@ -112,7 +117,7 @@ export function Nosotros() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {data?.data?.Doctores?.map((doctor) => (
+            {dataNosotros?.Doctores?.map((doctor) => (
               <div key={doctor.id} className="text-center flex flex-col items-center justify-center mx-auto">
                 <div  className='w-full h-105 bg-gray-200 rounded-4xl mb-6 flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${doctor.Imagen?.url.includes('http') ? doctor.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${doctor.Imagen?.url})` }}>
                 </div>

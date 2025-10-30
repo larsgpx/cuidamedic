@@ -8,14 +8,12 @@ export function LocationsSection() {
   const API_SUCURSALES = '/api/sucursales?populate=*';
   const { data: dataSucursalesAPI } = useAPI(API_SUCURSALES);
   const [dataSucursales, setDataSucursales] = useState(null);
-  useEffect(() => {
-    if (dataSucursalesAPI) {
-      setDataSucursales(dataSucursalesAPI?.data);
-    }
-  }, [dataSucursalesAPI]);
+    useEffect(() => {
+      if (dataSucursalesAPI) {
+        setDataSucursales(dataSucursalesAPI?.data);
+      }
+    }, [dataSucursalesAPI]);
   
-  console.log('📊 dataSucursales:', dataSucursales);
-
     // Función para manejar la navegación
   const handleNavigate = (url) => {
     if (!url) return;
