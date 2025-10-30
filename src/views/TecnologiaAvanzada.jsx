@@ -36,7 +36,6 @@ export function TecnologiaAvanzada() {
       
       {/* Secciones de tratamientos tecnologia avanzada */}
         <InternaTratamientoEspecial data={dataTecnologia} title={dataTecnologia?.Titulo} />
-      <Footer />
     </div>
   );
 }
