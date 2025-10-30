@@ -5,7 +5,6 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useRouter } from 'next/navigation';
 
 export function WhyChooseUsSection({ description, image}) {
-  const imageUrl = process.env.NEXT_PUBLIC_BASE_URL + image;
   const descriptionDefault = "En Cuidamedic, tu bienestar y confianza son nuestra prioridad. Somos un centro médico estético en Lima, con sedes en Surco y Miraflores, especializado en tratamientos faciales y corporales con tecnología avanzada y respaldo médico certificado.";
   return (
     <section className="py-20 bg-white">
@@ -30,14 +29,8 @@ export function WhyChooseUsSection({ description, image}) {
           {/* Image Placeholder */}
           <div className="flex justify-center rounded-xl">
             {image && (
-              <div className="relative w-full max-w-md h-80">
-                <Image 
-                  src={imageUrl} 
-                  alt="Por que elegir cuidamedic" 
-                  fill
-                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
-                  className="rounded-xl object-cover max-w-90 md:max-w-full"
-                />
+              <div className="relative w-full max-w-md h-80 md:h-110 rounded-3xl bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${image.includes('http') ? image : process.env.NEXT_PUBLIC_BASE_URL}${image}')` }}>
+                
               </div>
             )}
             {!image && (
@@ -205,7 +198,7 @@ export function ServicesSection({ servicesData }) {
                   <CardContent className="p-0 h-full">
                     <div 
                       className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300 bg-gradient-to-br from-gray-100 to-gray-200`}
-                      style={{ backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_URL}${service?.imagen?.url})` }}
+                      style={{ backgroundImage: `url('${service?.imagen?.url.includes('http') ? service?.imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${service?.imagen?.url}')` }}
                     >
                       {/* Overlay para cards normales */}
                       <div className={`absolute inset-0 bg-gradient-to-br  transition-all duration-300 group-hover:backdrop-blur-sm`}></div>

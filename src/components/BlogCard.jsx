@@ -17,8 +17,7 @@ export function BlogCard({
         <CardContent className="p-0">
           {/* Imagen del artículo */}
           <div className="relative h-48 bg-gray-200 overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-              <span className="text-gray-500 text-sm">{image || "Imagen del Artículo"}</span>
+            <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
             </div>
             {/* Categoría */}
             <div className="absolute top-4 left-4">

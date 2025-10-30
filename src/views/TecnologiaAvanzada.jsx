@@ -1,7 +1,6 @@
 'use client';
 import { Header } from "@/components/Header";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
-import { TreatmentCard } from "@/components/TreatmentCard";
 import { Footer } from "@/components/Footer";
 import { useAPI } from "@/hooks/useAPI";
 import { useState, useEffect } from "react";
@@ -18,7 +17,6 @@ export function TecnologiaAvanzada() {
       setDataTecnologia(dataTecnologiaAPI?.data);
     }
   }, [dataTecnologiaAPI]);
-  console.log('📊 dataTecnologia:', dataTecnologia);
 
   useSEO({
     title: dataTecnologia?.Interna?.Seo?.titulo || 'Tecnologia Avanzada - Cuidamedic',
@@ -33,7 +31,7 @@ export function TecnologiaAvanzada() {
       <TreatmentHeroBanner 
         title={dataTecnologia?.TituloBanner}
         subtitle={dataTecnologia?.SubtituloBanner}
-        backgroundImage={dataTecnologia?.Banner?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${dataTecnologia.Banner.url}` : undefined}
+        backgroundImage={dataTecnologia?.Banner?.url ? `${dataTecnologia.Banner.url.includes('http') ? dataTecnologia.Banner.url : process.env.NEXT_PUBLIC_BASE_URL}${dataTecnologia.Banner.url}` : undefined}
       />
       
       {/* Secciones de tratamientos tecnologia avanzada */}

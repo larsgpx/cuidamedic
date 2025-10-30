@@ -44,12 +44,9 @@ export function TreatmentCardEspecial({
           
           {/* Imagen */}
           <div className={`${isContentLeft ? 'lg:order-2' : 'lg:order-1'}`}>
-            <div className={`w-full h-80 ${imageBackground} rounded-2xl flex items-center justify-center shadow-lg overflow-hidden`}>
-              {img ? (
-                <Image className="w-full h-full object-cover rounded-2xl" src={img} alt={title} width={270} height={220} />
-              ) : (
-                <span className="text-gray-500 text-lg">Imagen del Tratamiento</span>
-              )}
+            <div className={`w-full h-80 md:h-110 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden bg-cover bg-center bg-no-repeat`}
+            style={{ backgroundImage: `url(${img})` }}
+            >
             </div>
           </div>
 

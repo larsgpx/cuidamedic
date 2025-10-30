@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 
 export function Home() {
   // Obtener datos de la API de Strapi
-  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner]=true&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true&populate[Seo]=true';
+  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner][populate]=*&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true&populate[Seo]=true';
   const { data } = useAPI(API_HOME);
   const [dataHomeData, setDataHomeData] = useState(null);
   useEffect(() => {
@@ -20,7 +20,7 @@ export function Home() {
       setDataHomeData(data?.data);
     }
   }, [data]);
-
+  console.log('📊 dataHomeData:', dataHomeData);
   useSEO({
     title: dataHomeData?.Seo?.title || 'Cuidamedic - Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
     description: dataHomeData?.Seo?.descripcion || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',

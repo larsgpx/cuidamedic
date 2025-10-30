@@ -56,7 +56,7 @@ export function InternaTratamiento({ data, title }) {
             {/* Hero Section */}
             <TreatmentHeroBanner 
                 title={title}
-                backgroundImage={ info?.ImagenBanner?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${info?.ImagenBanner?.url}` : undefined}
+                backgroundImage={ info?.ImagenBanner?.url ? `${info?.ImagenBanner?.url.includes('http') ? info?.ImagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${info?.ImagenBanner?.url}` : undefined}
             />
             
             {/* Estandar Section */}
@@ -80,7 +80,7 @@ export function InternaTratamiento({ data, title }) {
                     <div className="lg:order-1">
                     <div className="w-full h-80 rounded-xl flex items-center justify-center shadow-lg" 
                         style={{
-                            backgroundImage: `url(${info?.Imagen?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${info?.Imagen?.url}` : '/bg1.jpg'})`,
+                            backgroundImage: `url(${info?.Imagen?.url ? `${info?.Imagen?.url.includes('http') ? info?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${info?.Imagen?.url}` : '/bg1.jpg'})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat'

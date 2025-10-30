@@ -107,7 +107,7 @@ export function Blog() {
                 id={post.slug}
                 title={post.title}
                 excerpt={post.resumen}
-                image={ `${process.env.NEXT_PUBLIC_BASE_URL}${post.cover?.url}`}
+                image={ `${post.cover?.url.includes('http') ? post.cover?.url : process.env.NEXT_PUBLIC_BASE_URL}${post.cover?.url}`}
                 author={post.author.name}
                 date={new Date(post.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                 category={post.category.name}

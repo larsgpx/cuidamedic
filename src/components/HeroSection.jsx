@@ -3,34 +3,13 @@
 import { useState, useEffect } from "react";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-export function HeroSection({ dataBanners = undefined }) {
+export function HeroSection({ dataBanners }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [data, setData] = useState(null);
 
   // Base URL de Strapi para las imágenes
   const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://refined-candy-35961bcadd.strapiapp.com';
 
-  // Datos por defecto para múltiples banners del carousel
-  const defaultCarouselData = [
-    {
-      title: "En Cuidamedic Diseñamos los mejores tratamientos médicos estéticos para ti",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      btnUrl: "https://www.cuidamedic.com/evaluacion-gratuita",
-      backgroundImage: "/bg1.jpg"
-    },
-    {
-      title: "Tratamientos de Vanguardia con Tecnología Avanzada",
-      description: "Descubre nuestros tratamientos más innovadores con la última tecnología en medicina estética. Resultados naturales y duraderos para tu bienestar y confianza.",
-      btnUrl: "https://www.cuidamedic.com/tratamientos",
-      backgroundImage: "/bg2.jpg"
-    },
-    {
-      title: "Médicos Expertos y Garantizados para tu Seguridad",
-      description: "Nuestro equipo de profesionales certificados te brinda la máxima seguridad y los mejores resultados en cada tratamiento. Tu bienestar es nuestra prioridad.",
-      btnUrl: "https://www.cuidamedic.com/nosotros",
-      backgroundImage: "/bg3.jpg"
-    }
-  ];
 
   useEffect(() => {
     // Si dataBanners existe (aunque esté vacío), intentar usarlo
@@ -44,13 +23,7 @@ export function HeroSection({ dataBanners = undefined }) {
         }));
         
         setData(transformedData);
-      } else {
-        // Existe pero está vacío, usar datos por defecto
-        setData(defaultCarouselData);
       }
-    } else {
-      // No existe dataBanners, usar datos por defecto
-      setData(defaultCarouselData);
     }
   }, [dataBanners]);
 
@@ -71,6 +44,8 @@ export function HeroSection({ dataBanners = undefined }) {
 
   if (!data) return null;
 
+  console.log('📊 dataBanners:', dataBanners[currentSlide]?.Banner);
+  console.log('📊 data:', dataBanners);
   return (
     <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
       {/* Carousel Container */}
@@ -78,7 +53,7 @@ export function HeroSection({ dataBanners = undefined }) {
         <div 
           className="w-full h-full transition-all duration-1000 ease-in-out bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(${data[currentSlide]?.Banner || data[currentSlide]?.backgroundImage})`,
+            backgroundImage: `url(${data[currentSlide]?.Banner})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat"
@@ -155,6 +130,7 @@ export function HeroSection({ dataBanners = undefined }) {
       </div>
 
       {/* Dots Navigation - Esquina inferior izquierda */}
+      {data.length > 1 && (
       <div className="absolute hidden md:block bottom-6 left-20  flex space-x-2 z-1">
         {data.map((_, index) => (
           <button
@@ -169,7 +145,7 @@ export function HeroSection({ dataBanners = undefined }) {
           />
         ))}
       </div>
-
+  )}
       {/* Gradient Bottom */}
       <div className="absolute -bottom-2 md:-bottom-0 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
     </section>

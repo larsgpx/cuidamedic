@@ -110,7 +110,7 @@ export function BlogPost({ postId }) {
             {data?.cover?.url && (
               <div className="mb-8">
                 <img 
-                  src={`${process.env.NEXT_PUBLIC_BASE_URL}${data.cover.url}`} 
+                  src={`${data.cover.url.includes('http') ? data.cover.url : process.env.NEXT_PUBLIC_BASE_URL}${data.cover.url}`} 
                   alt={data.title}
                   className="w-full h-96 object-cover rounded-lg"
                 />
@@ -143,16 +143,9 @@ export function BlogPost({ postId }) {
             {/* Placeholder for related articles */}
             {dataBlogs?.map((blog) => (
               <div className="cursor-pointer bg-white p-4 rounded-lg shadow-md" key={blog.id} onClick={() => router.push(`/blog/${blog.slug}`)}>
-                <div className="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center">
-                  {blog.cover?.url && (
-                    <img 
-                      src={`${process.env.NEXT_PUBLIC_BASE_URL}${blog.cover.url}`} 
-                      alt={blog.title}
-                      className="w-full h-full object-cover rounded-lg"
-                    />
-                  )}
+                <div className="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url(${blog.cover?.url.includes('http') ? blog.cover.url : process.env.NEXT_PUBLIC_BASE_URL}${blog.cover.url})` }}>
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-2">{blog.title}</h3>
+                <h3 className="font-semibold text-gray-800 mb-2 line-clamp-1">{blog.title}</h3>
                 <p className="text-gray-600 text-sm line-clamp-2">{blog.resumen}</p>
               </div>
             ))}

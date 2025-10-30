@@ -15,7 +15,7 @@ export function DoctorEvaluationCard() {
       setDataGlobal(data?.data);
     }
   }, [data]);
-  console.log('📊 dataGlobal:', dataGlobal);
+  
   const handleNavigate = (url) => {
     if (!url) return;
     
@@ -33,7 +33,7 @@ export function DoctorEvaluationCard() {
     }
   };
   return (
-    <div className="text-center pt-12 my-12 w-full">
+    <div className="container  mx-auto px-4 text-center pt-12 my-12 w-full">
       <Card className="relative bg-orange-light border-0 shadow-lg w-[100%] md:h-56 h-110 mx-auto rounded-3xl">
         <div className="absolute bottom-0 left-0 flex flex-row items-center justify-center">
           <Image src="/doctor1.png" alt="Doctor1" className="relative md:left-20 left-5 scale-x-[-1]" width={200} height={110} />

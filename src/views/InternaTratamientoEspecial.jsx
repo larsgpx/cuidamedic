@@ -1,30 +1,11 @@
-import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+'use client';
 import { Layout } from "@/components/Layout";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { useEffect, useRef } from 'react';
 import { TreatmentCardEspecial } from "@/components/TreatmentCardEspecial";
 
 export function InternaTratamientoEspecial({ data, title }) {
     const titleRef = useRef(null);
-    const info = data?.Interna || data?.Contenido;
-    const handleNavigate = (url) => {
-        if (!url) return;
-        
-        // Si la URL es una ruta interna (empieza con /)
-        if (url.startsWith('/')) {
-          router.push(url);
-        } 
-        // Si es una URL externa (http/https)
-        else if (url.startsWith('http://') || url.startsWith('https://')) {
-          window.open(url, '_blank');
-        } 
-        // Si es una URL relativa, asumimos que es interna
-        else {
-          router.push(`/${url}`);
-        }
-      };
+    const info = data?.Interna || data?.Contenido;  
 
       useEffect(() => {
         if (info?.Titulo) {
@@ -46,7 +27,6 @@ export function InternaTratamientoEspecial({ data, title }) {
         }
       }, [data]);
 
-      console.log('📊 data:', data);
     return (
         <Layout>
             <div className="min-h-screen">
@@ -68,7 +48,7 @@ export function InternaTratamientoEspecial({ data, title }) {
                 title={treatment.Titulo}
                 tabs={treatment.Tabs}
                 isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
-                img={treatment.Imagen?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${treatment.Imagen.url}` : undefined}
+                img={treatment.Imagen?.url ? `${treatment.Imagen.url.includes('http') ? treatment.Imagen.url : process.env.NEXT_PUBLIC_BASE_URL}${treatment.Imagen.url}` : undefined}
                 boton={treatment.UrlBoton}
                 />
             ))} 

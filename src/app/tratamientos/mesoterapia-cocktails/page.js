@@ -85,7 +85,7 @@ export default function MesoterapiaCocktails() {
       <TreatmentHeroBanner 
         title={mesoterapiaCocktail?.titulo}
         subtitle={mesoterapiaCocktail?.subtitulo}
-        backgroundImage={mesoterapiaCocktail?.Banner?.url ? `${process.env.NEXT_PUBLIC_BASE_URL || 'https://refined-candy-35961bcadd.strapiapp.com'}${mesoterapiaCocktail.Banner.url}` : undefined}
+        backgroundImage={mesoterapiaCocktail?.Banner?.url ? `${mesoterapiaCocktail.Banner.url.includes('http') ? mesoterapiaCocktail.Banner.url : process.env.NEXT_PUBLIC_BASE_URL}${mesoterapiaCocktail.Banner.url}` : undefined}
       />
       
       {/* Secciones de tratamientos faciales */}
@@ -96,7 +96,7 @@ export default function MesoterapiaCocktails() {
           description={treatment.description}
           boton={treatment?.boton}
           isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
-          img={treatment?.imagen?.url ? `${process.env.NEXT_PUBLIC_BASE_URL}${treatment.imagen.url}` : undefined}
+          img={treatment?.imagen?.url ? `${treatment.imagen.url.includes('http') ? treatment.imagen.url : process.env.NEXT_PUBLIC_BASE_URL}${treatment.imagen.url}` : undefined}
         />
       ))}
       

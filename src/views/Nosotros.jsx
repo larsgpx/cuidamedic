@@ -112,10 +112,10 @@ export function Nosotros() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Dra. Gianina Romero */}
             {data?.data?.Doctores?.map((doctor) => (
               <div key={doctor.id} className="text-center flex flex-col items-center justify-center mx-auto">
-                <Image src={`${process.env.NEXT_PUBLIC_BASE_URL}${doctor.Imagen?.url}`} alt={doctor.nombre} width={350} height={450} />
+                <div  className='w-full h-105 bg-gray-200 rounded-4xl mb-6 flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${doctor.Imagen?.url.includes('http') ? doctor.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${doctor.Imagen?.url})` }}>
+                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-2">{doctor.nombre}</h3>
                   <p className="text-gray-600 font-medium text-color-orange mb-2">{doctor.puesto}</p>

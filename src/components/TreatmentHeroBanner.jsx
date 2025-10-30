@@ -32,8 +32,8 @@ export function TreatmentHeroBanner({ title, subtitle, backgroundImage }) {
         backgroundImage: `url(${backgroundImage || '/bg1.jpg'})`
       }}
     ></div>
-    <div className="relative z-10 text-left container mx-auto">
-      <h1 ref={titleRef} className="text-5xl md:text-5xl font-semibold text-gray-600 title-orange">
+    <div className="relative z-10 text-left px-4 md:pl-0 container mx-auto">
+      <h1 ref={titleRef} className="text-4xl md:text-5xl font-semibold text-gray-600 title-orange">
         {title}
       </h1>
       {subtitle && (

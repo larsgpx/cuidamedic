@@ -76,10 +76,8 @@ export function LocationsSection() {
                 </div>
 
                 {/* Location Image Placeholder */}
-                <div >
-                  <Image className="w-full h-56 bg-gray-200 rounded-2xl mb-6 flex items-center justify-center" src={`${process.env.NEXT_PUBLIC_BASE_URL}${location.image}`} alt={location.name} width={270} height={220} objectFit="cover"  />
+                <div className="w-full h-64 object-contain bg-gray-200 rounded-2xl mb-6 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url('${location.image.includes('http') ? location.image : process.env.NEXT_PUBLIC_BASE_URL}${location.image}')` }}>
                 </div>
-
                 {/* Location Info */}
                 <h3 className="text-lg font-semibold mb-2 text-left">{location.name}</h3>
                 <p className="text-gray-600 text-xs  text-left">{location.address}</p>

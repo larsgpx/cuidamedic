@@ -5,14 +5,18 @@ import ReactCompareImage from 'react-compare-image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { useState, useEffect } from "react";
 
 export function SuccessCasesSection({ casosTexto, casosData }) {
-  const cases = casosData?.map((caso) => ({
-    id: caso.id,
-    title: caso.titulo,
-    image: caso.antes?.url,
-    afterImage: caso.despues?.url
-  }));
+  const [cases, setCases] = useState([]);
+  useEffect(() => {
+    setCases(casosData?.map((caso) => ({
+      id: caso.id,
+      title: caso.titulo,
+      image: caso.antes?.url,
+      afterImage: caso.despues?.url
+    })));
+  }, [casosData]);
 
   return (
     <section className="py-10 bg-white flex justify-center mx-auto">
@@ -42,8 +46,8 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
                   <div className={`h-64 relative`}>
                     {/* Before/After Slider Effect */}
                     <ReactCompareImage 
-                      leftImage={`${process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
-                      rightImage={`${process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
+                      leftImage={`${caseItem?.image.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
+                      rightImage={`${caseItem?.afterImage.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
                     />
                    
                     {/* Label */}
@@ -66,7 +70,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
 export function TestimonialsSection({ data }) {
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 2800, min: 1024 },
       items: 3,
       slidesToSlide: 3
     },
