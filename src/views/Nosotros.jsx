@@ -59,7 +59,7 @@ export function Nosotros() {
             <div className="order-2 lg:order-1">
               <div className={`w-full h-80 rounded-4xl flex items-center justify-center ${data?.data?.Imagen ? 'bg-white' : 'bg-gray-200'}`}>
                 {data?.data?.Imagen && (
-                  <Image src={`${data?.data?.Imagen?.url.includes('http') ? data?.data?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.Imagen?.url}`} alt="Cuidamedic nosotros" className="rounded-4xl" width={500} height={500} objectFit="cover" />
+                  <Image src={data?.data?.Imagen?.url} alt="Cuidamedic nosotros" className="rounded-4xl" width={500} height={500} objectFit="cover" />
                 )}
               </div>
             </div>
