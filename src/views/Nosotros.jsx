@@ -27,7 +27,7 @@ export function Nosotros() {
       <TreatmentHeroBanner 
             title={data?.data?.title}
             subtitle={data?.data?.subtitulo}
-            backgroundImage={`${data?.data?.ImagenBanner?.url.includes('http') ? data?.data?.ImagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.ImagenBanner?.url || '/bg2.jpg'}`}
+            backgroundImage={`${data?.data?.imagenBanner?.url.includes('http') ? data?.data?.imagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${data?.data?.imagenBanner?.url || '/bg2.jpg'}`}
       />
 
       {/* Three-Column Feature Section */}
