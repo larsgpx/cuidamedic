@@ -5,7 +5,7 @@ import { useAPI } from "@/hooks/useAPI";
 import { useState, useEffect } from "react";
 
 export function LocationsSection() {
-  const API_SUCURSALES = (process.env.NEXT_PUBLIC_API_SUCURSALES) + '?populate=*' || '/api/sucursales?populate=*';
+  const API_SUCURSALES = '/api/sucursales?populate=*';
   const { data: dataSucursalesAPI } = useAPI(API_SUCURSALES);
   const [dataSucursales, setDataSucursales] = useState(null);
   useEffect(() => {

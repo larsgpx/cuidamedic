@@ -8,7 +8,7 @@ import { useAPI } from "@/hooks/useAPI";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 export function Nosotros() {
-  const API_NOSOTROS = (process.env.NEXT_PUBLIC_API_NOSOTROS || '/api/nosotros') + '?populate[highlights][populate][icon]=true&populate[Doctores][populate][Imagen]=true&populate[ImagenBanner]=true&populate[Imagen]=true&populate[Seo]=true';
+  const API_NOSOTROS = '/api/nosotros?populate[highlights][populate][icon]=true&populate[Doctores][populate][Imagen]=true&populate[imagenBanner]=true&populate[Imagen]=true&populate[Seo]=true';
   const { data, loading, error } = useAPI(API_NOSOTROS);
 
   console.log('📊 Datos de Nosotros desde Strapi:', data);
