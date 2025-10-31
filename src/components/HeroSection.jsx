@@ -110,20 +110,20 @@ export function HeroSection({ dataBanners, dataHighlights }) {
             style={style.stats}
           >
             <div className="hightlight-banner text-center flex align-center flex-col self-center border-r border-gray-300">
-              <p className="text-3xl font-bold text-gray-600">{dataHighlights[0]}</p>
-              <span className="text-xl text-gray-600 px-6">{dataHighlights[1]}</span>
+              <p className="text-2xl md:text-3xl font-bold text-gray-600">{dataHighlights[0]}</p>
+              <span className="text-lg md:text-xl text-gray-600 px-5 md:px-6">{dataHighlights[1]}</span>
             </div>
             
             <div className="hightlight-banner text-center flex align-center flex-col self-center border-r-0 md:border-r border-gray-300">
-              <span className="text-xl text-gray-600 px-6">{dataHighlights[2]}</span>
+              <span className="text-lg md:text-xl text-gray-600 px-5 md:px-6">{dataHighlights[2]}</span>
             </div>
             
             <div className="hightlight-banner text-center flex align-center flex-col self-center border-r border-gray-300">
-              <span className="text-xl text-gray-600 px-6">{dataHighlights[3]}</span>
+              <span className="text-lg md:text-xl text-gray-600 px-5 md:px-6">{dataHighlights[3]}</span>
             </div>
             
             <div className="hightlight-banner text-center flex align-center flex-col self-center">
-              <span className="text-xl text-gray-600 px-6">{dataHighlights[4]}</span>
+              <span className="text-lg md:text-xl text-gray-600 px-5 md:px-6">{dataHighlights[4]}</span>
             </div>
           </div>
         </div>

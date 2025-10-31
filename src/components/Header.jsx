@@ -32,12 +32,12 @@ export function Header() {
                 href: "/tratamientos/limpiezas-faciales",
             },
             {
-                title: "Radiofrecuencia",
-                href: "/tratamientos/tecnologia-avanzada",
-            },
-            {
               title: "Mesoterapia & Cocktails",
               href: "/tratamientos/mesoterapia-cocktails",
+            },
+            {
+              title: "Radiofrecuencia",
+              href: "/tratamientos/tecnologia-avanzada",
             },
             {
                 title: "Estéticos - Faciales",

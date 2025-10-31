@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO";
 
 export function Toxina() {
-  const API_TOXINA = '/api/toxina?populate[Contenido][populate][ImagenBanner]=true&populate[Contenido][populate][Tabs]=true&populate[Contenido][populate][Imagen]=true&populate[Contenido][populate][Seo]=true&populate[Contenido][populate][preguntas]=true';
+  const API_TOXINA = '/api/toxina?populate[Contenido][populate][ImagenBanner]=true&populate[Contenido][populate][Tabs][populate]=*&populate[Contenido][populate][Imagen]=true&populate[Contenido][populate][Seo]=true&populate[Contenido][populate][preguntas]=true';
   const { data: dataToxinaAPI } = useAPI(API_TOXINA);
   const [dataToxina, setDataToxina] = useState(null);
   useEffect(() => {
@@ -20,5 +20,7 @@ export function Toxina() {
     keywords: dataToxina?.data?.Seo?.keywords || 'toxina, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/toxina',
   });
+
+  console.log('dataToxina', dataToxina);
 return <InternaTratamiento data={dataToxina} title='Tratamientos Estéticos Faciales' />
 }

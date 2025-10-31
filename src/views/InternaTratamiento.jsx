@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Layout } from "@/components/Layout";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { useEffect, useRef } from 'react';
+import Image from "next/image";
 import {
   Accordion,
   AccordionContent,
@@ -102,9 +103,22 @@ export function InternaTratamiento({ data, title }) {
                         {
                             info?.Tabs?.map((tab, index) => (
                                 <TabsContent key={index} className="mt-6 pb-4" value={index}>
-                                    {tab.descripcion && (
-                                        <BlocksRenderer content={tab.descripcion} />
+                                    {tab?.descripcion && (
+                                        <BlocksRenderer content={tab?.descripcion} />
                                     )}
+                                    {tab?.Checklist && (
+                                        <div className="space-y-2 text-gray-600 leading-relaxed mb-8">
+                                        {tab?.Checklist?.map((item) => {
+                                            return (
+                                            <div key={item.id} className="flex items-center space-x-2">
+                                                <Image src='/icons/check.svg' alt={'check'} width={20} height={20} className="inline-block align-middle mx-1" />
+                                                <span>{item.Texto}</span>
+                                            </div>
+                                            )})
+                                        }
+                                        </div>
+                                    )}
+
                                 </TabsContent>
                             ))
                         }                

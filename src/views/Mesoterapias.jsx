@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO";
 
 export function Mesoterapias() {
-  const API_ENZIMAS = '/api/mesoterapia?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs]=true&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true';
+  const API_ENZIMAS = '/api/mesoterapia?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true';
   const { data: dataEnzimaAPI } = useAPI(API_ENZIMAS);
   const [dataEnzima, setDataEnzima] = useState(null);
   useEffect(() => {
