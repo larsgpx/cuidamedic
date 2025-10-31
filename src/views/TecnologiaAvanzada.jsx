@@ -8,7 +8,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { InternaTratamientoEspecial } from "@/views/InternaTratamientoEspecial";
 
 export function TecnologiaAvanzada() {
-  const API_EXION = '/api/tecnologia-avanzada?populate[Banner]=true&populate[Tratamientos][populate]=Imagen&populate[Tratamientos][populate]=Tabs&populate[Seo]=true';
+  const API_EXION = '/api/tecnologia-avanzada?populate[Banner]=true&populate[Tratamientos][populate]=Imagen&populate[Tratamientos][populate]=Tabs&populate[Seo]=true&populate[Tratamientos][populate][Tabs][populate]=*';
   const { data: dataTecnologiaAPI } = useAPI(API_EXION);
   const [dataTecnologia, setDataTecnologia] = useState(null);
 

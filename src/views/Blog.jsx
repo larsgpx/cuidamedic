@@ -90,7 +90,7 @@ export function Blog() {
         <div className="absolute inset-0 bg-[url('/cuidamedic-blog.jpg')] bg-cover bg-center bg-no-repeat opacity-20"></div>
         <div className="relative z-10 text-left container mx-auto">
           <h1 className="text-5xl md:text-5xl font-semibold text-gray-600">
-            Contáctanos
+            Blog
           </h1>
         </div>
         <div className="absolute -bottom-2 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>

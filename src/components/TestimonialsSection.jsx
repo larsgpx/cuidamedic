@@ -34,7 +34,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
             )}
           </div>
           <div className="relative md:top-90 top-35">
-            <Image src="/inyection.png" alt="inyection" width={350} height={350} className="absolute block bottom-0 md:-right-30 right-25 mx-auto md:max-w-[350px] max-w-[150px] md:max-h-[350px] max-h-[150px]" />
+            <Image src="/inyectadora.png" alt="inyection" width={250} height={250} className="absolute block bottom-0 md:bottom-20 right-25 md:-right-8  mx-auto md:max-w-[350px] max-w-[150px] md:max-h-[350px] max-h-[150px]" />
           </div>
         </div>
         {/* Before & After Images */}
@@ -42,10 +42,13 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {cases?.map((caseItem) => (
               <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
-                <CardContent className="p-0">
-                  <div className={`h-64 relative`}>
+                <CardContent className="h-86 p-0">
+                  <div className={`relative`}>
                     {/* Before/After Slider Effect */}
-                    <ReactCompareImage 
+                    <ReactCompareImage
+                      sliderLineWidth={4}
+                      leftImageCss={{ height: '400px', width: '100%' }}
+                      rightImageCss={{ height: '400px', width: '100%' }}
                       leftImage={`${caseItem?.image.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
                       rightImage={`${caseItem?.afterImage.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
                     />

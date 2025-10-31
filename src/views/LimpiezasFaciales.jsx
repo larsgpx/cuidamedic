@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { useSEO } from "@/hooks/useSEO";
 
 export function LimpiezasFaciales() {
-  const API_LIMPIEZAS_FACIALES = (process.env.NEXT_PUBLIC_API_LIMPIEZA_FACIAL || '/api/limpieza-facial') + '?populate[Banner]=true&populate[Tratamientos][populate][imagen]=true&populate[Seo]=true';
+  const API_LIMPIEZAS_FACIALES = (process.env.NEXT_PUBLIC_API_LIMPIEZA_FACIAL || '/api/limpieza-facial') + '?populate[Banner]=true&populate[Tratamientos][populate][imagen]=true&populate[Tratamientos][populate][Checklist]=true&populate[Seo]=true';
   const { data: dataLimpiezasFacialesAPI } = useAPI(API_LIMPIEZAS_FACIALES);
   const [dataLimpiezasFaciales, setDataLimpiezasFaciales] = useState('');
   
@@ -43,6 +43,7 @@ export function LimpiezasFaciales() {
           boton={treatment?.boton}
           isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
           img={treatment?.imagen?.url ? `${treatment?.imagen?.url.includes('http') ? treatment?.imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${treatment?.imagen?.url}` : undefined}
+          checklist={treatment?.Checklist}
         />
       ))}
       

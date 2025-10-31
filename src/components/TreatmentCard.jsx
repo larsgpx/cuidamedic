@@ -10,10 +10,10 @@ export function TreatmentCard({
   boton,
   isEven = false,
   img,
+  checklist,
 }) {
   const router = useRouter();
   const backgroundColor = isEven ? "bg-orange-50" : "bg-white";
-  const imageBackground = isEven ? "bg-orange-100" : "bg-gray-200";
   const isContentLeft = isEven;
   // Función para manejar la navegación
   const handleNavigate = (url) => {
@@ -57,9 +57,22 @@ export function TreatmentCard({
               </h2>
 
               {/* Descripción */}
-              <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
+              <div className="space-y-4 text-gray-600 leading-relaxed mb-2 description-treatment">
                 <BlocksRenderer content={description} />
               </div>
+
+              {checklist && (
+                <div className="space-y-2 text-gray-600 leading-relaxed mb-8">
+                  {checklist.map((item) => {
+                    return (
+                      <div key={item.id} className="flex items-center space-x-2">
+                        <Image src='/icons/check.svg' alt={'check'} width={20} height={20} className="inline-block align-middle mx-1" />
+                        <span>{item.Texto}</span>
+                      </div>
+                    )})
+                  }
+                </div>
+              )}
 
               {boton && (
                 <Button onClick={() => handleNavigate(boton)} className="bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg px-8 py-3 flex items-center space-x-2 text-md">

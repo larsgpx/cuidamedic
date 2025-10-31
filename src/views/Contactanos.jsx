@@ -3,14 +3,22 @@ import { Layout } from "@/components/Layout";
 import { useSEO, SEO_CONFIGS } from "@/hooks/useSEO";
 import GoogleMapReact from 'google-map-react';
 import Marker from '@/components/Marker';
-import Image from "next/image";
 import { LocationsSection } from "@/components/LocationsSection";
 import { useAPI } from "@/hooks/useAPI";
+import { useState, useEffect } from "react";
 
 export function Contactanos() {
   const API_CONTACTANOS = (process.env.NEXT_PUBLIC_API_CONTACTO || '/api/contacto') + '?populate[Seo]=true';
+  const API_SUCURSALES = '/api/sucursales?populate=*';
   const { data } = useAPI(API_CONTACTANOS);
-  
+  const { data: dataSucursalesAPI } = useAPI(API_SUCURSALES);
+  const [dataSucursales, setDataSucursales] = useState(null);
+  useEffect(() => {
+    if (dataSucursalesAPI) {
+      setDataSucursales(dataSucursalesAPI?.data);
+    }
+  }, [dataSucursalesAPI]);
+
   useSEO({
     title: data?.data?.Seo?.title || 'Contáctanos - Cuidamedic',
     description: data?.data?.Seo?.descripcion || 'Contáctanos en Cuidamedic. Ubicados en Miraflores, Surco y Lince. Horarios de atención y agendamiento de citas. Medicina estética de calidad.',
@@ -51,22 +59,6 @@ export function Contactanos() {
     }
   ];
 
-  const branches = [
-    {
-      name: "Miraflores",
-      address: "Calle Enrique Palacios 360, Of. 508",
-      mapPlaceholder: "/bg1.jpg",
-      lat: -12.1194,
-      lng: -77.0342
-    },
-    {
-      name: "Surco",
-      address: "Calle Monte Rosa 284, Of. 403, Chacarilla",
-      mapPlaceholder: "/bg2.jpg",
-      lat: -12.0984,
-      lng: -77.0074
-    }
-  ];
 
   const handleApiLoaded = (map, maps) => {
     // Configurar el estilo del mapa para que sea más limpio
@@ -80,6 +72,11 @@ export function Contactanos() {
       ];
       map.setOptions({ styles });
     }
+  };
+
+  const handleNavigate = (url) => {
+    if (!url) return;
+    window.open(url, '_blank');
   };
 
   return (
@@ -137,13 +134,13 @@ export function Contactanos() {
                   yesIWantToUseGoogleMapApiInternals
                   onGoogleApiLoaded={(props) => props && handleApiLoaded(props.map, props.maps)}
                 >
-                  {branches.map((branch, index) => (
+                  {dataSucursales?.map((branch, index) => (
                     <Marker
                       key={index}
-                      lat={branch.lat}
-                      lng={branch.lng}
-                      text={`${branch.name} - ${branch.address}`}
-                      onClick={() => console.log(`Clicked on ${branch.name}`)}
+                      lat={branch.latitud}
+                      lng={branch.longitud}
+                      text={`${branch.Lugar} - ${branch.Direccion}`}
+                      onClick={() => handleNavigate(`https://www.google.com/maps/@${branch.latitud},${branch.longitud},15z?entry=ttu&g_ep=EgoyMDI1MTAyOC4wIKXMDSoASAFQAw%3D%3D`)}
                     />
                   ))}
                 </GoogleMapReact>

@@ -15,12 +15,15 @@ export function Home() {
   const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner][populate]=*&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true&populate[Seo]=true';
   const { data } = useAPI(API_HOME);
   const [dataHomeData, setDataHomeData] = useState(null);
+  const [dataHomeHighlights, setDataHomeHighlights] = useState(null);
+  
   useEffect(() => {
     if (data) {
       setDataHomeData(data?.data);
-    }
+      setDataHomeHighlights([data?.data?.highlight1contador, data?.data?.highlight1, data?.data?.highlight2, data?.data?.highlight3, data?.data?.highlight4]);
+    } 
   }, [data]);
-  console.log('📊 dataHomeData:', dataHomeData);
+
   useSEO({
     title: dataHomeData?.Seo?.title || 'Cuidamedic - Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
     description: dataHomeData?.Seo?.descripcion || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',
@@ -29,7 +32,7 @@ export function Home() {
   });
   return (
     <Layout>
-      <HeroSection dataBanners={dataHomeData?.Banner} />
+      <HeroSection dataBanners={dataHomeData?.Banner} dataHighlights={dataHomeHighlights} />
       <WhyChooseUsSection image={dataHomeData?.porqueElegirnosImage?.url} description={dataHomeData?.porqueElegirnosDescription} />
       <BrandsSection />
       <ServicesSection servicesData={dataHomeData?.Servicios} />

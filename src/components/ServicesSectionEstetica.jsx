@@ -5,44 +5,7 @@ import { DoctorEvaluationCard } from "@/components/DoctorEvaluationCard";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useRouter } from 'next/navigation';
 
-export function WhyChooseUsSection({ description, image}) {
-  return (
-    <section className="pt-20 pb-2 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div>
-            <h2 className="text-4xl font-semibold mb-6">
-              ¿Por qué{" "}
-              <b className="highlight font-semibold">Elegirnos</b>?
-            </h2>
-            <div className="space-y-4 text-gray-600 leading-relaxed">
-              {description && (
-                <BlocksRenderer content={description} />
-              )}
-            </div>
-          </div>
-
-          {/* Image Placeholder */}
-          <div className="flex justify-center rounded-xl">
-            {image && (
-              <div className="relative w-full max-w-md h-80 md:h-110 rounded-3xl bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${image.includes('http') ? image : process.env.NEXT_PUBLIC_BASE_URL}${image}')` }}>
-                
-              </div>
-            )}
-            {!image && (
-              <div className="w-full max-w-md h-80 bg-gray-200 rounded-3xl flex items-center justify-center">
-                <span className="text-gray-500 text-lg">Imagen del Producto</span>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function ServicesSection({ servicesData }) {
+export function ServicesSectionEstetica({ servicesData }) {
   const router = useRouter();
   
   // Función para manejar la navegación
@@ -93,58 +56,7 @@ export function ServicesSection({ servicesData }) {
       overlay: "from-orange-100/80 to-orange-200/30"
     },  
   ]
-  const services = [
-    {
-      id: 1,
-      title: "Limpieza Faciales",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      image: "bg-gradient-to-br from-pink-200 to-purple-200",
-      backgroundImage: "/bg1.jpg",
-      featured: false,
-      position: "top-small-1",
-      overlay: "from-pink-100/80 to-purple-100/80"
-    },
-    {
-      id: 2,
-      title: "Tratamientos Endovenosos",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      image: "bg-gradient-to-br from-green-200 to-emerald-200",
-      backgroundImage: "/bg1.jpg",
-      featured: false,
-      position: "top-small-2",
-      overlay: "from-green-100/80 to-emerald-100/80"
-    },
-    {
-      id: 3,
-      title: "Mesoterapia & Cocktails",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      image: "bg-gradient-to-br from-blue-200 to-cyan-200",
-      backgroundImage: "/bg1.jpg",
-      featured: false,
-      position: "top-small-3",
-      overlay: "from-blue-100/80 to-cyan-100/80"
-    },
-    {
-      id: 4,
-      title: "Tratamientos Estéticos Corporales",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      image: "bg-gradient-to-br from-orange-200 to-red-200",
-      backgroundImage: "/bg2.jpg",
-      featured: true,
-      position: "bottom-large-1",
-      overlay: "from-orange-100/80 to-red-100/80"
-    },
-    {
-      id: 5,
-      title: "Tratamientos Estéticos Faciales",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      image: "bg-gradient-to-br from-purple-200 to-indigo-200",
-      backgroundImage: "/bg2.jpg",
-      featured: true,
-      position: "bottom-large-2",
-      overlay: "from-purple-100/80 to-indigo-100/80"
-    }
-  ];
+ 
 
   // Función helper para obtener las clases CSS basadas en la cantidad de elementos en una fila
   const getColumnClasses = (itemCount) => {
@@ -216,14 +128,12 @@ export function ServicesSection({ servicesData }) {
     })
   }));
 
+  console.log('📊 servicesData:', servicesData);
+
   return (
     <section className="py-5 bg-white">
       <div className="container mx-auto px-4">
-        {/* Section Title */}
-        <h2 className="text-4xl font-semibold text-center mb-16">
-          Nuestros <span className="highlight font-semibold">Servicios</span>
-        </h2>
-
+ 
         {/* Service Cards - Layout dinámico */}
         <div className="mb-16">
           {serviceRowsWithIndex.map((row, rowIndex) => {
@@ -241,7 +151,7 @@ export function ServicesSection({ servicesData }) {
                         <CardContent className="p-0 h-full">
                           <div 
                             className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300 bg-gradient-to-br from-gray-100 to-gray-200`}
-                            style={{ backgroundImage: `url('${service?.imagen?.url.includes('http') ? service?.imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${service?.imagen?.url}')` }}
+                            style={{ backgroundImage: `url('${service?.Imagen?.url.includes('http') ? service?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${service?.Imagen?.url}')` }}
                           >
                             {/* Overlay para cards normales */}
                             <div className={`absolute inset-0 bg-gradient-to-br  transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
@@ -249,27 +159,16 @@ export function ServicesSection({ servicesData }) {
                             {/* Overlay base para featured card */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${overlays[globalIndex]?.overlay || 'from-orange-100/80 to-orange-200/30'} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                             
-                            {/* Blur overlay que aparece en hover */}
-                            <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/40 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
                             
                             {/* Título centrado absolutamente */}
                             <div className="absolute inset-0 flex items-center justify-center z-10">
-                              <h3 className={`text-lg font-semibold transition-all duration-300 text-center ${
+                              <h3 className={`text-2xl font-semibold transition-all duration-300 text-center ${
                                 service.featured 
-                                  ? 'text-white opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8' 
-                                  : 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'
+                                  ? 'text-white text-2xl group-hover:text-3xl transform translate-y-0 group-hover:-translate-y-2' 
+                                  : 'text-gray-600 text-2xl group-hover:text-3xl transform translate-y-0 group-hover:-translate-y-2'
                               }`}>
-                                {service.titulo}
+                                {service.Titulo}
                               </h3>
-                            </div>
-                            
-                            {/* Descripción centrada absolutamente */}
-                            <div className="absolute inset-0 flex items-center justify-center z-10">
-                              <p className={`text-sm transition-all duration-300 text-center px-4 ${
-                                'leading-relaxed text-white opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0'
-                              }`}>
-                                {service.description}
-                              </p>
                             </div>
                           </div>
                         </CardContent>

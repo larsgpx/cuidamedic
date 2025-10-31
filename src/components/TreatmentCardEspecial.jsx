@@ -67,9 +67,21 @@ export function TreatmentCardEspecial({
                 </TabsList>
                 {
                     tabs?.map((tab, index) => (
-                        <TabsContent key={index} className="mt-6 pb-4" value={index}>
+                        <TabsContent key={index} className="mt-6 pb-4 description-treatment" value={index}>
                             {tab.descripcion && (
                                 <BlocksRenderer content={tab.descripcion} />
+                            )}
+                            {tab.Checklist && (
+                                <div className="space-y-2 text-gray-600 leading-relaxed mb-8 pt-4">
+                                    {tab.Checklist.map((item) => {
+                                        return (
+                                            <div key={item.id} className="flex items-center space-x-2">
+                                                <Image src='/icons/check.svg' alt={'check'} width={20} height={20} className="inline-block align-middle mx-1" />
+                                                <span>{item.Texto}</span>
+                                            </div>
+                                        )})
+                                    }
+                                </div>
                             )}
                         </TabsContent>
                     ))

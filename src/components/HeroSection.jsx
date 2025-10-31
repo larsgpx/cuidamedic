@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-export function HeroSection({ dataBanners }) {
+export function HeroSection({ dataBanners, dataHighlights }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [data, setData] = useState(null);
 
@@ -27,6 +27,7 @@ export function HeroSection({ dataBanners }) {
     }
   }, [dataBanners]);
 
+  console.log('📊 dataHighlights:', dataHighlights);
   // Auto-avance del carousel cada 5 segundos
   useEffect(() => {
     if (!data) return;
@@ -47,7 +48,7 @@ export function HeroSection({ dataBanners }) {
   console.log('📊 dataBanners:', dataBanners[currentSlide]?.Banner);
   console.log('📊 data:', dataBanners);
   return (
-    <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
+    <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-100 to-orange-150">
       {/* Carousel Container */}
       <div className="absolute inset-0">
         <div 
@@ -60,7 +61,7 @@ export function HeroSection({ dataBanners }) {
           }}
         >
           {/* Background Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-100/80 to-purple-100/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-100/80 to-orange-200/30"></div>
           <div className="absolute inset-0 bg-white/20"></div>
         </div>
       </div>
@@ -69,7 +70,7 @@ export function HeroSection({ dataBanners }) {
       <div className="relative z-10 container mx-auto px-4 text-center w-full">
         <div className="max-w-1xl md:max-w-2xl text-left">
           {/* Main Heading */}
-          <h1 className="pt-20 pr-4 md:pr-0 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9F25]">
+          <h1 className="pt-20 pr-4 md:pr-0 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9F25] [&>p>strong]:font-semibold">
             {data[currentSlide]?.Titulo ? (
               <BlocksRenderer content={data[currentSlide].Titulo} />
             ) : (
@@ -108,22 +109,21 @@ export function HeroSection({ dataBanners }) {
             className="grid grid-cols-2 md:grid-rows-1 grid-rows-2 md:grid-cols-4 gap-2 max-w-4xl mx-auto relative md:absolute"
             style={style.stats}
           >
-            <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
-              <div className="text-2xl font-bold text-gray-600">+3200</div>
-              <div className="text-xl text-gray-600 px-6">Pacientes Satisfechos</div>
+            <div className="hightlight-banner text-center flex align-center flex-col self-center border-r border-gray-300">
+              <p className="text-3xl font-bold text-gray-600">{dataHighlights[0]}</p>
+              <span className="text-xl text-gray-600 px-6">{dataHighlights[1]}</span>
             </div>
             
-            <div className="text-center flex align-center flex-col self-center border-r-0 md:border-r border-gray-300">
-              <div className="text-xl text-gray-600 px-6">Médicos Expertos y Certificados</div>
+            <div className="hightlight-banner text-center flex align-center flex-col self-center border-r-0 md:border-r border-gray-300">
+              <span className="text-xl text-gray-600 px-6">{dataHighlights[2]}</span>
             </div>
             
-            <div className="text-center flex align-center flex-col self-center border-r border-gray-300">
-              <div className="text-xl text-gray-600 px-6">Marcas Seguras y de Prestigio</div>
+            <div className="hightlight-banner text-center flex align-center flex-col self-center border-r border-gray-300">
+              <span className="text-xl text-gray-600 px-6">{dataHighlights[3]}</span>
             </div>
             
-            <div className="text-center flex align-center flex-col self-center">
-              <div className="text-xl text-gray-600 px-6">Consultas Personalizadas
-              Gratuitas</div>
+            <div className="hightlight-banner text-center flex align-center flex-col self-center">
+              <span className="text-xl text-gray-600 px-6">{dataHighlights[4]}</span>
             </div>
           </div>
         </div>
