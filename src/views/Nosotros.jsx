@@ -151,6 +151,8 @@ export function Nosotros() {
                 removeArrowOnDeviceType={["mobile"]}
                 sliderClass="gap-6"
                 centerMode={false}
+                partialVisible={false}
+                containerClass="doctor-carousel-container"
               >
                 {dataNosotros?.Doctores?.map((doctor) => (
                   <div key={doctor.id} className="text-center flex flex-col items-center justify-center mx-auto px-2">
