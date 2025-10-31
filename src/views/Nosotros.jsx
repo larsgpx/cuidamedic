@@ -8,6 +8,8 @@ import { useAPI } from "@/hooks/useAPI";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useState, useEffect } from "react";
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 export function Nosotros() {
   const [dataNosotros, setDataNosotros] = useState(null);
   const API_NOSOTROS = '/api/nosotros?populate[highlights][populate][icon]=true&populate[Doctores][populate][Imagen]=true&populate[imagenBanner]=true&populate[Imagen]=true&populate[Seo]=true';
@@ -18,7 +20,27 @@ export function Nosotros() {
       setDataNosotros(data?.data);
     }
   }, [data]);
-  console.log('📊 Datos de Nosotros desde Strapii:', dataNosotros);
+
+  // Configuración del carousel
+  const responsiveDoctors = {
+    desktop: {
+      breakpoint: { max: 2800, min: 1024 },
+      items: 3,
+      slidesToSlide: 1
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 1
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1
+    }
+  };
+
+  const showCarousel = dataNosotros?.Doctores?.length > 3;
 
   useSEO({
       title: dataNosotros?.Seo?.title || 'Nosotros - Cuidamedic',
@@ -110,25 +132,54 @@ export function Nosotros() {
       </section>
 
       {/* "Nuestro equipo" Section */}
-      <section className="bg-white">
+      <section className="bg-white py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">
             Nuestro <b className="text-color-orange">equipo</b>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {dataNosotros?.Doctores?.map((doctor) => (
-              <div key={doctor.id} className="text-center flex flex-col items-center justify-center mx-auto">
-                <div  className='w-full h-105 bg-gray-200 rounded-4xl mb-6 flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${doctor.Imagen?.url.includes('http') ? doctor.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${doctor.Imagen?.url})` }}>
+          {showCarousel ? (
+            <div className="max-w-6xl mx-auto">
+              <Carousel
+                swipeable={true}
+                draggable={true}
+                showDots={true}
+                responsive={responsiveDoctors}
+                ssr={false}
+                infinite={false}
+                keyBoardControl={true}
+                removeArrowOnDeviceType={["mobile"]}
+                sliderClass="gap-6"
+                centerMode={false}
+              >
+                {dataNosotros?.Doctores?.map((doctor) => (
+                  <div key={doctor.id} className="text-center flex flex-col items-center justify-center mx-auto px-2">
+                    <div className='w-full h-105 min-w-90 bg-gray-200 rounded-4xl mb-6 flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${doctor.Imagen?.url.includes('http') ? doctor.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${doctor.Imagen?.url})` }}>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-800 mb-2">{doctor.nombre}</h3>
+                      <p className="text-gray-600 font-medium text-color-orange mb-2">{doctor.puesto}</p>
+                      <p className="text-gray-500 text-sm">{doctor.especialidad}</p>
+                    </div>
+                  </div>
+                ))}
+              </Carousel>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {dataNosotros?.Doctores?.map((doctor) => (
+                <div key={doctor.id} className="text-center flex flex-col items-center justify-center mx-auto">
+                  <div className='w-full h-105 min-w-90 bg-gray-200 rounded-4xl mb-6 flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: `url(${doctor.Imagen?.url.includes('http') ? doctor.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${doctor.Imagen?.url})` }}>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">{doctor.nombre}</h3>
+                    <p className="text-gray-600 font-medium text-color-orange mb-2">{doctor.puesto}</p>
+                    <p className="text-gray-500 text-sm">{doctor.especialidad}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{doctor.nombre}</h3>
-                  <p className="text-gray-600 font-medium text-color-orange mb-2">{doctor.puesto}</p>
-                  <p className="text-gray-500 text-sm">{doctor.especialidad}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
