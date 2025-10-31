@@ -193,3 +193,16 @@ button span {
 .hightlight-banner span {
   font-weight: 500;
 }
+
+/* Doctor carousel container - prevent clipping */
+.doctor-carousel-container {
+  overflow: visible !important;
+}
+
+.doctor-carousel-container .react-multi-carousel-list {
+  overflow: visible !important;
+}
+
+.doctor-carousel-container .react-multi-carousel-track {
+  overflow: visible !important;
+}
