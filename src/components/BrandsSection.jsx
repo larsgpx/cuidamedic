@@ -65,7 +65,7 @@ export function BrandsSection() {
 
   return (
     <section className="py-5 md:py-6 bg-white w-full overflow-hidden">
-      <div className="mx-auto bg-orange-light py-5 md:py-10">
+      <div className="mx-auto bg-orange-light pt-5 md:pt-10">
         <h2 className="text-3xl font-semibold text-center pt-5 md:pt-0 mb-0">
           Marcas con las que <span className="highlight font-semibold">Trabajamos</span>
         </h2>
@@ -76,10 +76,11 @@ export function BrandsSection() {
           style={{ scrollBehavior: 'smooth' }}
         >
           <Slider
-            width="250px"
-            duration={40}
+            width="220px"
+            duration={50}
             pauseOnHover={true}
             blurBorders={false}
+            infinite={true}
             blurBorderColor={'#fff'}
         >
           

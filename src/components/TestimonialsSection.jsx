@@ -149,12 +149,11 @@ export function TestimonialsSection({ data }) {
          infinite={false}
          keyBoardControl={true}
          removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
-         sliderClass="gap-4 h-[300px]"
+         sliderClass="h-[300px]"
          centerMode={false}
-         partialVisible={false}
         >
           {testimonialsToUse?.map((testimonial, index) => (
-                  <Card key={testimonial.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow min-h-[240px] max-h-[300px] bg-white">
+                  <Card key={testimonial.id} className="border-0 shadow-lg hover:shadow-xl transition-shadow min-h-[240px] max-w-[97%] max-h-[300px] bg-white">
                     <CardContent className="p-6 h-fit flex flex-col">
                       {/* Quote Icon */}
                       <div className="flex justify-start mb-6">
