@@ -35,11 +35,9 @@ export function useAPI(endpoint) {
           try {
             const errorData = await response.json();
             errorMessage = errorData.error || errorMessage;
-            console.error('🌐 useAPI - Error data:', errorData);
           } catch (e) {
             const errorText = await response.text();
             errorMessage = errorText || errorMessage;
-            console.error('🌐 useAPI - Error text:', errorText);
           }
           throw new Error(errorMessage);
         }
@@ -47,7 +45,6 @@ export function useAPI(endpoint) {
         const jsonData = await response.json();
         setData(jsonData);
       } catch (err) {
-        console.error('❌ useAPI - Error completo:', err);
         setError(err.message);
       } finally {
         setLoading(false);

@@ -20,5 +20,5 @@ export function MesoterapiaCorporales() {
     keywords: dataEnzima?.data?.Seo?.keywords || 'toxina, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/toxina',
   });
-return <InternaTratamiento data={dataEnzima} title='Tratamientos Estéticos Corporales' />
+return <InternaTratamiento data={dataEnzima} title='Tratamientos Estéticos Corporales' typeEstetica='esteticas-corporal' />
 }

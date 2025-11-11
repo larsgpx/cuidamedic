@@ -41,27 +41,29 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
         <div className="w-full relative md:-top-10 top-0 md:ml-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {cases?.map((caseItem) => (
-              <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
-                <CardContent className="h-86 p-0">
-                  <div className={`relative`}>
-                    {/* Before/After Slider Effect */}
-                    <ReactCompareImage
-                      sliderLineWidth={4}
-                      leftImageCss={{ height: '400px', width: '100%' }}
-                      rightImageCss={{ height: '400px', width: '100%' }}
-                      leftImage={`${caseItem?.image.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
-                      rightImage={`${caseItem?.afterImage.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
-                    />
-                   
-                    {/* Label */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
-                        <span className="text-sm font-semibold text-gray-800">{caseItem.title}</span>
-                      </div>
+              <div key={caseItem.id}>
+                <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
+                  <CardContent className="h-86 p-0">
+                    <div className={`relative`}>
+                      {/* Before/After Slider Effect */}
+                      <ReactCompareImage
+                        sliderLineWidth={4}
+                        leftImageCss={{ height: '400px', width: '100%' }}
+                        rightImageCss={{ height: '400px', width: '100%' }}
+                        leftImage={`${caseItem?.image.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
+                        rightImage={`${caseItem?.afterImage.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
+                      />
+                    
                     </div>
+                  </CardContent>
+                </Card>
+                {/* Label */}
+                <div className="relative top-4 shadow-lg">
+                  <div className="bg-[#DC9F25] backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                    <strong className="text-sm font-semibold text-white">{caseItem.title}</strong>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>

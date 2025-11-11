@@ -5,7 +5,7 @@ import { DoctorEvaluationCard } from "@/components/DoctorEvaluationCard";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useRouter } from 'next/navigation';
 
-export function ServicesSectionEstetica({ servicesData }) {
+export function ServicesSectionEstetica({ servicesData, freeTreatment = false }) {
   const router = useRouter();
   
   // Función para manejar la navegación
@@ -128,8 +128,6 @@ export function ServicesSectionEstetica({ servicesData }) {
     })
   }));
 
-  console.log('📊 servicesData:', servicesData);
-
   return (
     <section className="py-5 bg-white">
       <div className="container mx-auto px-4">
@@ -182,7 +180,9 @@ export function ServicesSectionEstetica({ servicesData }) {
         </div>
 
         {/* Doctors Section */}
-        <DoctorEvaluationCard />
+        {freeTreatment && (
+          <DoctorEvaluationCard />
+        )}
 
         <div>
           

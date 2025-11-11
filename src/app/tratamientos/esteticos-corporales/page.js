@@ -28,7 +28,7 @@ export default function EsteticosCorporalesPage() {
               Nuestros <span className="highlight font-semibold">Servicios</span>
             </h2>
           </div>
-      <ServicesSectionEstetica servicesData={dataEstetica?.Servicios} />
+      <ServicesSectionEstetica servicesData={dataEstetica?.Servicios} freeTreatment={true} />
     </Layout>
   );
 }

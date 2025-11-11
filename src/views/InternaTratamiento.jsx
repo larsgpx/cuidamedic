@@ -1,20 +1,30 @@
+'use client';
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Layout } from "@/components/Layout";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from "next/image";
+import { ServicesSectionEstetica } from "@/components/ServicesSectionEstetica";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Card, CardContent } from "@/components/ui/card";
+import ReactCompareImage from 'react-compare-image';
+import { useAPI } from "@/hooks/useAPI";
 
-export function InternaTratamiento({ data, title }) {
+export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-facial' }) {
     const titleRef = useRef(null);
+    const titleOtherServicesRef = useRef(null);
     const info = data?.Interna || data?.Contenido;
+    const API_ESTETICA = `/api/${typeEstetica}?populate[Servicios][populate]=*&populate[Banner]=true&populate[Seo]=true`;
+    const { data: dataEsteticaAPI } = useAPI(API_ESTETICA);
+    const [dataEstetica, setDataEstetica] = useState(null);
+    const [titleOtherServices, setTitleOtherServices] = useState('Servicios que podrian interesarte');
     const handleNavigate = (url) => {
         if (!url) return;
         
@@ -31,6 +41,12 @@ export function InternaTratamiento({ data, title }) {
           router.push(`/${url}`);
         }
       };
+
+      useEffect(() => {
+        if (dataEsteticaAPI) {
+        setDataEstetica(dataEsteticaAPI?.data);
+        }
+        }, [dataEsteticaAPI]);
 
       useEffect(() => {
         if (info?.Titulo) {
@@ -50,7 +66,25 @@ export function InternaTratamiento({ data, title }) {
             titleRef.current.innerHTML = titleText;
           }
         }
+
+        
+            console.log('📊 info?.tituloOtrosServicios:', info?.tituloOtrosServicios);
+            const titleText = info?.tituloOtrosServicios?.trim() || titleOtherServices;
+            const words = titleText.split(' ');
+            
+            // Solo aplicar la lógica si hay más de una palabra
+            if (words.length > 1) {
+              const lastWord = words[words.length - 1];
+              const otherWords = words.slice(0, -1).join(' ');
+              
+              titleOtherServicesRef.current.innerHTML = `
+                ${otherWords} <strong class="font-medium text-color-orange">${lastWord}</strong>
+              `;
+            }
+          
       }, [data]);
+
+      console.log('📊 dataEstetica:', dataEstetica);
     return (
         <Layout>
             <div className="min-h-screen">
@@ -79,7 +113,7 @@ export function InternaTratamiento({ data, title }) {
                     
                     {/* Product Image */}
                     <div className="lg:order-1">
-                    <div className="w-full h-80 rounded-xl flex items-center justify-center shadow-lg" 
+                    <div className="w-full h-100 md:h-110 rounded-xl flex items-center justify-center shadow-lg" 
                         style={{
                             backgroundImage: `url(${info?.Imagen?.url ? `${info?.Imagen?.url.includes('http') ? info?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${info?.Imagen?.url}` : '/bg1.jpg'})`,
                             backgroundSize: 'cover',
@@ -137,6 +171,41 @@ export function InternaTratamiento({ data, title }) {
                 </div>
             </section>
 
+            {/* Before & After Images Section */}
+            {info?.casosDeExito?.length > 0 && (
+            <section className="container mx-auto px-4 pt-16 pb-2 bg-white">
+                <div className="w-full relative md:-top-10 top-0 lg:ml-8">
+                <h2 className="text-4xl font-bold text-gray-600 my-12 text-center title-orange">Casos de <span>Éxito</span></h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                        {info?.casosDeExito?.map((caseItem, index) => (
+                        <div key={index}>
+                            <Card className="overflow-hidden border-0 shadow-lg">
+                                <CardContent className="h-86 p-0">
+                                <div className={`relative`}>
+                                    {/* Before/After Slider Effect */}
+                                    <ReactCompareImage
+                                    sliderLineWidth={4}
+                                    leftImageCss={{ height: '400px', width: '100%' }}
+                                    rightImageCss={{ height: '400px', width: '100%' }}
+                                    leftImage={`${caseItem?.antes.url.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} 
+                                    rightImage={`${caseItem?.despues.url.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`} 
+                                    />
+                            
+                                </div>
+                                </CardContent>
+                            </Card>
+                            {/* Label */}
+                            <div className="relative top-4 shadow-lg">
+                                <div className="bg-[#DC9F25] backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                                <strong className="text-sm font-semibold text-white">{caseItem.titulo}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            )}
             {/* Preguntas Frecuentes Section */}
             <section className="py-16 bg-white">
                 <div className="container mx-auto px-4">
@@ -156,6 +225,15 @@ export function InternaTratamiento({ data, title }) {
                         ))}
                     </Accordion>
                 </div>
+                </div>
+            </section>
+
+            <section className="py-2 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 ref={titleOtherServicesRef} className="text-4xl font-bold text-gray-600 mb-12 text-center title-orange">{info?.tituloOtrosServicios}</h2>
+                    </div>
+                    <ServicesSectionEstetica servicesData={dataEstetica?.Servicios} />
                 </div>
             </section>
             </div>
