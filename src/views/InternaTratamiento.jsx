@@ -176,9 +176,9 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
             <section className="container mx-auto px-4 pt-16 pb-2 bg-white">
                 <div className="w-full relative md:-top-10 top-0 lg:ml-8">
                 <h2 className="text-4xl font-bold text-gray-600 my-12 text-center title-orange">Casos de <span>Éxito</span></h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                    <div className="flex flex-wrap justify-center gap-10 max-w-4xl mx-auto">
                         {info?.casosDeExito?.map((caseItem, index) => (
-                        <div key={index}>
+                        <div key={index} className="w-full md:w-[calc(50%-1.25rem)] md:max-w-md">
                             <Card className="overflow-hidden border-0 shadow-lg">
                                 <CardContent className="h-86 p-0">
                                 <div className={`relative`}>
