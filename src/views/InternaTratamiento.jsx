@@ -183,14 +183,17 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                                 <CardContent className="h-86 p-0">
                                 <div className={`relative`}>
                                     {/* Before/After Slider Effect */}
-                                    <ReactCompareImage
-                                    sliderLineWidth={4}
-                                    leftImageCss={{ height: '400px', width: '100%' }}
-                                    rightImageCss={{ height: '400px', width: '100%' }}
-                                    leftImage={`${caseItem?.antes.url.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} 
-                                    rightImage={`${caseItem?.despues.url.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`} 
-                                    />
-                            
+                                    {
+                                        caseItem?.antes?.url && caseItem?.despues?.url && (
+                                            <ReactCompareImage
+                                            sliderLineWidth={4}
+                                            leftImageCss={{ height: '400px', width: '100%' }}
+                                            rightImageCss={{ height: '400px', width: '100%' }}
+                                            leftImage={`${caseItem?.antes?.url?.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} 
+                                            rightImage={`${caseItem?.despues?.url?.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`} 
+                                            />
+                                        )
+                                    }
                                 </div>
                                 </CardContent>
                             </Card>
