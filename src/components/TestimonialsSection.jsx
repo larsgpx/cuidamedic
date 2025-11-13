@@ -50,8 +50,8 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
                         sliderLineWidth={4}
                         leftImageCss={{ height: '400px', width: '100%' }}
                         rightImageCss={{ height: '400px', width: '100%' }}
-                        leftImage={`${caseItem?.image.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
-                        rightImage={`${caseItem?.afterImage.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
+                        leftImage={`${caseItem?.image?.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
+                        rightImage={`${caseItem?.afterImage?.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
                       />
                     
                     </div>
