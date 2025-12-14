@@ -115,8 +115,8 @@ export function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:block overflow-visible">
-            <NavigationMenuList className="space-x-8 overflow-visible">
+          <NavigationMenu className="hidden lg:block">
+            <NavigationMenuList className="space-x-8">
               {menuItems.map((item, index) => (
                 <NavigationMenuItem key={index}>
                   {item.submenu ? (
@@ -127,16 +127,16 @@ export function Header() {
                       )}>
                         {item.title}
                       </NavigationMenuTrigger>
-                      <NavigationMenuContent className="overflow-visible navbar-structure">
-                        <div className="p-6 w-[500px] bg-white shadow-4xl rounded-xl overflow-visible">
-                          <div className="grid grid-cols-1 gap-8 overflow-visible">
+                      <NavigationMenuContent className="navbar-structure">
+                        <div className="p-6 w-[500px] bg-white shadow-4xl rounded-xl">
+                          <div className="grid grid-cols-1 gap-8">
                              {/* Columna derecha - Tratamientos estéticos */}
-                             <div className="space-y-6 overflow-visible">
-                              <div className="relative overflow-visible">
+                             <div className="space-y-6">
+                              <div className="relative">
                                 <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
                                 
                                 {/* Estéticos Faciales */}
-                                <div className="group/nested overflow-visible mb-4">
+                                <div className="group/nested relative mb-4">
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div>
@@ -148,9 +148,9 @@ export function Header() {
                                   </div>
                                   {/* Submenu anidado */}
                                   <div className="hidden group-hover/nested:block absolute left-full top-0 ml-0 z-[100]">
-                                    <div className="bg-white rounded-lg shadow-2xl p-4 w-64">
+                                    <div className="bg-white rounded-lg shadow-2xl p-4 w-64 border border-gray-100">
                                       <div className="space-y-2">
-                                        {item.submenu.find(sub => sub.title === "Estéticos - Faciales")?.submenu?.map((nestedItem, nestedIndex) => (
+                                        {item.submenu.find(sub => sub.title === "Tratamientos Faciales")?.submenu?.map((nestedItem, nestedIndex) => (
                                           <Link
                                             key={nestedIndex}
                                             href={nestedItem.href}
@@ -165,7 +165,7 @@ export function Header() {
                                 </div>
 
                                 {/* Estéticos Corporales */}
-                                <div className="group/nested overflow-visible">
+                                <div className="group/nested relative">
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div>
@@ -177,9 +177,9 @@ export function Header() {
                                   </div>
                                   {/* Submenu anidado */}
                                   <div className="hidden group-hover/nested:block absolute left-full top-0 ml-0 z-[100]">
-                                    <div className="bg-white rounded-lg shadow-2xl p-4 w-64">
+                                    <div className="bg-white rounded-lg shadow-2xl p-4 w-64 border border-gray-100">
                                       <div className="space-y-2">
-                                        {item.submenu.find(sub => sub.title === "Estéticos - Corporales")?.submenu?.map((nestedItem, nestedIndex) => (
+                                        {item.submenu.find(sub => sub.title === "TratamientosCorporales")?.submenu?.map((nestedItem, nestedIndex) => (
                                           <Link
                                             key={nestedIndex}
                                             href={nestedItem.href}
@@ -195,8 +195,8 @@ export function Header() {
                               </div>
                             </div>
                             {/* Columna izquierda - Tratamientos básicos */}
-                            <div className="space-y-6 overflow-visible">
-                              <div className="relative overflow-visible">
+                            <div className="space-y-6">
+                              <div className="relative">
                                 <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS</h3>
                                 <div className="space-y-2">
                                   <Link
