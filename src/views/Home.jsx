@@ -6,6 +6,7 @@ import { WhyChooseUsSection, ServicesSection } from "@/components/ServicesSectio
 import { BrandsSection } from "@/components/BrandsSection";
 import { SuccessCasesSection, TestimonialsSection } from "@/components/TestimonialsSection";
 import { LocationsSection } from "@/components/LocationsSection";
+import { DoctorEvaluationCard } from "@/components/DoctorEvaluationCard";
 import { useSEO, SEO_CONFIGS } from "@/hooks/useSEO";
 import { useAPI } from "@/hooks/useAPI";
 import { useState, useEffect } from "react";
@@ -34,8 +35,9 @@ export function Home() {
     <Layout>
       <HeroSection dataBanners={dataHomeData?.Banner} dataHighlights={dataHomeHighlights} />
       <WhyChooseUsSection image={dataHomeData?.porqueElegirnosImage?.url} description={dataHomeData?.porqueElegirnosDescription} />
-      <BrandsSection />
       <ServicesSection servicesData={dataHomeData?.Servicios} />
+      <BrandsSection />
+      <DoctorEvaluationCard />
       <SuccessCasesSection casosTexto={dataHomeData?.casosDeExitoDescription} casosData={dataHomeData?.casosDeExito} />
       <TestimonialsSection data={dataHomeData?.testimonios} />
       <LocationsSection />

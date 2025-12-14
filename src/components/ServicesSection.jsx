@@ -1,7 +1,6 @@
 'use client';
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { DoctorEvaluationCard } from "@/components/DoctorEvaluationCard";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useRouter } from 'next/navigation';
 
@@ -66,31 +65,31 @@ export function ServicesSection({ servicesData }) {
   const overlays = [
     {
       position: "top-small-1",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },
     {
       position: "top-small-2",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },
     {
       position: "top-small-3",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },
     {
       position: "bottom-large-1",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },
     {
       position: "bottom-large-2",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },
     {
       position: "bottom-large-3",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },
     {
       position: "bottom-large-4",
-      overlay: "from-orange-100/80 to-orange-200/30"
+      overlay: "from-orange-100/90 to-orange-200/60"
     },  
   ]
   const services = [
@@ -247,7 +246,7 @@ export function ServicesSection({ servicesData }) {
                             <div className={`absolute inset-0 bg-gradient-to-br  transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                             
                             {/* Overlay base para featured card */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${overlays[globalIndex]?.overlay || 'from-orange-100/80 to-orange-200/30'} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
+                            <div className={`absolute inset-0 bg-gradient-to-br ${overlays[globalIndex]?.overlay || 'from-orange-100/90 to-orange-200/60'} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                             
                             {/* Blur overlay que aparece en hover */}
                             <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/40 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
@@ -283,7 +282,7 @@ export function ServicesSection({ servicesData }) {
         </div>
 
         {/* Doctors Section */}
-        <DoctorEvaluationCard />
+        
 
         <div>
           

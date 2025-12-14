@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-
+import { ClockIcon } from "lucide-react";
 export function TreatmentCard({ 
   title, 
   description, 
@@ -11,6 +11,8 @@ export function TreatmentCard({
   isEven = false,
   img,
   checklist,
+  steps,
+  duration,
 }) {
   const router = useRouter();
   const backgroundColor = isEven ? "bg-orange-50" : "bg-white";
@@ -52,10 +54,22 @@ export function TreatmentCard({
           <div className={`${isContentLeft ? 'lg:order-1' : 'lg:order-2'}`}>
             <div className="max-w-lg">
               {/* Título */}
-              <h2 className="text-2xl font-semibold text-gray-700 mb-6">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-2">
                 {title}
               </h2>
+              {duration && (
+              <span className="text-sm text-gray-300 flex gap-2 my-1"><ClockIcon className="w-4 h-4 text-gray-600" /><b>Duración:</b> {duration} </span>
+              )}
 
+              {/*  TODO: validar si los steps estan en la posicion correcta y que carguen bien  */}
+              {steps && (
+                <div className="space-y-2 text-gray-600 leading-relaxed mb-4">
+                  {steps && 
+                  <span className="text-sm text-gray-300">{steps}</span>
+                  }
+                </div>
+              )}
+              
               {/* Descripción */}
               <div className="space-y-4 text-gray-600 leading-relaxed mb-2 description-treatment">
                 <BlocksRenderer content={description} />

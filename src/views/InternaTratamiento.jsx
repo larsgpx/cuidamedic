@@ -67,8 +67,6 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
           }
         }
 
-        
-            console.log('📊 info?.tituloOtrosServicios:', info?.tituloOtrosServicios);
             const titleText = info?.tituloOtrosServicios?.trim() || titleOtherServices;
             const words = titleText.split(' ');
             

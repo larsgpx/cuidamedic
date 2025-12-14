@@ -40,24 +40,24 @@ export function Header() {
               href: "/tratamientos/tecnologia-avanzada",
             },
             {
-                title: "Estéticos - Faciales",
+                title: "Tratamientos Faciales",
                 submenu: [
-                    { title: "Toxina", href: "/tratamientos/esteticos-faciales/toxina" },
+                    { title: "Toxina Botulinica", href: "/tratamientos/esteticos-faciales/toxina" },
                     { title: "Acido Hialurónico", href: "/tratamientos/esteticos-faciales/ah" },
-                    { title: "Enzimas", href: "/tratamientos/esteticos-faciales/enzimas" },
+                    { title: "Enzimas Recombinantes", href: "/tratamientos/esteticos-faciales/enzimas" },
                     { title: "Exosomas", href: "/tratamientos/esteticos-faciales/exosomas" },
-                    { title: "Biorem + Bioest.", href: "/tratamientos/esteticos-faciales/biorem-bioest" },
+                    { title: "Bioestimuladores de Colágeno", href: "/tratamientos/esteticos-faciales/biorem-bioest" },
                     { title: "Mesoterapias", href: "/tratamientos/esteticos-faciales/mesoterapias" },
-                    { title: "Bioremodelador", href: "/tratamientos/esteticos-faciales/bioremodelador" },
+                    { title: "Bioremodeladores de Colágeno PROFHILO", href: "/tratamientos/esteticos-faciales/bioremodelador" },
                 ],
             },
             {
-                title: "Estéticos - Corporales",
+                title: "TratamientosCorporales",
                 submenu: [
-                    { title: "Enzimas", href: "/tratamientos/esteticos-corporales/enzimas" },
-                    { title: "Biorem + Bioest.", href: "/tratamientos/esteticos-corporales/biorem-bioest" },
-                    { title: "Exosomas", href: "/tratamientos/esteticos-corporales/exosomas" },
-                    { title: "Mesoterapias", href: "/tratamientos/esteticos-corporales/mesoterapias" },
+                    { title: "Reducción de Medidas", href: "/tratamientos/esteticos-corporales/enzimas" },
+                    { title: "Bioestimulador Corporal", href: "/tratamientos/esteticos-corporales/biorem-bioest" },
+                    { title: "Aclaramiento Corporal", href: "/tratamientos/esteticos-corporales/exosomas" },
+                    { title: "Radiofrecuencia", href: "/tratamientos/esteticos-corporales/mesoterapias" },
                 ],
             },
         ],
@@ -96,7 +96,7 @@ export function Header() {
   return (
     <header 
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 header-navbar",
         isScrolled 
           ? "bg-white/80 backdrop-blur-md shadow-sm" 
           : "bg-transparent"
@@ -116,7 +116,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:block overflow-visible">
-            <NavigationMenuList className="space-x-5 overflow-visible">
+            <NavigationMenuList className="space-x-8 overflow-visible">
               {menuItems.map((item, index) => (
                 <NavigationMenuItem key={index}>
                   {item.submenu ? (
@@ -130,35 +130,8 @@ export function Header() {
                       <NavigationMenuContent className="overflow-visible navbar-structure">
                         <div className="p-6 w-[500px] bg-white shadow-4xl rounded-xl overflow-visible">
                           <div className="grid grid-cols-1 gap-8 overflow-visible">
-                            {/* Columna izquierda - Tratamientos básicos */}
-                            <div className="space-y-6 overflow-visible">
-                              <div className="relative overflow-visible">
-                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS</h3>
-                                <div className="space-y-2">
-                                  <Link
-                                    href="/tratamientos/limpiezas-faciales"
-                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
-                                  >
-                                    <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">Limpiezas Faciales</h4>
-                                      <p className="text-xs text-gray-500 mt-1">Tratamientos de limpieza profunda para tu piel</p>
-                                    </div>
-                                  </Link>
-                                  <Link
-                                    href="/tratamientos/mesoterapia-cocktails"
-                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
-                                  >
-                                    <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">Mesoterapia & Cocktails</h4>
-                                      <p className="text-xs text-gray-500 mt-1">Vitaminas y terapias regenerativas que revitalizan tu piel desde el interior</p>
-                                    </div>
-                                  </Link>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Columna derecha - Tratamientos estéticos */}
-                            <div className="space-y-6 overflow-visible">
+                             {/* Columna derecha - Tratamientos estéticos */}
+                             <div className="space-y-6 overflow-visible">
                               <div className="relative overflow-visible">
                                 <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
                                 
@@ -167,7 +140,7 @@ export function Header() {
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div>
-                                        <h4 className="font-semibold text-gray-900 text-sm">Estéticos - Faciales</h4>
+                                        <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Faciales</h4>
                                         <p className="text-xs text-gray-500">Tratamientos especializados para el rostro</p>
                                       </div>
                                     </div>
@@ -196,7 +169,7 @@ export function Header() {
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div>
-                                        <h4 className="font-semibold text-gray-900 text-sm">Estéticos - Corporales</h4>
+                                        <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Corporales</h4>
                                         <p className="text-xs text-gray-500">Tratamientos para el cuerpo</p>
                                       </div>
                                     </div>
@@ -221,17 +194,35 @@ export function Header() {
                                 </div>
                               </div>
                             </div>
-                            
+                            {/* Columna izquierda - Tratamientos básicos */}
                             <div className="space-y-6 overflow-visible">
                               <div className="relative overflow-visible">
-                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TECNOLOGÍA AVANZADA</h3>
+                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS</h3>
                                 <div className="space-y-2">
+                                  <Link
+                                    href="/tratamientos/mesoterapia-cocktails"
+                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
+                                  >
+                                    <div>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Regenerativos</h4>
+                                      <p className="text-xs text-gray-500 mt-1">Vitaminas y terapias regenerativas que revitalizan tu piel desde el interior</p>
+                                    </div>
+                                  </Link>
+                                  <Link
+                                    href="/tratamientos/limpiezas-faciales"
+                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
+                                  >
+                                    <div>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Limpiezas Faciales</h4>
+                                      <p className="text-xs text-gray-500 mt-1">Tratamientos de limpieza profunda para tu piel</p>
+                                    </div>
+                                  </Link>
                                   <Link
                                     href="/tratamientos/tecnologia-avanzada"
                                     className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
                                   >
                                     <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">Radiofrecuencia</h4>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Tecnología Avanzada</h4>
                                       <p className="text-xs text-gray-500 mt-1">Terapias de radiofrecuencia para la piel</p>
                                     </div>
                                   </Link>

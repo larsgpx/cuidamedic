@@ -206,3 +206,7 @@ button span {
 .doctor-carousel-container .react-multi-carousel-track {
   overflow: visible !important;
 }
+
+.header-navbar a, .header-navbar button {
+  font-weight: 500!important;
+}

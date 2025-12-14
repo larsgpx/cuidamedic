@@ -64,7 +64,7 @@ export function BrandsSection() {
   }, []);
 
   return (
-    <section className="py-5 md:py-6 bg-white w-full overflow-hidden">
+    <section className="py-5 md:py-4 bg-white w-full overflow-hidden">
       <div className="mx-auto bg-orange-light pt-5 md:pt-10">
         <h2 className="text-3xl font-semibold text-center pt-5 md:pt-0 mb-0">
           Marcas con las que <span className="highlight font-semibold">Trabajamos</span>

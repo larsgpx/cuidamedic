@@ -28,7 +28,7 @@ export function InternaTratamientoEspecial({ data, title }) {
       }, [data]);
 
     return (
-        <Layout>
+        <>
             <div className="min-h-screen">
              {/* Estandar Section */}
              <section className="py-16 bg-white">
@@ -53,6 +53,6 @@ export function InternaTratamientoEspecial({ data, title }) {
                 />
             ))} 
             </div>
-        </Layout>
+        </>
     );
 }

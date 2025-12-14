@@ -59,26 +59,6 @@ export function Nosotros() {
             backgroundImage={`${dataNosotros?.imagenBanner?.url.includes('http') ? dataNosotros?.imagenBanner?.url : process.env.NEXT_PUBLIC_BASE_URL}${dataNosotros?.imagenBanner?.url || '/bg2.jpg'}`}
       />
 
-      {/* Three-Column Feature Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-
-
-            {dataNosotros?.highlights?.map((highlight) => (
-               <div key={highlight.id} className="bg-white relative rounded-lg shadow-lg p-8 text-center">
-                <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Image src={`${highlight.icon?.url.includes('http') ? highlight.icon?.url : process.env.NEXT_PUBLIC_BASE_URL}${highlight.icon?.url}`} alt={highlight.titulo} width={64} height={64} />
-                </div>
-                <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">{highlight.titulo}</h3>
-                <p className="text-gray-600 leading-relaxed pt-4">
-                  {highlight.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* "¿Quiénes somos?" Content Section */}
       <section className="py-20">
@@ -130,6 +110,28 @@ export function Nosotros() {
           </div>
         </div>
       </section>
+
+      {/* Three-Column Feature Section */}
+      <section className="py-10 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+
+            {dataNosotros?.highlights?.map((highlight) => (
+               <div key={highlight.id} className="bg-white relative rounded-lg shadow-lg p-8 text-center">
+                <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Image src={`${highlight.icon?.url.includes('http') ? highlight.icon?.url : process.env.NEXT_PUBLIC_BASE_URL}${highlight.icon?.url}`} alt={highlight.titulo} width={64} height={64} />
+                </div>
+                <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">{highlight.titulo}</h3>
+                <p className="text-gray-600 leading-relaxed pt-4">
+                  {highlight.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* "Nuestro equipo" Section */}
       <section className="bg-white py-20">

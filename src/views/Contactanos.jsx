@@ -6,6 +6,7 @@ import Marker from '@/components/Marker';
 import { LocationsSection } from "@/components/LocationsSection";
 import { useAPI } from "@/hooks/useAPI";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export function Contactanos() {
   const API_CONTACTANOS = (process.env.NEXT_PUBLIC_API_CONTACTO || '/api/contacto') + '?populate[Seo]=true';
@@ -45,8 +46,11 @@ export function Contactanos() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
         </svg>
       ),
-      title: "Telefono",
-      content: [data?.data?.Telefono]
+      title: "Telefonos",
+      content: [
+        data?.data?.Telefono,
+        data?.data?.Telefono2
+      ],
     },
     {
       icon: (
@@ -86,7 +90,7 @@ export function Contactanos() {
         <div className="absolute inset-0 bg-[url('/bg1.jpg')] bg-cover bg-center bg-no-repeat opacity-20"></div>
         <div className="relative z-10 text-left container mx-auto">
           <h1 className="text-5xl md:text-5xl font-semibold text-gray-600">
-            Contáctanos
+            Contacto
           </h1>
         </div>
         <div className="absolute -bottom-2 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
@@ -129,8 +133,8 @@ export function Contactanos() {
               <div className="h-96 w-full">
                 <GoogleMapReact
                   bootstrapURLKeys={{ key: 'AIzaSyCAOfyRIHd1EKkGTXVYb2-IdGMeiSUgjkY' }}
-                  defaultCenter={{ lat: -12.1004, lng: -77.0295 }} // Centro de Lima
-                  defaultZoom={12}
+                  defaultCenter={{ lat: -12.1104, lng: -77.0295 }} // Centro de Lima
+                  defaultZoom={13}
                   yesIWantToUseGoogleMapApiInternals
                   onGoogleApiLoaded={(props) => props && handleApiLoaded(props.map, props.maps)}
                 >
@@ -149,6 +153,7 @@ export function Contactanos() {
           </div>
         </div>
       </section>
+      
 
       {/* Branches Section */}
       <LocationsSection />

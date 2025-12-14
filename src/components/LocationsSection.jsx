@@ -60,8 +60,8 @@ export function LocationsSection() {
                 <div className="w-full h-64 object-contain bg-gray-200 rounded-2xl mb-6 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url('${location?.Imagen?.url.includes('http') ? location?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${location?.Imagen?.url}')` }}>
                 </div>
                 {/* Location Info */}
-                <h3 className="text-lg font-semibold mb-2 text-left">{location.Lugar}</h3>
-                <p className="text-gray-600 text-xs  text-left">{location.Direccion}</p>
+                <h3 className="text-lg font-semibold mb-2 text-center">{location.Lugar}</h3>
+                <p className="text-gray-600 text-xs  text-center">{location.Direccion}</p>
               </CardContent>
               
             </Card>
