@@ -25,7 +25,7 @@ export function Header() {
   const menuItems = [
     { title: "Inicio", href: "/" },
     {
-        title: "Protocolos",
+        title: "Servicios",
         submenu: [
             {
                 title: "Limpiezas faciales",
@@ -47,16 +47,18 @@ export function Header() {
                     { title: "Enzimas Recombinantes", href: "/tratamientos/esteticos-faciales/enzimas" },
                     { title: "Exosomas", href: "/tratamientos/esteticos-faciales/exosomas" },
                     { title: "Bioestimuladores de Colágeno", href: "/tratamientos/esteticos-faciales/biorem-bioest" },
-                    { title: "Mesoterapias", href: "/tratamientos/esteticos-faciales/mesoterapias" },
                     { title: "Bioremodeladores de Colágeno PROFHILO", href: "/tratamientos/esteticos-faciales/bioremodelador" },
+                    { title: "NCTF", href: "/tratamientos/esteticos-faciales/mesoterapias" },
+                    { title: "Aclaramiento Facial", href: "/tratamientos/esteticos-faciales/aclaramiento-facial" },
+                    { title: "Hidratacion Profunda", href: "/tratamientos/esteticos-faciales/hidratacion-profunda" },
                 ],
             },
             {
                 title: "TratamientosCorporales",
                 submenu: [
                     { title: "Reducción de Medidas", href: "/tratamientos/esteticos-corporales/enzimas" },
-                    { title: "Bioestimulador Corporal", href: "/tratamientos/esteticos-corporales/biorem-bioest" },
                     { title: "Aclaramiento Corporal", href: "/tratamientos/esteticos-corporales/exosomas" },
+                    { title: "Bioestimulador Corporal", href: "/tratamientos/esteticos-corporales/biorem-bioest" },
                     { title: "Radiofrecuencia", href: "/tratamientos/esteticos-corporales/mesoterapias" },
                 ],
             },

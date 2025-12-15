@@ -20,5 +20,5 @@ export function Mesoterapias() {
     keywords: dataEnzima?.data?.Seo?.keywords || 'toxina, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/toxina',
   });
-return <InternaTratamiento data={dataEnzima} title='Tratamientos Estéticos Faciales' />
+return <InternaTratamiento data={dataEnzima} title='Tratamientos Faciales' />
 }

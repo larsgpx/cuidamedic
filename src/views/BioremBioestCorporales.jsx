@@ -20,5 +20,5 @@ export function BioremBioestCorporales() {
     keywords: dataEnzima?.data?.Seo?.keywords || 'biorem, bioest, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/biorem-bioest',
   });
-return <InternaTratamiento data={dataEnzima} title='Tratamientos Estéticos Corporales' typeEstetica='esteticas-corporal' />
+return <InternaTratamiento data={dataEnzima} title='Tratamientos Corporales' typeEstetica='esteticas-corporal' />
 }

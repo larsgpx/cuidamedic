@@ -20,5 +20,5 @@ export function AH() {
     keywords: dataAH?.data?.Seo?.keywords || 'AH, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/AH',
   });
-return <InternaTratamiento data={dataAH} title='Tratamientos Estéticos Faciales'  />
+return <InternaTratamiento data={dataAH} title='Tratamientos Faciales'  />
 }
