@@ -144,7 +144,7 @@ export function Contactanos() {
                       lat={branch.latitud}
                       lng={branch.longitud}
                       text={`${branch.Lugar} - ${branch.Direccion}`}
-                      onClick={() => handleNavigate(`https://www.google.com/maps/@${branch.latitud},${branch.longitud},15z?entry=ttu&g_ep=EgoyMDI1MTAyOC4wIKXMDSoASAFQAw%3D%3D`)}
+                      onClick={() => handleNavigate(`https://www.google.com/maps/dir/?api=1&destination=${branch.latitud},${branch.longitud}`)}
                     />
                   ))}
                 </GoogleMapReact>
