@@ -18,7 +18,6 @@ export function BlogPost({ postId }) {
   const API_BLOG = (process.env.NEXT_PUBLIC_API_BLOGS || '/api/articles') + `?filters[slug][$eq]=${postId}&populate=*`;
   const API_BLOGS = (process.env.NEXT_PUBLIC_API_BLOGS || '/api/articles') + '?populate[cover]=true&pagination[limit]=3&filters[slug][$ne]=' + postId;
 
-  console.log('📊 API_BLOG:', API_BLOG);
   const { data: dataAPI } = useAPI(API_BLOG); //single blog
   const { data: dataBlogsAPI } = useAPI(API_BLOGS); //related blogs
   useEffect(() => {
@@ -27,8 +26,6 @@ export function BlogPost({ postId }) {
       setDataBlogs(dataBlogsAPI?.data);
     }
   }, [dataAPI, dataBlogsAPI]);
-  console.log('📊 postId recibido:', postId);
-  console.log('📊 dataBlogsAPI:', dataBlogsAPI?.data);
 
   useSEO({
     title: data?.title || 'Blog - Cuidamedic',

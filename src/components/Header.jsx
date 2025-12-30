@@ -7,11 +7,15 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { useAPI } from "@/hooks/useAPI";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileMenus, setOpenMobileMenus] = useState({});
+  const API_GLOBAL = '/api/global';
+  const { data } = useAPI(API_GLOBAL);
+  const [dataGlobal, setDataGlobal] = useState(null);
   const pathname = usePathname();
 
   // Función para determinar si un elemento específico del menú debe tener la clase naranja
@@ -65,7 +69,7 @@ export function Header() {
         ],
     },
     { title: "Nosotros", href: "/nosotros" },
-    { title: "Blog", href: "/blog" },
+    { title: "Blog", href: "/blog", isBlog: "true" },
     { title: "Contáctanos", href: "/contactanos" },
 ];
 
@@ -77,7 +81,15 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      setDataGlobal(data?.data);
+      console.log('dataGlobal blog', data?.data);
+    }
+  }, [data]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -135,7 +147,7 @@ export function Header() {
                              {/* Columna derecha - Tratamientos estéticos */}
                              <div className="space-y-6">
                               <div className="relative">
-                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
+                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS MÉDICOS</h3>
                                 
                                 {/* Estéticos Faciales */}
                                 <div className="group/nested relative mb-4">
@@ -199,7 +211,7 @@ export function Header() {
                             {/* Columna izquierda - Tratamientos básicos */}
                             <div className="space-y-6">
                               <div className="relative">
-                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS</h3>
+                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
                                 <div className="space-y-2">
                                   <Link
                                     href="/tratamientos/mesoterapia-cocktails"
@@ -240,7 +252,8 @@ export function Header() {
                       href={item.href}
                       className={cn(
                         "hover:text-yellow-600 transition-colors font-medium text-md cursor-pointer",
-                        isActiveMenuItem(item.href) ? "text-color-orange" : "text-gray-700"
+                        isActiveMenuItem(item.href) ? "text-color-orange" : "text-gray-700",
+                        item?.isBlog === "true" && !dataGlobal?.Blog ? "hidden" : ""
                       )}
                     >
                       {item.title}

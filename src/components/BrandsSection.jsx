@@ -16,7 +16,7 @@ export function BrandsSection() {
     "/marcas/skinFill.png",
     "/marcas/botox.png", 
     "/marcas/lanluma.png",
-    "/marcas/profhilo.webp",
+    "/marcas/profhilo.png",
     "/marcas/pbserum.webp",
     "/marcas/esthemax.webp",
     "/marcas/ellanse.png",

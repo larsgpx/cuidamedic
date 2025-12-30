@@ -27,7 +27,6 @@ export function HeroSection({ dataBanners, dataHighlights }) {
     }
   }, [dataBanners]);
 
-  console.log('📊 dataHighlights:', dataHighlights);
   // Auto-avance del carousel cada 5 segundos
   useEffect(() => {
     if (!data) return;
@@ -45,8 +44,6 @@ export function HeroSection({ dataBanners, dataHighlights }) {
 
   if (!data) return null;
 
-  console.log('📊 dataBanners:', dataBanners[currentSlide]?.Banner);
-  console.log('📊 data:', dataBanners);
   return (
     <section className="relative min-h-[85vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-100 to-orange-150">
       {/* Carousel Container */}

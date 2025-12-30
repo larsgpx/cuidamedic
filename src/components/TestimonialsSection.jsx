@@ -33,9 +33,9 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
               <p>Pacientes que confiaron en nuestra precisión y dedicación logrando resultados naturales que reflejan lo mejor de ti.</p>
             )}
           </div>
-          <div className="relative md:top-90 top-35">
+          {/* <div className="relative md:top-90 top-35">
             <Image src="/inyectadora.png" alt="inyection" width={250} height={250} className="absolute block bottom-0 md:bottom-20 right-25 md:-right-8  mx-auto md:max-w-[350px] max-w-[150px] md:max-h-[350px] max-h-[150px]" />
-          </div>
+          </div> */}
         </div>
         {/* Before & After Images */}
         <div className="w-full relative md:-top-10 top-0 md:ml-8">
