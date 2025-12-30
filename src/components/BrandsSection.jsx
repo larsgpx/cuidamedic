@@ -14,11 +14,11 @@ export function BrandsSection() {
   // Marcas por defecto
   const defaultBrands = [
     "/marcas/skinFill.png",
-    "/marcas/botox.png", 
     "/marcas/lanluma.png",
+    "/marcas/botox.png", 
     "/marcas/profhilo.png",
-    "/marcas/pbserum.webp",
     "/marcas/esthemax.webp",
+    "/marcas/pbserum.webp",
     "/marcas/ellanse.png",
   ];
 
