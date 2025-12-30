@@ -41,6 +41,137 @@
   font-display: swap;
 }
 
+/* Configuración de fuentes Switzer */
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Variable.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-VariableItalic.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Configuración de fuentes fonnts.com-Larken */
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Thin_Italic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Light_Italic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Medium_Italic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Bold_Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_ExtraBold_Italic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larken';
+  src: url('/fonts/fonnts.com-Larken_Black_Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -52,7 +183,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* --font-sans: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+  --font-sans: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
@@ -65,33 +197,38 @@
 
 /* Configuración global de fuentes */
 * {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+  font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+  font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 300;
 }
 
 /* Configuración específica para títulos */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+  font-family: 'Larken', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.2;
+  font-weight: 600;
 }
 
 /* Configuración específica para texto regular */
 p, span, div, a, input, textarea, label {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+  font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 300; /* Regular */
   color: var(--base-gray);
 }
 
 button,
 button span {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 400; /* Regular */
+  font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 300; /* Regular */
   cursor: pointer;
 }
 
@@ -109,7 +246,7 @@ button span {
 
 .highlight {
   color: var(--orange-primary);
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Larken', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-weight: 500; 
 }
 
@@ -123,16 +260,17 @@ button span {
 
 .text-color-orange {
   color: var(--orange-primary);
+  font-family: 'Larken';
 }
 
 .title-orange {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Larken';
   font-weight: 500; 
   color: var(--base-gray);
 }
 
-.title-orange span {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+.title-orange span, .title-orange b {
+  font-family: 'Larken';
   font-weight: 500; 
   color: var(--orange-primary);
 }
@@ -158,19 +296,19 @@ button span {
 }
 
 .titulo-hero {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Larken';
   font-weight: 600!important; 
   color: var(--base-gray);
 }
 
-.titulo-hero p {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+.titulo-hero p {
+  font-family: 'Larken';
   font-weight: 600; 
   color: var(--base-gray);
 }
 
-.titulo-hero p strong, .description-treatment p strong { 
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+.titulo-hero p strong, .description-treatment p strong { 
+  font-family: 'Larken';
   font-weight: 600!important; 
   color: var(--orange-primary) !important;
 }
@@ -181,17 +319,19 @@ button span {
 }
 
 .hightlight-banner {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Larken';
   font-weight: 500;
   color: var(--base-gray);
 }
 
 .hightlight-banner p {
   font-weight: 600;
+  font-family: 'Larken';
 }
 
 .hightlight-banner span {
   font-weight: 500;
+  font-family: 'Switzer';
 }
 
 /* Doctor carousel container - prevent clipping */
@@ -209,4 +349,8 @@ button span {
 
 .header-navbar a, .header-navbar button {
   font-weight: 500!important;
+}
+
+titulo-hero.header-navbar a, .header-navbar button {
+  font-family: 'Switzer';
 }

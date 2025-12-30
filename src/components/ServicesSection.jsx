@@ -11,7 +11,7 @@ export function WhyChooseUsSection({ description, image}) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div>
-            <h2 className="text-4xl font-semibold mb-6">
+            <h2 className="text-4xl font-semibold mb-6 title-orange">
               ¿Por qué{" "}
               <b className="highlight font-semibold">Elegirnos</b>?
             </h2>

@@ -22,7 +22,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
     <section className="py-10 bg-white flex justify-center mx-auto">
       <div className="container grid md:grid-cols-[20%_80%] grid-cols-1 items-center justify-center px-4 gap-4">
         <div className="relative text-center md:text-left mb-16 w-full md:h-[36rem] h-[16rem] bg-orange-light rounded-3xl p-8 shadow-lg">
-          <h2 className="text-4xl font-semibold mb-6">
+          <h2 className="text-4xl font-semibold mb-6 title-orange">
             Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
           <div className="text-md text-gray-600 text-left max-w-3xl mx-auto [&>p>strong]:text-[#DC9F25]">
@@ -136,7 +136,7 @@ export function TestimonialsSection({ data }) {
     <section className="py-12 bg-[#f8f8f8]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6">
+          <h2 className="text-4xl font-semibold mb-6 title-orange">
             Testimonios <b className="text-yellow-500 font-semibold">Reales</b>
           </h2>
         </div>
