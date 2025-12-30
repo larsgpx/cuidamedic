@@ -35,7 +35,7 @@ export function DoctorEvaluationCard() {
 
   return (
     <div className="container  mx-auto px-4 text-center pt-12 my-10 w-full">
-      <Card className="relative bg-orange-light border-0 shadow-lg w-[100%] lg:w-[95%] md:w-[75%] lg:h-56 h-110 mx-auto rounded-3xl">
+      <Card className="relative bg-orange-light border-0 shadow-lg w-[100%] xl:w-[75%] lg:w-[95%] md:w-[75%] lg:h-56 h-110 mx-auto rounded-3xl">
         <div className="absolute bottom-0 left-0 flex flex-row items-center justify-center right-0 lg:right-auto">
           <Image src="/doctor1.png" alt="Doctor1" className="relative lg:left-20 left-5 scale-x-[-1]" width={200} height={110} />
           <Image src="/doctor2.png" alt="Doctor2" className="relative lg:left-10 left-0 -bottom-1" width={185} height={105} />
