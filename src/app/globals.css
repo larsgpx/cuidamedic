@@ -307,14 +307,21 @@ button span {
   color: var(--base-gray);
 }
 
-.titulo-hero p strong, .description-treatment p strong { 
+.description-treatment p strong { 
+  font-family: 'Larken';
+  font-weight: 600!important; 
+  color: var(--orange-primary) !important;
+}
+
+.titulo-hero p strong {
   font-family: 'Larken';
   font-weight: 600!important; 
   color: var(--orange-primary) !important;
 }
 
 .titulo-hero p em {
-  font-weight: 600;
+  font-family: 'Larken';
+  font-weight: 800;
   font-style: normal!important;
 }
 
