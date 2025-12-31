@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 
         <div className="fixed bottom-4 right-4 z-50">
           <a href="https://wa.me/51992802065" target="_blank">
-            <Image src="/icons/whatsapp-icon.webp" alt="Cuidamedic" width={60} height={60} className="w-20 h-20" />
+            <Image src="/icons/whatsapp-logo.webp" alt="Cuidamedic" width={60} height={60} className="w-20 h-20" />
           </a>
         </div>
       </body>
