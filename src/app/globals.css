@@ -295,6 +295,10 @@ button span {
   border-radius: 20px;
 }
 
+.tab-list-orange button.transition-all {
+  transition: none!important;
+}
+
 .titulo-hero {
   font-family: 'Larken';
   font-weight: 600!important; 
@@ -360,4 +364,8 @@ button span {
 
 titulo-hero.header-navbar a, .header-navbar button {
   font-family: 'Switzer';
+}
+
+.focus-visible\:ring-offset-2:focus-visible {
+  --tw-ring-offset-shadow: transparent!important;
 }
