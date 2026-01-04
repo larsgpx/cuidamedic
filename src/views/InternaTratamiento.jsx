@@ -249,6 +249,8 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                                         caseItem?.antes?.url && caseItem?.despues?.url && (
                                             <ReactCompareImage
                                             sliderLineWidth={4}
+                                            leftImageLabel="Antes"
+                                            rightImageLabel="Después"
                                             leftImageCss={{ height: '400px', width: '100%' }}
                                             rightImageCss={{ height: '400px', width: '100%' }}
                                             leftImage={`${caseItem?.antes?.url?.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} 
