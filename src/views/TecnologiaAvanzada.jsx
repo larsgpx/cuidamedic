@@ -9,7 +9,7 @@ import { InternaTratamientoEspecial } from "@/views/InternaTratamientoEspecial";
 import { ServicesSectionEstetica } from "@/components/ServicesSectionEstetica";
 
 export function TecnologiaAvanzada() {
-  const API_EXION = '/api/tecnologia-avanzada?populate[Banner]=true&populate[Tratamientos][populate]=Imagen&populate[Tratamientos][populate]=Tabs&populate[Seo]=true&populate[Tratamientos][populate][Tabs][populate]=*&populate[Tratamientos][populate][Servicios]=true';
+  const API_EXION = '/api/tecnologia-avanzada?populate[Banner]=true&populate[Tratamientos][populate]=Imagen&populate[Tratamientos][populate]=Tabs&populate[Seo]=true&populate[Tratamientos][populate][Tabs][populate]=*&populate[Tratamientos][populate][Servicios]=true&populate[Tratamientos][populate][Imagen]=true';
   const { data: dataTecnologiaAPI } = useAPI(API_EXION);
   const [dataTecnologia, setDataTecnologia] = useState(null);
   const API_ESTETICA = `/api/otros-servicios?populate[Imagen]=true`;
@@ -73,6 +73,8 @@ export function TecnologiaAvanzada() {
     keywords: dataTecnologia?.data?.Seo?.keywords || 'tecnologia, avanzada, cuidados, tratamiento, Cuidamedic', 
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/tecnologia-avanzada',
   });
+
+  console.log('dataTecnologia', dataTecnologia);
  
   return (
     <div className="min-h-screen">

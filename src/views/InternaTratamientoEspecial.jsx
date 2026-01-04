@@ -27,6 +27,8 @@ export function InternaTratamientoEspecial({ data, title }) {
         }
       }, [data]);
 
+      console.log('treatmentSpecial', data?.Tratamientos)
+
     return (
         <>
             <div className="min-h-screen">

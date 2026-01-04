@@ -17,9 +17,10 @@ export default function EsteticosFacialesPage() {
       setDataEstetica(data?.data);
     } 
   }, [data]);
+
   return (
     <Layout>
-      <TreatmentHeroBanner title={dataEstetica?.Titulo} image={dataEstetica?.Banner?.url} />
+      <TreatmentHeroBanner title={dataEstetica?.Titulo} backgroundImage={dataEstetica?.Banner?.url} />
           {/* Título centrado absolutamente */}
           <div className="container mx-auto mt-10 px-4">
                   

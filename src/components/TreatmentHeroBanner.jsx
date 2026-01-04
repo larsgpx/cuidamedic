@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 
 export function TreatmentHeroBanner({ title, subtitle, backgroundImage }) {
   const titleRef = useRef(null);
+  const urlBg = backgroundImage?.includes('http') ? backgroundImage : process.env.NEXT_PUBLIC_BASE_URL + backgroundImage;
 
   useEffect(() => {
     if (titleRef.current && title) {
@@ -24,12 +25,14 @@ export function TreatmentHeroBanner({ title, subtitle, backgroundImage }) {
     }
   }, [title]);
 
+  console.log('backgroundImage', `url('${backgroundImage?.includes('http') ? backgroundImage : process.env.NEXT_PUBLIC_BASE_URL}${backgroundImage}')'}))`)
+
   return (
     <section className={`relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-start`}>
     <div 
       className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
       style={{
-        backgroundImage: `url(${backgroundImage || '/bg1.jpg'})`
+        backgroundImage: `url(${urlBg})`
       }}
     ></div>
     <div className="relative z-10 text-left px-4 md:pl-2 container mx-auto">
