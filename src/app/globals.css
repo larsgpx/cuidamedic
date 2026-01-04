@@ -369,3 +369,18 @@ titulo-hero.header-navbar a, .header-navbar button {
 .focus-visible\:ring-offset-2:focus-visible {
   --tw-ring-offset-shadow: transparent!important;
 }
+
+.statistic-data {
+  display: grid;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 6%;
+  right: 5%;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    bottom: 5%;
+    right: 0;
+    width: 100%;
+  }
+}

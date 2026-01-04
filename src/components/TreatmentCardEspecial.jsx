@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { TabsTrigger } from "./ui/tabs";
 import { Tabs, TabsList, TabsContent } from "./ui/tabs";
+import { CalendarDays, Clock, MessageSquareMore } from "lucide-react";
 
 export function TreatmentCardEspecial({ 
   title, 
@@ -12,11 +13,42 @@ export function TreatmentCardEspecial({
   boton,
   isEven = false,
   img,
+  services
 }) {
   const router = useRouter();
   const backgroundColor = isEven ? "bg-orange-50" : "bg-white";
   const imageBackground = isEven ? "bg-orange-100" : "bg-gray-200";
   const isContentLeft = isEven;
+  const iconosMap = {
+    'Resultado': MessageSquareMore,
+    'Tiempo': Clock,
+    'Duracion': CalendarDays,
+  };
+
+
+   // Función helper para obtener el icono según el tipo
+  const getIcono = (tipoIcono) => {
+    // Normaliza el tipo a título (primera letra mayúscula, resto minúsculas)
+    const tipoNormalizado = tipoIcono 
+        ? tipoIcono.charAt(0).toUpperCase() + tipoIcono.slice(1).toLowerCase()
+        : null;
+    
+    // Retorna el icono del mapeo o un icono por defecto
+    const IconoComponente = iconosMap[tipoNormalizado] || MessageSquareMore;
+    return IconoComponente;
+  };
+
+  // Función para normalizar el texto: elimina acentos, normaliza espacios y convierte a minúsculas
+  const normalizeText = (text) => {
+      if (!text) return '';
+      return text
+          .toString()
+          .normalize("NFD")                                 // separa los acentos
+          .replace(/[\u0300-\u036f]/g, "")                  // elimina los acentos
+          .replace(/\s+/g, ' ')                             // reemplaza múltiples espacios con uno solo
+          .trim()
+          .toLowerCase();
+  };
   // Función para manejar la navegación
   const handleNavigate = (url) => {
     if (!url) return;
@@ -65,6 +97,18 @@ export function TreatmentCardEspecial({
                         ))
                     }
                 </TabsList>
+                <div className="flex flex-row gap-16 mt-4 justify-start">
+                    {services?.map((service, index) => {
+                        const IconoComponente = getIcono(service.Iconos);
+                        return (
+                        <span key={index} className="text-gray-600 leading-relaxed flex flex-col gap-0 items-center text-sm">
+                            <IconoComponente strokeWidth={1} size={30} />
+                                <b className="mb-0 pb-0">{service.Titulo}</b>
+                                {service.Contenido}
+                        </span>
+                        );
+                    })}
+                </div>
                 {
                     tabs?.map((tab, index) => (
                         <TabsContent key={index} className="mt-6 pb-4 description-treatment" value={index}>

@@ -9,7 +9,7 @@ import { useSEO } from "@/hooks/useSEO";
 import { ServicesSectionEstetica } from "@/components/ServicesSectionEstetica";
 
 export function LimpiezasFaciales() {
-  const API_LIMPIEZAS_FACIALES = (process.env.NEXT_PUBLIC_API_LIMPIEZA_FACIAL || '/api/limpieza-facial') + '?populate[Banner]=true&populate[Tratamientos][populate][imagen]=true&populate[Tratamientos][populate][Checklist]=true&populate[Seo]=true';
+  const API_LIMPIEZAS_FACIALES = (process.env.NEXT_PUBLIC_API_LIMPIEZA_FACIAL || '/api/limpieza-facial') + '?populate[Banner]=true&populate[Tratamientos][populate][imagen]=true&populate[Tratamientos][populate][Checklist]=true&populate[Seo]=true&populate[Tratamientos][populate][Servicios]=true';
   const { data: dataLimpiezasFacialesAPI } = useAPI(API_LIMPIEZAS_FACIALES);
   const [dataLimpiezasFaciales, setDataLimpiezasFaciales] = useState('');
   const API_ESTETICA = `/api/otros-servicios?populate[Imagen]=true`;
@@ -46,6 +46,7 @@ export function LimpiezasFaciales() {
     }
   }, [dataLimpiezasFacialesAPI, dataEsteticaAPI]);
   console.log('📊 dataLimpiezasFaciales:', dataLimpiezasFaciales);
+  console.log('dataEstetica', dataEstetica);
 
   return (
     <div className="min-h-screen">
@@ -66,17 +67,18 @@ export function LimpiezasFaciales() {
           isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
           img={treatment?.imagen?.url ? `${treatment?.imagen?.url.includes('http') ? treatment?.imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${treatment?.imagen?.url}` : undefined}
           checklist={treatment?.Checklist}
-          duration={treatment?.duracion}
-          steps={treatment?.PasosTratamiento}
+          services={treatment?.Servicios}
         />
       ))}
 
       <section className="py-2 bg-white mt-6">
           <div className="container mx-auto px-4">
               <div className="max-w-4xl mx-auto">
-                  <h2 ref={titleOtherServicesRef} className="text-4xl font-bold text-gray-600 mb-5 text-center title-orange">{dataEstetica?.tituloOtrosServicios}</h2>
+                  <h2 ref={titleOtherServicesRef} className={`text-4xl font-bold text-gray-600 mb-5 text-center title-orange ${dataEstetica?.length ? '' : 'hidden'}`}>{dataEstetica?.tituloOtrosServicios}</h2>
               </div>
-              <ServicesSectionEstetica servicesData={dataEstetica} />
+              {dataEstetica &&
+                <ServicesSectionEstetica servicesData={dataEstetica} />
+              }
           </div>
       </section>
 

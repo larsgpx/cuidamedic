@@ -4,7 +4,7 @@ import { ServicesSectionEstetica } from "@/components/ServicesSectionEstetica";
 import { useAPI } from "@/hooks/useAPI";
 import { useState, useEffect } from "react";
 import { TreatmentHeroBanner } from "@/components/TreatmentHeroBanner";
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+
 export default function EsteticosFacialesPage() {
   // Obtener datos de la API de Strapi
   const API_ESTETICA = '/api/esteticas-facial?populate[Servicios][populate]=*&populate[Banner]=true&populate[Seo]=true';
@@ -27,7 +27,7 @@ export default function EsteticosFacialesPage() {
               Nuestros <span className="highlight font-semibold">Servicios</span>
             </h2>
           </div>
-      <ServicesSectionEstetica servicesData={dataEstetica?.Servicios} freeTreatment={true} />
+      <ServicesSectionEstetica allServices={true} servicesData={dataEstetica?.Servicios} freeTreatment={true} />
     </Layout>
   );
 }

@@ -99,9 +99,29 @@ export function HeroSection({ dataBanners, dataHighlights }) {
             ))}
           </div>
         </div>
-        
-        {/* Estadísticas/Características - Fijas, no se ven afectadas por las transiciones */}
-        <div className="max-w-4xl flex self-end statistic-data">
+      </div>
+
+      {/* Dots Navigation - Esquina inferior izquierda */}
+      {data.length > 1 && (
+      <div className="absolute hidden md:block bottom-6 left-20  flex space-x-2 z-1">
+        {data.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`w-6 h-3 rounded-xl transition-all duration-300 ${
+              index === currentSlide 
+                ? 'bg-orange-dark shadow-lg scale-110' 
+                : 'bg-[#f3d69a] hover:bg-orange-dark'
+            }`}
+            aria-label={`Ir al slide ${index + 1}`}
+          />
+        ))}
+      </div>
+  )}
+      {/* Gradient Bottom */}
+      <div className="absolute -bottom-2 md:-bottom-0 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
+      {/* Estadísticas/Características - Fijas, no se ven afectadas por las transiciones */}
+      <div className="statistic-data">
           <div
             className="grid grid-cols-2 md:grid-rows-1 grid-rows-2 md:grid-cols-4 gap-2 max-w-4xl mx-auto relative md:absolute"
             style={style.stats}
@@ -124,27 +144,6 @@ export function HeroSection({ dataBanners, dataHighlights }) {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Dots Navigation - Esquina inferior izquierda */}
-      {data.length > 1 && (
-      <div className="absolute hidden md:block bottom-6 left-20  flex space-x-2 z-1">
-        {data.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-6 h-3 rounded-xl transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-orange-dark shadow-lg scale-110' 
-                : 'bg-[#f3d69a] hover:bg-orange-dark'
-            }`}
-            aria-label={`Ir al slide ${index + 1}`}
-          />
-        ))}
-      </div>
-  )}
-      {/* Gradient Bottom */}
-      <div className="absolute -bottom-2 md:-bottom-0 left-0 right-0 h-30 bg-gradient-to-t from-white to-transparent"></div>
     </section>
   );
 }

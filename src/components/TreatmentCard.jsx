@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ClockIcon } from "lucide-react";
+import { CalendarDays, Clock, MessageSquareMore } from "lucide-react";
 export function TreatmentCard({ 
   title, 
   description, 
@@ -11,8 +11,7 @@ export function TreatmentCard({
   isEven = false,
   img,
   checklist,
-  steps,
-  duration,
+  services
 }) {
   const router = useRouter();
   const backgroundColor = isEven ? "bg-orange-50" : "bg-white";
@@ -34,6 +33,24 @@ export function TreatmentCard({
       router.push(`/${url}`);
     }
   };
+
+  const iconosMap = {
+    'Resultado': MessageSquareMore,
+    'Tiempo': Clock,
+    'Duracion': CalendarDays,
+};
+
+// Función helper para obtener el icono según el tipo
+const getIcono = (tipoIcono) => {
+    // Normaliza el tipo a título (primera letra mayúscula, resto minúsculas)
+    const tipoNormalizado = tipoIcono 
+        ? tipoIcono.charAt(0).toUpperCase() + tipoIcono.slice(1).toLowerCase()
+        : null;
+    
+    // Retorna el icono del mapeo o un icono por defecto
+    const IconoComponente = iconosMap[tipoNormalizado] || MessageSquareMore;
+    return IconoComponente;
+};
 
   return (
     <section className={`py-16 ${backgroundColor}`}>
@@ -57,18 +74,18 @@ export function TreatmentCard({
               <h2 className="text-2xl font-semibold text-gray-700 mb-2">
                 {title}
               </h2>
-              {duration && (
-              <span className="text-sm text-gray-300 flex gap-2 my-1"><ClockIcon className="w-4 h-4 text-gray-600" /><b>Duración:</b> {duration} </span>
-              )}
-
-              {/*  TODO: validar si los steps estan en la posicion correcta y que carguen bien  */}
-              {steps && (
-                <div className="space-y-2 text-gray-600 leading-relaxed mb-4">
-                  {steps && 
-                  <span className="text-sm text-gray-300">{steps}</span>
-                  }
-                </div>
-              )}
+              <div className="flex flex-row gap-16 mt-4 mb-4 justify-start">
+                  {services?.map((service, index) => {
+                      const IconoComponente = getIcono(service.Iconos);
+                      return (
+                      <span key={index} className="text-gray-600 leading-relaxed flex flex-col gap-0 items-center text-sm">
+                          <IconoComponente strokeWidth={1} size={30} />
+                              <b className="mb-0 pb-0">{service.Titulo}</b>
+                              {service.Contenido}
+                      </span>
+                      );
+                  })}
+              </div>
               
               {/* Descripción */}
               <div className="space-y-4 text-gray-600 leading-relaxed mb-2 description-treatment">

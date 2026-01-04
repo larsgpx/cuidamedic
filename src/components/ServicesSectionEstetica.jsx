@@ -5,7 +5,7 @@ import { DoctorEvaluationCard } from "@/components/DoctorEvaluationCard";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useRouter } from 'next/navigation';
 
-export function ServicesSectionEstetica({ servicesData, freeTreatment = false }) {
+export function ServicesSectionEstetica({ allServices = false, servicesData, freeTreatment = false }) {
   const router = useRouter();
   
   // Función para manejar la navegación
@@ -56,40 +56,19 @@ export function ServicesSectionEstetica({ servicesData, freeTreatment = false })
       overlay: "from-orange-100/80 to-orange-200/40"
     },  
   ]
- 
 
-  // Limitar a máximo 4 servicios, todos en una sola fila
-  const limitedServices = servicesData && Array.isArray(servicesData) 
-    ? servicesData.slice(0, 4) 
+  // Limitar servicios según el prop allServices
+  const limitedServices = servicesData && Array.isArray(servicesData)
+    ? (allServices ? servicesData : servicesData.slice(0, 4))
     : [];
-  
-  // Calcular las clases de columnas una sola vez para evitar problemas de hidratación
-  const getColumnClasses = (count) => {
-    // Mobile: 1 columna (col-span-12)
-    // Tablet: 2 columnas (col-span-6)
-    // Desktop: distribución equitativa basada en cantidad
-    let desktopClass = '';
-    if (count === 1) {
-      desktopClass = 'lg:col-span-12';
-    } else if (count === 2) {
-      desktopClass = 'lg:col-span-6';
-    } else if (count === 3) {
-      desktopClass = 'lg:col-span-4';
-    } else {
-      desktopClass = 'lg:col-span-3'; // 4 elementos
-    }
-    return `col-span-12 md:col-span-6 ${desktopClass}`;
-  };
-  
-  const columnClasses = getColumnClasses(limitedServices.length);
 
   return (
     <section className="py-5 bg-white">
       <div className="container mx-auto px-4">
  
-        {/* Service Cards - Máximo 4 servicios, responsivo: mobile 1 col, tablet 2 cols, desktop hasta 4 cols */}
+        {/* Service Cards - Responsivo: mobile 1 col, tablet 2 cols, desktop hasta 4 cols (o más si allServices es true) */}
         <div className="mb-16">
-          <div className="grid grid-cols-12 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {limitedServices.map((service, index) => {
               const cardHeight = 'h-56';
               
@@ -107,8 +86,17 @@ export function ServicesSectionEstetica({ servicesData, freeTreatment = false })
               const imageUrl = getImageUrl();
               const backgroundImageStyle = imageUrl ? { backgroundImage: `url('${imageUrl}')` } : {};
               
+              // Calcular ancho de las cards para flexbox
+              const getCardWidth = () => {
+                const count = limitedServices.length;
+                if (count === 1) return 'w-full max-w-md';
+                if (count === 2) return 'w-full md:w-[calc(50%-0.75rem)] max-w-md';
+                if (count === 3) return 'w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-sm';
+                return 'w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] max-w-sm';
+              };
+              
               return (
-                <div key={service.id || index} className={columnClasses}>
+                <div key={service.id || index} className={getCardWidth()}>
                   <Card onClick={() => handleNavigate(service.url)} className={`overflow-hidden border-0 shadow-lg ${cardHeight} relative group cursor-pointer transition-all duration-300 bg-orange-primary w-full`}>
                     <CardContent className="p-0 h-full">
                       <div 

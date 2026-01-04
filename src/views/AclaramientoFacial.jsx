@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO";
 
 export function AclaramientoFacial() {
-  const API_TOXINA = '/api/aclaramiento-facial?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true&populate[Interna][populate][casosDeExito][populate]=*';
+  const API_TOXINA = '/api/aclaramiento-facial?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true&populate[Interna][populate][casosDeExito][populate]=*&populate[Interna][populate][Servicios][populate]=*';
   const { data: dataToxinaAPI } = useAPI(API_TOXINA);
   const [dataToxina, setDataToxina] = useState(null);
   useEffect(() => {

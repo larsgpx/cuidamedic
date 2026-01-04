@@ -50,6 +50,7 @@ export function InternaTratamientoEspecial({ data, title }) {
                 isEven={index % 2 !== 0} // Índices impares (1, 3) tendrán background naranja
                 img={treatment.Imagen?.url ? `${treatment.Imagen.url.includes('http') ? treatment.Imagen.url : process.env.NEXT_PUBLIC_BASE_URL}${treatment.Imagen.url}` : undefined}
                 boton={treatment.UrlBoton}
+                services={treatment.Servicios}
                 />
             ))} 
             </div>

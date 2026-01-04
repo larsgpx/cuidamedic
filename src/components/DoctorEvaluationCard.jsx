@@ -42,7 +42,7 @@ export function DoctorEvaluationCard() {
         </div>
         <CardContent className="p-8 text-center lg:w-80 flex flex-col items-center absolute lg:right-[15%] right-[0%]">
           <h3 className="text-2xl font-semibold text-gray-600 mb-4 pt-5">
-            {dataGlobal?.TextoEvaluacionGratuita}
+            {dataGlobal?.TextoEvaluacionGratuita ? dataGlobal?.TextoEvaluacionGratuita : '¿No sabes cuál es tu tratamiento ideal?'}
           </h3>
           <Button onClick={() => handleNavigate(dataGlobal?.UrlEvaluacionGratuita)} className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 mt-2 rounded-xl">
             Solicita tu evaluación gratuita

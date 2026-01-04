@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO";
 
 export function AH() {
-  const API_AH = '/api/acido-hialurico?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true&populate[Interna][populate][casosDeExito][populate]=*';
+  const API_AH = '/api/acido-hialurico?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true&populate[Interna][populate][casosDeExito][populate]=*&populate[Interna][populate][Servicios][populate]=*';
   const { data: dataAHAPI } = useAPI(API_AH);
   const [dataAH, setDataAH] = useState(null);
   useEffect(() => {

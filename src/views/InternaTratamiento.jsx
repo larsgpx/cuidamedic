@@ -6,6 +6,7 @@ import { Layout } from "@/components/Layout";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { useEffect, useRef, useState } from 'react';
 import Image from "next/image";
+import { CalendarDays, Clock, MessageSquareMore } from "lucide-react";
 import { ServicesSectionEstetica } from "@/components/ServicesSectionEstetica";
 import {
   Accordion,
@@ -16,6 +17,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import ReactCompareImage from 'react-compare-image';
 import { useAPI } from "@/hooks/useAPI";
+import { Icon } from "lucide-react";
 
 export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-facial' }) {
     const titleRef = useRef(null);
@@ -25,6 +27,38 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
     const { data: dataEsteticaAPI } = useAPI(API_ESTETICA);
     const [dataEstetica, setDataEstetica] = useState(null);
     const [titleOtherServices, setTitleOtherServices] = useState('Servicios que podrian interesarte');
+    const [otherServicesData, setOtherServicesData] = useState({});
+
+    // Mapeo de iconos - Escalable para agregar más iconos en el futuro
+    const iconosMap = {
+        'Resultado': MessageSquareMore,
+        'Tiempo': Clock,
+        'Duracion': CalendarDays,
+    };
+
+    // Función helper para obtener el icono según el tipo
+    const getIcono = (tipoIcono) => {
+        // Normaliza el tipo a título (primera letra mayúscula, resto minúsculas)
+        const tipoNormalizado = tipoIcono 
+            ? tipoIcono.charAt(0).toUpperCase() + tipoIcono.slice(1).toLowerCase()
+            : null;
+        
+        // Retorna el icono del mapeo o un icono por defecto
+        const IconoComponente = iconosMap[tipoNormalizado] || MessageSquareMore;
+        return IconoComponente;
+    };
+
+    // Función para normalizar el texto: elimina acentos, normaliza espacios y convierte a minúsculas
+    const normalizeText = (text) => {
+        if (!text) return '';
+        return text
+            .toString()
+            .normalize("NFD")                                 // separa los acentos
+            .replace(/[\u0300-\u036f]/g, "")                  // elimina los acentos
+            .replace(/\s+/g, ' ')                             // reemplaza múltiples espacios con uno solo
+            .trim()
+            .toLowerCase();
+    };
     const handleNavigate = (url) => {
         if (!url) return;
         
@@ -43,10 +77,29 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
       };
 
       useEffect(() => {
-        if (dataEsteticaAPI) {
-        setDataEstetica(dataEsteticaAPI?.data);
+        if (dataEsteticaAPI?.data) {
+            // Si hay servicios y un título para comparar, filtrar los servicios que coincidan
+            if (dataEsteticaAPI.data.Servicios && info?.Titulo) {
+                const mainTitle = normalizeText(info?.Titulo);
+                
+                // Filtrar servicios excluyendo los que tengan el mismo título (normalizado)
+                const filteredServicios = dataEsteticaAPI.data.Servicios.filter(
+                    (serv) => {
+                        const servicioTitle = normalizeText(serv?.Titulo);
+                        return servicioTitle !== mainTitle;
+                    }
+                );
+                
+                setDataEstetica({
+                    ...dataEsteticaAPI.data,
+                    Servicios: filteredServicios,
+                });
+            } else {
+                // Si no hay título para comparar, usar todos los servicios
+                setDataEstetica(dataEsteticaAPI.data);
+            }
         }
-        }, [dataEsteticaAPI]);
+        }, [dataEsteticaAPI, info?.Titulo]);
 
       useEffect(() => {
         if (info?.Titulo) {
@@ -82,7 +135,6 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
           
       }, [data]);
 
-      console.log('📊 dataEstetica:', dataEstetica);
     return (
         <Layout>
             <div className="min-h-screen">
@@ -132,6 +184,18 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                                 ))
                             }
                         </TabsList>
+                        <div className="flex flex-row gap-16 mt-4 justify-start">
+                            {info?.Servicios?.map((service, index) => {
+                                const IconoComponente = getIcono(service.Iconos);
+                                return (
+                                <span key={index} className="text-gray-600 leading-relaxed flex flex-col gap-0 items-center text-sm">
+                                    <IconoComponente strokeWidth={1} size={30} />
+                                        <b className="mb-0 pb-0">{service.Titulo}</b>
+                                        {service.Contenido}
+                                </span>
+                                );
+                            })}
+                        </div>
                         {
                             info?.Tabs?.map((tab, index) => (
                                 <TabsContent key={index} className="mt-6 pb-4" value={index}>
@@ -232,9 +296,12 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
             <section className="py-2 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="max-w-4xl mx-auto">
-                        <h2 ref={titleOtherServicesRef} className="text-4xl font-bold text-gray-600 mb-12 text-center title-orange">{info?.tituloOtrosServicios}</h2>
+                        <h2 ref={titleOtherServicesRef} className={`text-4xl font-bold text-gray-600 mb-12 text-center title-orange ${dataEstetica?.Servicios ? '' : 'hidden'}`}>{info?.tituloOtrosServicios}</h2>
+                        
                     </div>
+                    {dataEstetica?.Servicios && 
                     <ServicesSectionEstetica servicesData={dataEstetica?.Servicios} />
+                    }
                 </div>
             </section>
             </div>

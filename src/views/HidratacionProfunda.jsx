@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO";
 
 export function HidratacionProfunda() {
-  const API_HIDRATACION = '/api/hidratacion-profunda?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true&populate[Interna][populate][casosDeExito][populate]=*';
+  const API_HIDRATACION = '/api/hidratacion-profunda?populate[Interna][populate][ImagenBanner]=true&populate[Interna][populate][Tabs][populate]=*&populate[Interna][populate][Imagen]=true&populate[Interna][populate][Seo]=true&populate[Interna][populate][preguntas]=true&populate[Interna][populate][casosDeExito][populate]=*&populate[Interna][populate][Servicios][populate]=*';
   const { data: dataHidratacionAPI } = useAPI(API_HIDRATACION);
   const [dataHidratacion, setDataHidratacion] = useState(null);
   useEffect(() => {

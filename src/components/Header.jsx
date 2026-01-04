@@ -31,19 +31,7 @@ export function Header() {
     {
         title: "Servicios",
         submenu: [
-            {
-                title: "Limpiezas faciales",
-                href: "/tratamientos/limpiezas-faciales",
-            },
-            {
-              title: "Mesoterapia & Cocktails",
-              href: "/tratamientos/mesoterapia-cocktails",
-            },
-            {
-              title: "Radiofrecuencia",
-              href: "/tratamientos/tecnologia-avanzada",
-            },
-            {
+              {
                 title: "Tratamientos Faciales",
                 submenu: [
                     { title: "Toxina Botulinica", href: "/tratamientos/esteticos-faciales/toxina" },
@@ -66,6 +54,18 @@ export function Header() {
                     { title: "Radiofrecuencia", href: "/tratamientos/esteticos-corporales/mesoterapias" },
                 ],
             },
+            {
+              title: "Tratamientos Regenerativos",
+              href: "/tratamientos/tratamientos-regenerativos",
+            },
+            {
+                title: "Limpiezas faciales",
+                href: "/tratamientos/limpiezas-faciales",
+            },
+            {
+              title: "Tecnología Avanzada",
+              href: "/tratamientos/tecnologia-avanzada",
+            }
         ],
     },
     { title: "Nosotros", href: "/nosotros" },
@@ -156,7 +156,7 @@ export function Header() {
                                 <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS MÉDICOS</h3>
                                 
                                 {/* Estéticos Faciales */}
-                                <div className="group/nested relative mb-4">
+                                <div className="group/nested relative mb-2">
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div>
@@ -185,7 +185,7 @@ export function Header() {
                                 </div>
 
                                 {/* Estéticos Corporales */}
-                                <div className="group/nested relative">
+                                <div className="group/nested relative mb-2">
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
                                       <div>
@@ -212,6 +212,16 @@ export function Header() {
                                     </div>
                                   </div>
                                 </div>
+
+                                <Link
+                                    href="/tratamientos/tecnologia-avanzada"
+                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
+                                  >
+                                    <div>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Tecnología Avanzada</h4>
+                                      <p className="text-xs text-gray-500 mt-1">Terapias de radiofrecuencia para la piel</p>
+                                    </div>
+                                  </Link>
                               </div>
                             </div>
                             {/* Columna izquierda - Tratamientos básicos */}
@@ -219,16 +229,7 @@ export function Header() {
                               <div className="relative">
                                 <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
                                 <div className="space-y-2">
-                                  <Link
-                                    href="/tratamientos/mesoterapia-cocktails"
-                                    className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
-                                  >
-                                    <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Regenerativos</h4>
-                                      <p className="text-xs text-gray-500 mt-1">Vitaminas y terapias regenerativas que revitalizan tu piel desde el interior</p>
-                                    </div>
-                                  </Link>
-                                  <Link
+                                <Link
                                     href="/tratamientos/limpiezas-faciales"
                                     className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
                                   >
@@ -238,12 +239,12 @@ export function Header() {
                                     </div>
                                   </Link>
                                   <Link
-                                    href="/tratamientos/tecnologia-avanzada"
+                                    href="/tratamientos/tratamientos-regenerativos"
                                     className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
                                   >
                                     <div>
-                                      <h4 className="font-semibold text-gray-900 text-sm">Tecnología Avanzada</h4>
-                                      <p className="text-xs text-gray-500 mt-1">Terapias de radiofrecuencia para la piel</p>
+                                      <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Regenerativos</h4>
+                                      <p className="text-xs text-gray-500 mt-1">Vitaminas y terapias regenerativas que revitalizan tu piel desde el interior</p>
                                     </div>
                                   </Link>
                                 </div>
@@ -310,7 +311,7 @@ export function Header() {
                           className="flex items-center justify-between w-full text-gray-700 hover:text-yellow-600 transition-colors font-medium text-md py-2"
                           onClick={() => toggleMobileSubmenu(`menu-${index}`)}
                         >
-                          <span>{item.title}</span>
+                          {item.title}
                           <ChevronDown className={cn("h-4 w-4 transition-transform", openMobileMenus[`menu-${index}`] && "rotate-180")} />
                         </button>
                         
