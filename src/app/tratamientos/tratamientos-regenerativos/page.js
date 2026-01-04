@@ -17,6 +17,16 @@ export default function MesoterapiaCocktails() {
   const [dataEstetica, setDataEstetica] = useState(null);
   const [titleOtherServices, setTitleOtherServices] = useState('Servicios que podrian interesarte');
   const titleOtherServicesRef = useRef(null);
+  const normalizeText = (text) => {
+    if (!text) return '';
+    return text
+        .toString()
+        .normalize("NFD")                                 // separa los acentos
+        .replace(/[\u0300-\u036f]/g, "")                  // elimina los acentos
+        .replace(/\s+/g, ' ')                             // reemplaza múltiples espacios con uno solo
+        .trim()
+        .toLowerCase();
+  };
   
   useSEO({
     title: mesoterapiaCocktail?.data?.Seo?.title || 'Cuidamedic - Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
@@ -30,8 +40,23 @@ export default function MesoterapiaCocktails() {
     }
 
     if (dataEsteticaAPI) {
-      setDataEstetica(dataEsteticaAPI?.data);
+      if (dataEsteticaAPI.data && mesoterapiaCocktail?.titulo) {
+        const mainTitle = normalizeText(mesoterapiaCocktail?.titulo);
+        
+        // Filtrar servicios excluyendo los que tengan el mismo título (normalizado)
+        const filteredServicios = dataEsteticaAPI?.data.filter(
+            (serv) => {
+                const servicioTitle = normalizeText(serv?.Titulo);
+                return servicioTitle !== mainTitle;
+            }
+        );
+
+        setDataEstetica(filteredServicios);
+    } else {
+        // Si no hay título para comparar, usar todos los servicios
+        setDataEstetica(dataEsteticaAPI.data);
     }
+  }
 
     const titleText = dataEstetica?.tituloOtrosServicios?.trim() || titleOtherServices;
     const words = titleText.split(' ');

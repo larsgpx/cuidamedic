@@ -18,6 +18,17 @@ export function LimpiezasFaciales() {
   const [titleOtherServices, setTitleOtherServices] = useState('Servicios que podrian interesarte');
   const titleOtherServicesRef = useRef(null);
 
+  const normalizeText = (text) => {
+    if (!text) return '';
+    return text
+        .toString()
+        .normalize("NFD")                                 // separa los acentos
+        .replace(/[\u0300-\u036f]/g, "")                  // elimina los acentos
+        .replace(/\s+/g, ' ')                             // reemplaza múltiples espacios con uno solo
+        .trim()
+        .toLowerCase();
+};
+
   useSEO({
     title: dataLimpiezasFaciales?.data?.Seo?.title || 'Cuidamedic- Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
     description: dataLimpiezasFaciales?.data?.Seo?.descripcion || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',
@@ -29,8 +40,23 @@ export function LimpiezasFaciales() {
       setDataLimpiezasFaciales(dataLimpiezasFacialesAPI?.data);
     }
 
-    if (dataEsteticaAPI) {
-      setDataEstetica(dataEsteticaAPI?.data);
+      if (dataEsteticaAPI) {
+        if (dataEsteticaAPI.data && dataLimpiezasFaciales?.titulo) {
+          const mainTitle = normalizeText(dataLimpiezasFaciales?.titulo);
+          
+          // Filtrar servicios excluyendo los que tengan el mismo título (normalizado)
+          const filteredServicios = dataEsteticaAPI?.data.filter(
+              (serv) => {
+                  const servicioTitle = normalizeText(serv?.Titulo);
+                  return servicioTitle !== mainTitle;
+              }
+          );
+
+          setDataEstetica(filteredServicios);
+      } else {
+          // Si no hay título para comparar, usar todos los servicios
+          setDataEstetica(dataEsteticaAPI.data);
+      }
     }
     const titleText = dataEstetica?.tituloOtrosServicios?.trim() || titleOtherServices;
     const words = titleText.split(' ');
@@ -45,7 +71,7 @@ export function LimpiezasFaciales() {
       `;
     }
   }, [dataLimpiezasFacialesAPI, dataEsteticaAPI]);
-  console.log('📊 dataLimpiezasFaciales:', dataLimpiezasFaciales);
+
   console.log('dataEstetica', dataEstetica);
 
   return (
