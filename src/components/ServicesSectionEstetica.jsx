@@ -29,31 +29,31 @@ export function ServicesSectionEstetica({ allServices = false, servicesData, fre
   const overlays = [
     {
       position: "top-small-1",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "top-small-2",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "top-small-3",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-1",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-2",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-3",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-4",
-      overlay: "from-orange-100/80 to-orange-200/40"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },  
   ]
 
@@ -115,7 +115,7 @@ export function ServicesSectionEstetica({ allServices = false, servicesData, fre
                           <h3 className={`text-2xl font-semibold transition-all duration-300 text-center ${
                             service.featured 
                               ? 'text-white text-xl group-hover:text-2xl transform translate-y-0 group-hover:-translate-y-2' 
-                              : 'text-gray-700 text-xl group-hover:text-2xl transform translate-y-0 group-hover:-translate-y-2'
+                              : 'text-gray-100 text-shadow-md text-shadow-stone-500 text-xl group-hover:text-2xl transform translate-y-0 group-hover:-translate-y-2'
                           }`}>
                             {service.Titulo}
                           </h3>

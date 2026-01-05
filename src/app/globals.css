@@ -384,3 +384,7 @@ titulo-hero.header-navbar a, .header-navbar button {
     width: 100%;
   }
 }
+
+.description-service {
+  color: white!important;
+}

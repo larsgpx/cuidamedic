@@ -97,7 +97,7 @@ export function Contactanos() {
       </section>
 
       {/* Contact Information Section */}
-      <section className="py-10 bg-white">
+      <section className="pt-10 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 title-orange">
             ¿Donde nos <span>Ubicamos</span>?
@@ -124,11 +124,10 @@ export function Contactanos() {
       </section>
 
       {/* Map Section */}
-      <section className="bg-white">
+      <section className="bg-white mb-8">
         <div className="container mx-auto">
-          
+          <LocationsSection />
           <div className="max-w-6xl mx-auto">
-            
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="h-96 w-full">
                 <GoogleMapReact
@@ -153,10 +152,7 @@ export function Contactanos() {
           </div>
         </div>
       </section>
-      
-
-      {/* Branches Section */}
-      <LocationsSection />
+    
     </Layout>
   );
 }

@@ -65,31 +65,31 @@ export function ServicesSection({ servicesData }) {
   const overlays = [
     {
       position: "top-small-1",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "top-small-2",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "top-small-3",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-1",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-2",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-3",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },
     {
       position: "bottom-large-4",
-      overlay: "from-orange-100/90 to-orange-200/60"
+      overlay: "from-orange-200/20 to-stone-400/90"
     },  
   ]
   const services = [
@@ -246,7 +246,7 @@ export function ServicesSection({ servicesData }) {
                             <div className={`absolute inset-0 bg-gradient-to-br  transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                             
                             {/* Overlay base para featured card */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${overlays[globalIndex]?.overlay || 'from-orange-100/90 to-orange-200/60'} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
+                            <div className={`absolute inset-0 bg-gradient-to-br ${overlays[globalIndex]?.overlay} transition-all duration-300 group-hover:backdrop-blur-sm`}></div>
                             
                             {/* Blur overlay que aparece en hover */}
                             <div className="absolute inset-0 bg-orange-primary/0 group-hover:bg-orange-primary/40 transition-all duration-300 backdrop-blur-0 group-hover:backdrop-blur-sm"></div>
@@ -256,7 +256,7 @@ export function ServicesSection({ servicesData }) {
                               <h3 className={`text-3xl font-semibold transition-all duration-300 text-center ${
                                 service.featured 
                                   ? 'text-white opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8' 
-                                  : 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'
+                                  : 'text-gray-100 text-shadow-md text-shadow-stone-500 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'
                               }`}>
                                 {service.titulo}
                               </h3>
@@ -264,7 +264,7 @@ export function ServicesSection({ servicesData }) {
                             
                             {/* Descripción centrada absolutamente */}
                             <div className="absolute inset-0 flex items-center justify-center z-10">
-                              <p className={`text-sm transition-all duration-300 text-center px-4 ${
+                              <p className={`text-md text-white text-shadow-md transition-all duration-300 text-center px-4 description-service ${
                                 'leading-relaxed text-white opacity-0 group-hover:opacity-100 transform translate-y-8 group-hover:translate-y-0'
                               }`}>
                                 {service.description}
