@@ -87,7 +87,6 @@ export function Header() {
   useEffect(() => {
     if (data) {
       setDataGlobal(data?.data);
-      console.log('dataGlobal blog', data?.data);
     }
   }, [data]);
 
@@ -159,7 +158,7 @@ export function Header() {
                                 <div className="group/nested relative mb-2">
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
-                                      <div>
+                                      <div onClick={() => window.open('/tratamientos/esteticos-faciales', '_self')}>
                                         <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Faciales</h4>
                                         <p className="text-xs text-gray-500">Tratamientos especializados para el rostro</p>
                                       </div>
@@ -188,7 +187,7 @@ export function Header() {
                                 <div className="group/nested relative mb-2">
                                   <div className="flex items-center justify-between p-3 rounded-lg hover:bg-orange-50 transition-colors cursor-pointer">
                                     <div className="flex items-center space-x-3">
-                                      <div>
+                                      <div onClick={() => window.open('/tratamientos/esteticos-corporales', '_self')}>
                                         <h4 className="font-semibold text-gray-900 text-sm">Tratamientos Corporales</h4>
                                         <p className="text-xs text-gray-500">Tratamientos para el cuerpo</p>
                                       </div>

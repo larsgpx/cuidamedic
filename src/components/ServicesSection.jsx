@@ -253,7 +253,7 @@ export function ServicesSection({ servicesData }) {
                             
                             {/* Título centrado absolutamente */}
                             <div className="absolute inset-0 flex items-center justify-center z-10">
-                              <h3 className={`text-lg font-semibold transition-all duration-300 text-center ${
+                              <h3 className={`text-3xl font-semibold transition-all duration-300 text-center ${
                                 service.featured 
                                   ? 'text-white opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8' 
                                   : 'text-gray-600 opacity-100 group-hover:opacity-0 transform translate-y-0 group-hover:-translate-y-8'

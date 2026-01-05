@@ -206,7 +206,7 @@ body {
   color: var(--foreground);
   /* font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
   font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 /* Configuración específica para títulos */
@@ -221,19 +221,19 @@ h1, h2, h3, h4, h5, h6 {
 p, span, div, a, input, textarea, label {
   /* font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
   font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 300; /* Regular */
+  font-weight: 400; /* Regular */
   color: var(--base-gray);
 }
 
 button,
 button span {
   font-family: 'Switzer', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-weight: 300; /* Regular */
+  font-weight: 400; /* Regular */
   cursor: pointer;
 }
 
 .navbar-btn {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .cta-button {
