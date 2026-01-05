@@ -15,7 +15,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
-import ReactCompareImage from 'react-compare-image';
+import { ImgComparisonSlider } from '@img-comparison-slider/react';
 import { useAPI } from "@/hooks/useAPI";
 import { Icon } from "lucide-react";
 
@@ -247,15 +247,16 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                                     {/* Before/After Slider Effect */}
                                     {
                                         caseItem?.antes?.url && caseItem?.despues?.url && (
-                                            <ReactCompareImage
-                                            sliderLineWidth={4}
-                                            leftImageLabel="Antes"
-                                            rightImageLabel="Después"
-                                            leftImageCss={{ height: '400px', width: '100%' }}
-                                            rightImageCss={{ height: '400px', width: '100%' }}
-                                            leftImage={`${caseItem?.antes?.url?.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} 
-                                            rightImage={`${caseItem?.despues?.url?.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`} 
-                                            />
+                                            <ImgComparisonSlider>
+                                                <figure slot="first" class="beforeSlider">
+                                                <img slot="first" width="100%" src={`${caseItem?.antes?.url?.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} />
+                                                <figcaption>Antes</figcaption>
+                                                </figure>
+                                                <figure slot="second" class="afterSlider">
+                                                <img slot="second" width="100%" src={`${caseItem?.despues?.url?.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`} />
+                                                <figcaption>Después</figcaption>
+                                                </figure>
+                                            </ImgComparisonSlider>
                                         )
                                     }
                                 </div>

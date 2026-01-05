@@ -1,11 +1,12 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import ReactCompareImage from 'react-compare-image';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useState, useEffect } from "react";
+import { ImgComparisonSlider } from '@img-comparison-slider/react';
+
 
 export function SuccessCasesSection({ casosTexto, casosData }) {
   const [cases, setCases] = useState([]);
@@ -45,17 +46,16 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
                 <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
                   <CardContent className="h-86 p-0">
                     <div className={`relative`}>
-                      {/* Before/After Slider Effect */}
-                      <ReactCompareImage
-                        sliderLineWidth={4}
-                        leftImageLabel="Antes"
-                        rightImageLabel="Después"
-                        leftImageCss={{ height: '400px', width: '100%' }}
-                        rightImageCss={{ height: '400px', width: '100%' }}
-                        leftImage={`${caseItem?.image?.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
-                        rightImage={`${caseItem?.afterImage?.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
-                      />
-                    
+                      <ImgComparisonSlider>
+                        <figure slot="first" class="beforeSlider">
+                          <img slot="first" width="100%" src={`${caseItem?.image?.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} />
+                          <figcaption>Antes</figcaption>
+                        </figure>
+                        <figure slot="second" class="afterSlider">
+                          <img slot="second" width="100%" src={`${caseItem?.afterImage?.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} />
+                          <figcaption>Después</figcaption>
+                        </figure>
+                      </ImgComparisonSlider>
                     </div>
                   </CardContent>
                 </Card>

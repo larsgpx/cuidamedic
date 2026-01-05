@@ -391,3 +391,33 @@ titulo-hero.header-navbar a, .header-navbar button {
 .description-service {
   color: white!important;
 }
+
+
+
+/* estilos de before after slider */
+
+.beforeSlider,
+  .afterSlider {
+    margin: 0;
+  }
+
+  .beforeSlider figcaption,
+  .afterSlider figcaption {
+    background: #fff;
+    border-radius: 12px;
+    color: #2e3452;
+    opacity: 0.5;
+    padding: 12px;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    line-height: 100%;
+  }
+
+  .beforeSlider figcaption {
+    left: 12px;
+  }
+
+  .afterSlider figcaption {
+    right: 12px;
+  }
