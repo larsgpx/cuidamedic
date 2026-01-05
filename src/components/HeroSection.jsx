@@ -67,7 +67,7 @@ export function HeroSection({ dataBanners, dataHighlights }) {
       <div className="relative z-10 container mx-auto px-4 text-center w-full">
         <div className="max-w-1xl md:max-w-2xl text-left">
           {/* Main Heading */}
-          <h1 className="pt-20 pr-4 md:pr-0 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9F25] [&>p>strong]:font-semibold">
+          <h1 className="pt-20 pr-4 md:pr-0 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9E26] [&>p>strong]:font-semibold">
             {data[currentSlide]?.Titulo ? (
               <BlocksRenderer content={data[currentSlide].Titulo} />
             ) : (

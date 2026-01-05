@@ -175,9 +175,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --orange-light: #FCF8F0;
-  --orange-primary: #DC9F25;
-  --base-gray: #565656;
+  --orange-light: #FFF3E6;
+  --orange-primary: #DC9F26;
+  --base-gray: #575756;
 }
 
 @theme inline {

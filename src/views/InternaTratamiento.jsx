@@ -263,7 +263,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                             </Card>
                             {/* Label */}
                             <div className="relative top-4 shadow-lg">
-                                <div className="bg-[#DC9F25] backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                                <div className="bg-[#DC9E26] backdrop-blur-sm rounded-lg px-4 py-2 text-center">
                                 <strong className="text-sm font-semibold text-white">{caseItem.titulo}</strong>
                                 </div>
                             </div>

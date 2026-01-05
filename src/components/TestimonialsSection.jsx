@@ -25,7 +25,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
           <h2 className="text-4xl font-semibold mb-6 title-orange">
             Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
-          <div className="text-md text-gray-600 text-left max-w-3xl mx-auto [&>p>strong]:text-[#DC9F25]">
+          <div className="text-md text-gray-600 text-left max-w-3xl mx-auto [&>p>strong]:text-[#DC9E26]">
             {casosTexto && (
               <BlocksRenderer content={casosTexto} />
             )}
@@ -61,7 +61,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
                 </Card>
                 {/* Label */}
                 <div className="relative top-4 shadow-lg">
-                  <div className="bg-[#DC9F25] backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                  <div className="bg-[#DC9E26] backdrop-blur-sm rounded-lg px-4 py-2 text-center">
                     <strong className="text-sm font-semibold text-white">{caseItem.title}</strong>
                   </div>
                 </div>

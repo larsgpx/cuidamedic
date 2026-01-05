@@ -50,7 +50,7 @@ export function LocationsSection() {
                 {/* Map Pin Icon */}
                 <div className="flex justify-center mb-6 icon-map-pin absolute -top-6 left-0 right-0">
                   <div className="w-14 h-14  bg-orange-light rounded-full flex items-center justify-center">
-                    <svg className="w-10 h-10 text-[#DC9F25]" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-10 h-10 text-[#DC9E26]" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
                   </div>

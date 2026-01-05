@@ -153,7 +153,7 @@ export function Header() {
                              {/* Columna derecha - Tratamientos estéticos */}
                              <div className="space-y-6">
                               <div className="relative">
-                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS MÉDICOS</h3>
+                                <h3 className="text-xs font-semibold text-[#DC9E26] uppercase tracking-wider mb-4">TRATAMIENTOS MÉDICOS</h3>
                                 
                                 {/* Estéticos Faciales */}
                                 <div className="group/nested relative mb-2">
@@ -227,7 +227,7 @@ export function Header() {
                             {/* Columna izquierda - Tratamientos básicos */}
                             <div className="space-y-6">
                               <div className="relative">
-                                <h3 className="text-xs font-semibold text-[#DC9F25] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
+                                <h3 className="text-xs font-semibold text-[#DC9E26] uppercase tracking-wider mb-4">TRATAMIENTOS ESTÉTICOS</h3>
                                 <div className="space-y-2">
                                 <Link
                                     href="/tratamientos/limpiezas-faciales"

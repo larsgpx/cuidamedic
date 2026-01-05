@@ -75,8 +75,8 @@ export function Nosotros() {
             <div className="order-1 lg:order-2">
               <Tabs defaultValue="account" className="w-[400px]">
                 <TabsList className="pb-4">
-                  <TabsTrigger className="data-[state=active]:bg-[#DC9F25] rounded-xl" value="account">¿Quienes Somos?</TabsTrigger>
-                  <TabsTrigger className="data-[state=active]:bg-[#DC9F25] rounded-xl" value="password">Historia</TabsTrigger>
+                  <TabsTrigger className="data-[state=active]:bg-[#DC9E26] rounded-xl" value="account">¿Quienes Somos?</TabsTrigger>
+                  <TabsTrigger className="data-[state=active]:bg-[#DC9E26] rounded-xl" value="password">Historia</TabsTrigger>
                 </TabsList>
                 <TabsContent value="account">{/* Main Title */}
                   <h2 className="text-3xl font-semibold text-gray-600 mb-6">
@@ -119,7 +119,7 @@ export function Nosotros() {
 
             {dataNosotros?.highlights?.map((highlight) => (
                <div key={highlight.id} className="bg-white relative rounded-lg shadow-lg p-8 text-center">
-                <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9F25] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="absolute -top-7 md:-top-10 justify-center mx-auto left-0 right-0 w-16 h-16 bg-[#DC9E26] p-3 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Image src={`${highlight.icon?.url.includes('http') ? highlight.icon?.url : process.env.NEXT_PUBLIC_BASE_URL}${highlight.icon?.url}`} alt={highlight.titulo} width={64} height={64} />
                 </div>
                 <h3 className="text-gray-600 leading-relaxed pt-4 font-medium text-color-orange">{highlight.titulo}</h3>
