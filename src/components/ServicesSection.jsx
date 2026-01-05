@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation';
 
 export function WhyChooseUsSection({ description, image}) {
   return (
-    <section className="pt-20 pb-2 bg-white">
+    <section className="pt-12 md:pt-20 pb-2 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 md:gap-12 items-center">
           {/* Content */}
           <div>
             <h2 className="text-4xl font-semibold mb-6 title-orange">
@@ -216,15 +216,15 @@ export function ServicesSection({ servicesData }) {
   }));
 
   return (
-    <section className="py-5 bg-white">
+    <section className="py-10 mt-5 md:mt-0 md:py-2  bg-white">
       <div className="container mx-auto px-4">
         {/* Section Title */}
-        <h2 className="text-4xl font-semibold text-center mb-16">
+        <h2 className="text-4xl font-semibold text-center mb-8 md:mb-12">
           Nuestros <span className="highlight font-semibold">Servicios</span>
         </h2>
 
         {/* Service Cards - Layout dinámico */}
-        <div className="mb-16">
+        <div className="mb-8 md:mb-16">
           {serviceRowsWithIndex.map((row, rowIndex) => {
             const isLarge = row.type === 'large';
             const cardHeight = isLarge ? 'h-64' : 'h-56';

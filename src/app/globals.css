@@ -343,6 +343,9 @@ button span {
 .hightlight-banner span {
   font-weight: 500;
   font-family: 'Switzer';
+  @media (max-width: 768px) {
+    line-height: 20px;
+  }
 }
 
 /* Doctor carousel container - prevent clipping */
