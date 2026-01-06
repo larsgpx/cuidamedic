@@ -421,3 +421,25 @@ titulo-hero.header-navbar a, .header-navbar button {
   .afterSlider figcaption {
     right: 12px;
   }
+
+  .imgComparison:active figcaption,
+  .imgComparison.isDraggable figcaption {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease; /* Opcional: para un desvanecimiento suave */
+  }
+
+  /* Oculta los figcaption cuando el slider está siendo arrastrado o tiene el foco */
+img-comparison-slider:active figcaption,
+.imgComparison.isDraggable figcaption {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease; /* Opcional: para un desvanecimiento suave */
+}
+
+/* Oculta los figcaption cuando el slider está siendo arrastrado o tiene el foco */
+img-comparison-slider figcaption {
+  opacity: 1;
+  pointer-events: pointer;
+  transition: opacity 0.2s ease; /* Opcional: para un desvanecimiento suave */
+}

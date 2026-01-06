@@ -5,11 +5,12 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useState, useEffect } from "react";
-import { ImgComparisonSlider } from '@img-comparison-slider/react';
+import { SingleSlider } from "@/components/ui/compareImageslider";
 
 
 export function SuccessCasesSection({ casosTexto, casosData }) {
   const [cases, setCases] = useState([]);
+  const [isDragging, setIsDragging] = useState(false);
   useEffect(() => {
     setCases(casosData?.map((caso) => ({
       id: caso.id,
@@ -18,6 +19,20 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
       afterImage: caso.despues?.url
     })));
   }, [casosData]);
+
+  useEffect(() => {
+    const handleGlobalPointerUp = () => {
+      setIsDragging(false);
+    };
+
+    // Escuchamos en window para que, si el usuario suelta el dedo fuera 
+    // del slider, los labels reaparezcan correctamente.
+    window.addEventListener('pointerup', handleGlobalPointerUp);
+    
+    return () => {
+      window.removeEventListener('pointerup', handleGlobalPointerUp);
+    };
+  }, []);
 
   return (
     <section className="py-10 bg-white flex justify-center mx-auto">
@@ -34,8 +49,8 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
               <p>Pacientes que confiaron en nuestra precisión y dedicación logrando resultados naturales que reflejan lo mejor de ti.</p>
             )}
           </div>
-          <div className="relative md:top-90 top-35 hidden md:block">
-            <Image src="/doctor-sucess-case.png" alt="inyection" width={200} height={250} className="absolute block bottom-10 md:bottom-10 right-0 mx-auto" />
+          <div className="absolute bottom-0 hidden lg:block">
+            <Image src="/doctor-sucess-case.png" alt="success-cases-cuidamedic" width={200} height={250} className="block" />
           </div>
         </div>
         {/* Before & After Images */}
@@ -46,16 +61,12 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
                 <Card key={caseItem.id} className="overflow-hidden border-0 shadow-lg">
                   <CardContent className="h-86 p-0">
                     <div className={`relative`}>
-                      <ImgComparisonSlider>
-                        <figure slot="first" class="beforeSlider">
-                          <img slot="first" width="100%" src={`${caseItem?.image?.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} />
-                          <figcaption>Antes</figcaption>
-                        </figure>
-                        <figure slot="second" class="afterSlider">
-                          <img slot="second" width="100%" src={`${caseItem?.afterImage?.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} />
-                          <figcaption>Después</figcaption>
-                        </figure>
-                      </ImgComparisonSlider>
+                      <SingleSlider 
+                        beforeImg={`${caseItem?.image?.includes('http') ? caseItem?.image : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.image}`} 
+                        afterImg={`${caseItem?.afterImage?.includes('http') ? caseItem?.afterImage : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.afterImage}`} 
+                        beforeLabel="Antes" 
+                        afterLabel="Después" 
+                      />
                     </div>
                   </CardContent>
                 </Card>

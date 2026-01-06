@@ -15,9 +15,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
-import { ImgComparisonSlider } from '@img-comparison-slider/react';
+import { SingleSlider } from "@/components/ui/compareImageslider";
 import { useAPI } from "@/hooks/useAPI";
-import { Icon } from "lucide-react";
 
 export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-facial' }) {
     const titleRef = useRef(null);
@@ -28,6 +27,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
     const [dataEstetica, setDataEstetica] = useState(null);
     const [titleOtherServices, setTitleOtherServices] = useState('Servicios que podrian interesarte');
     const [otherServicesData, setOtherServicesData] = useState({});
+    const [isDragging, setIsDragging] = useState(false);
 
     // Mapeo de iconos - Escalable para agregar más iconos en el futuro
     const iconosMap = {
@@ -101,6 +101,20 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
         }
         }, [dataEsteticaAPI, info?.Titulo]);
 
+        useEffect(() => {
+            const handleGlobalPointerUp = () => {
+              setIsDragging(false);
+            };
+        
+            // Escuchamos en window para que, si el usuario suelta el dedo fuera 
+            // del slider, los labels reaparezcan correctamente.
+            window.addEventListener('pointerup', handleGlobalPointerUp);
+            
+            return () => {
+              window.removeEventListener('pointerup', handleGlobalPointerUp);
+            };
+          }, []);
+
       useEffect(() => {
         if (info?.Titulo) {
           const titleText = info?.Titulo.trim();
@@ -112,7 +126,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
             const otherWords = words.slice(0, -1).join(' ');
             
             titleRef.current.innerHTML = `
-              ${otherWords} <strong class="font-medium text-color-orange">${lastWord}</strong>
+              ${otherWords} <strong className="font-medium text-color-orange">${lastWord}</strong>
             `;
           } else {
             // Si solo hay una palabra, dejar el texto original
@@ -129,7 +143,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
               const otherWords = words.slice(0, -1).join(' ');
               
               titleOtherServicesRef.current.innerHTML = `
-                ${otherWords} <strong class="font-medium text-color-orange">${lastWord}</strong>
+                ${otherWords} <strong className="font-medium text-color-orange">${lastWord}</strong>
               `;
             }
           
@@ -247,16 +261,12 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                                     {/* Before/After Slider Effect */}
                                     {
                                         caseItem?.antes?.url && caseItem?.despues?.url && (
-                                            <ImgComparisonSlider>
-                                                <figure slot="first" class="beforeSlider">
-                                                <img slot="first" width="100%" src={`${caseItem?.antes?.url?.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`} />
-                                                <figcaption>Antes</figcaption>
-                                                </figure>
-                                                <figure slot="second" class="afterSlider">
-                                                <img slot="second" width="100%" src={`${caseItem?.despues?.url?.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`} />
-                                                <figcaption>Después</figcaption>
-                                                </figure>
-                                            </ImgComparisonSlider>
+                                            <SingleSlider 
+                                            beforeImg={`${caseItem?.antes?.url?.includes('http') ? caseItem?.antes.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.antes.url}`}
+                                            afterImg={`${caseItem?.despues?.url?.includes('http') ? caseItem?.despues.url : process.env.NEXT_PUBLIC_BASE_URL}${caseItem?.despues.url}`}
+                                            beforeLabel="Antes" 
+                                            afterLabel="Después" 
+                                          />
                                         )
                                     }
                                 </div>
