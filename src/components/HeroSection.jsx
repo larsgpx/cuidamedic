@@ -67,7 +67,7 @@ export function HeroSection({ dataBanners, dataHighlights }) {
       <div className="relative z-10 container mx-auto px-4 text-center w-full mb-20 md:mb-2">
         <div className="max-w-1xl md:max-w-2xl text-left">
           {/* Main Heading */}
-          <h1 className="pt-0 pr-4 md:pr-0 md:pt-5 text-4xl md:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9E26] [&>p>strong]:font-semibold">
+          <h1 className="pt-0 pr-4 md:pr-0 md:pt-5 text-2xl md:text-4xl 2xl:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9E26] [&>p>strong]:font-semibold">
             {data[currentSlide]?.Titulo ? (
               <BlocksRenderer content={data[currentSlide].Titulo} />
             ) : (
@@ -76,7 +76,7 @@ export function HeroSection({ dataBanners, dataHighlights }) {
           </h1>
 
           {/* Sub-text */}
-          <div className="text-lg mb-8 mx-auto leading-relaxed  transition-all duration-500">
+          <div className="text-md md:text-md 2xl:text-lg mb-8 mx-auto leading-relaxed  transition-all duration-500 mb-4">
             {data[currentSlide]?.Subtitulo ? (
               data[currentSlide].Subtitulo.toString()
             ) : (
@@ -84,7 +84,7 @@ export function HeroSection({ dataBanners, dataHighlights }) {
             )}
           </div>
 
-          <div className="relative block md:hidden bottom-6 z-20 flex space-x-2">
+          <div className={`relative ${dataBanners.length > 1 ? 'block' : 'hidden'} md:hidden bottom-0 md:bottom-6 z-20 flex space-x-2`}>
             {data.map((_, index) => (
               <button
                 key={index}
