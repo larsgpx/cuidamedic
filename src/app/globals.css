@@ -259,8 +259,9 @@ button span {
 }
 
 .text-color-orange {
-  color: var(--orange-primary);
+  color: var(--orange-primary)!important;
   font-family: 'Larken';
+  font-weight: 500;
 }
 
 .title-orange {

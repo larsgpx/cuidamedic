@@ -46,7 +46,7 @@ export function Header() {
                 ],
             },
             {
-                title: "TratamientosCorporales",
+                title: "Tratamientos Corporales",
                 submenu: [
                     { title: "Reducción de Medidas", href: "/tratamientos/esteticos-corporales/enzimas" },
                     { title: "Aclaramiento Corporal", href: "/tratamientos/esteticos-corporales/exosomas" },
@@ -198,7 +198,7 @@ export function Header() {
                                   <div className="hidden group-hover/nested:block absolute left-full top-0 ml-0 z-[100]">
                                     <div className="bg-white rounded-lg shadow-2xl p-4 w-64 border border-gray-100">
                                       <div className="space-y-2">
-                                        {item.submenu.find(sub => sub.title === "TratamientosCorporales")?.submenu?.map((nestedItem, nestedIndex) => (
+                                        {item.submenu.find(sub => sub.title === "Tratamientos Corporales")?.submenu?.map((nestedItem, nestedIndex) => (
                                           <Link
                                             key={nestedIndex}
                                             href={nestedItem.href}

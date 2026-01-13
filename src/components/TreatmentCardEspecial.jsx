@@ -76,7 +76,7 @@ export function TreatmentCardEspecial({
           
           {/* Imagen */}
           <div className={`${isContentLeft ? 'lg:order-2' : 'lg:order-1'}`}>
-            <div className={`w-full h-80 md:h-110 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden bg-cover bg-center bg-no-repeat`}
+            <div className={`w-full h-60 md:h-110 rounded-2xl flex items-center justify-center shadow-lg overflow-hidden bg-cover bg-center bg-no-repeat`}
             style={{ backgroundImage: `url(${img})` }}
             >
             </div>

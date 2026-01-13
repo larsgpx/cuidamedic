@@ -126,7 +126,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
             const otherWords = words.slice(0, -1).join(' ');
             
             titleRef.current.innerHTML = `
-              ${otherWords} <strong className="font-medium text-color-orange">${lastWord}</strong>
+              ${otherWords} <strong class="font-medium text-color-orange">${lastWord}</strong>
             `;
           } else {
             // Si solo hay una palabra, dejar el texto original
@@ -143,7 +143,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
               const otherWords = words.slice(0, -1).join(' ');
               
               titleOtherServicesRef.current.innerHTML = `
-                ${otherWords} <strong className="font-medium text-color-orange">${lastWord}</strong>
+                ${otherWords} <strong class="font-medium text-color-orange">${lastWord}</strong>
               `;
             }
           
@@ -177,7 +177,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                     
                     {/* Product Image */}
                     <div className="lg:order-1">
-                    <div className="w-full h-100 md:h-110 rounded-xl flex items-center justify-center shadow-lg" 
+                    <div className="w-full h-60 md:h-110 rounded-xl flex items-center justify-center shadow-lg" 
                         style={{
                             backgroundImage: `url(${info?.Imagen?.url ? `${info?.Imagen?.url.includes('http') ? info?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${info?.Imagen?.url}` : '/bg1.jpg'})`,
                             backgroundSize: 'cover',

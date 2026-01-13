@@ -66,7 +66,7 @@ export function Nosotros() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12  max-w-6xl mx-auto">
             {/* Left Side - Image */}
             <div className="order-2 lg:order-1">
-              <div className={`w-full h-80 md:h-110 rounded-4xl flex items-center justify-center bg-cover bg-center`} style={{ backgroundImage: `url(${dataNosotros?.Imagen?.url.includes('http') ? dataNosotros?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${dataNosotros?.Imagen?.url})` }}>
+              <div className={`w-full h-90 md:h-110 rounded-4xl flex items-center justify-center bg-cover bg-center`} style={{ backgroundImage: `url(${dataNosotros?.Imagen?.url.includes('http') ? dataNosotros?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${dataNosotros?.Imagen?.url})` }}>
                 
               </div>
             </div>
