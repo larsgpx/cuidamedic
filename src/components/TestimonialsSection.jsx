@@ -50,7 +50,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
             )}
           </div>
           <div className="absolute bottom-0 hidden lg:block">
-            <Image src="/doctor-sucess-case.png" alt="success-cases-cuidamedic" width={200} height={250} className="block" />
+            <Image src="/DRA-GIANINA.png" alt="success-cases-cuidamedic" width={170} height={220} className="block" />
           </div>
         </div>
         {/* Before & After Images */}
