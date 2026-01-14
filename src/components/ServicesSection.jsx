@@ -1,6 +1,5 @@
 'use client';
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useRouter } from 'next/navigation';
 
