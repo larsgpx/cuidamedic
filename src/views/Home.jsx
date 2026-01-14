@@ -31,6 +31,8 @@ export function Home() {
     keywords: dataHomeData?.Seo?.keywords || 'tratamientos médicos estéticos, medicina estética, evaluación gratuita, dermatología, cirugía estética, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/',
   });
+
+  console.log('dataHomeData', dataHomeData);
   return (
     <Layout>
       <HeroSection dataBanners={dataHomeData?.Banner} dataHighlights={dataHomeHighlights} />
