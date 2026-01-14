@@ -27,7 +27,7 @@ export function BrandsSection() {
         id: brand.id || brand.documentId,
         nombre: brand?.nombre,
         imagen: brand?.imagen?.url 
-          ? `${STRAPI_BASE_URL}/marcas${brand?.imagen?.url}` 
+          ? `${brand?.imagen?.url}` 
           : `/marcas/${brand?.nombre?.toLowerCase()}`
       }))
     : defaultBrands;
