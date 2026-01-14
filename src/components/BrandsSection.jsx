@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import Slider from 'react-infinite-logo-slider'
 import { useAPI } from "@/hooks/useAPI";
 
@@ -9,7 +8,7 @@ export function BrandsSection() {
   // Base URL de Strapi
   const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const API_MARCAS = process.env.NEXT_PUBLIC_API_MARCA + '?populate=*' || '/api/marcas?populate=*';
+  const API_MARCAS = '/api/marcas?populate=*';
   const { data: brandsData, loading: loadingMarcas} = useAPI(API_MARCAS);
   // Marcas por defecto
   const defaultBrands = [

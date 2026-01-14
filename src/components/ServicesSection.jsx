@@ -24,7 +24,7 @@ export function WhyChooseUsSection({ description, image}) {
           {/* Image Placeholder */}
           <div className="flex justify-center rounded-xl">
             {image && (
-              <div className="relative w-full max-w-md h-60 md:h-110 rounded-3xl bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${image.includes('http') ? image : process.env.NEXT_PUBLIC_BASE_URL}${image}')` }}>
+              <div className="relative w-full max-w-md h-60 md:h-110 rounded-3xl bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${image?.includes('http') ? image : process.env.NEXT_PUBLIC_BASE_URL}${image}')` }}>
                 
               </div>
             )}
