@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 
 export function Home() {
   // Obtener datos de la API de Strapi
-  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner][populate]=*&populate[porqueElegirnosImage]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true&populate[Seo]=true';
+  const API_HOME = (process.env.NEXT_PUBLIC_API_HOME || '/api/home') + '?populate[Banner][populate]=*&populate[porqueElegirnosImg]=true&populate[Servicios][populate][imagen]=true&populate[casosDeExito][populate][antes]=true&populate[casosDeExito][populate][despues]=true&populate[testimonios]=true&populate[Seo]=true';
   const { data } = useAPI(API_HOME);
   const [dataHomeData, setDataHomeData] = useState(null);
   const [dataHomeHighlights, setDataHomeHighlights] = useState(null);
@@ -36,7 +36,7 @@ export function Home() {
   return (
     <Layout>
       <HeroSection dataBanners={dataHomeData?.Banner} dataHighlights={dataHomeHighlights} />
-      <WhyChooseUsSection image={dataHomeData?.porqueElegirnosImage?.url} description={dataHomeData?.porqueElegirnosDescription} />
+      <WhyChooseUsSection image={dataHomeData?.porqueElegirnosImg?.url} description={dataHomeData?.porqueElegirnosDescription} />
       <ServicesSection servicesData={dataHomeData?.Servicios} />
       <BrandsSection />
       <DoctorEvaluationCard />
