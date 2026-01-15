@@ -37,7 +37,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
   return (
     <section className="py-10 bg-white flex justify-center mx-auto">
       <div className="container grid md:grid-cols-[20%_80%] grid-cols-1 items-center justify-center px-4 gap-4">
-        <div className="relative text-center md:text-left mb-16 w-full md:h-[36rem] h-[14rem] bg-orange-light rounded-3xl p-8 shadow-lg overflow-hidden">
+        <div className="relative text-center md:text-left mb-16 w-full md:h-[36rem] h-[24rem] md:h-[14rem] bg-orange-light rounded-3xl p-8 shadow-lg overflow-hidden">
           <h2 className="text-4xl font-semibold mb-6 title-orange">
             Casos de <b className="font-semibold text-yellow-500">Éxito</b>
           </h2>
@@ -49,7 +49,7 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
               <p>Pacientes que confiaron en nuestra precisión y dedicación logrando resultados naturales que reflejan lo mejor de ti.</p>
             )}
           </div>
-          <div className="absolute bottom-0 hidden lg:block">
+          <div className="absolute left-0 right-0 max-w-[200px] mx-auto -bottom-20 xl:bottom-0 lg:block">
             <Image src="/DRA-GIANINA.png" alt="success-cases-cuidamedic" width={170} height={220} className="block" />
           </div>
         </div>
