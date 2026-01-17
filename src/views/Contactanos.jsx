@@ -6,10 +6,10 @@ import Marker from '@/components/Marker';
 import { LocationsSection } from "@/components/LocationsSection";
 import { useAPI } from "@/hooks/useAPI";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 export function Contactanos() {
-  const API_CONTACTANOS = (process.env.NEXT_PUBLIC_API_CONTACTO || '/api/contacto') + '?populate[Seo]=true';
+  const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const API_CONTACTANOS = (process.env.NEXT_PUBLIC_API_CONTACTO || '/api/contacto') + '?populate[Seo]=true&[populate][Banner]=true';
   const API_SUCURSALES = '/api/sucursales?populate=*';
   const { data } = useAPI(API_CONTACTANOS);
   const { data: dataSucursalesAPI } = useAPI(API_SUCURSALES);
@@ -82,12 +82,17 @@ export function Contactanos() {
     if (!url) return;
     window.open(url, '_blank');
   };
-
+  console.log('contactInfo', data);
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-start">
-        <div className="absolute inset-0 bg-[url('/bg1.jpg')] bg-cover bg-center bg-no-repeat opacity-20"></div>
+        <div className={`absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20`}
+        style={{
+          backgroundImage: `url(${data?.data?.Banner.url.includes('http') ? data?.data?.Banner.url : STRAPI_BASE_URL}${data?.data?.Banner.url})`,
+        }}
+        
+        ></div>
         <div className="relative z-10 text-left container mx-auto">
           <h1 className="text-5xl md:text-5xl font-semibold text-gray-600">
             Contacto
@@ -132,7 +137,7 @@ export function Contactanos() {
               <div className="h-96 w-full">
                 <GoogleMapReact
                   bootstrapURLKeys={{ key: 'AIzaSyCAOfyRIHd1EKkGTXVYb2-IdGMeiSUgjkY' }}
-                  defaultCenter={{ lat: -12.1104, lng: -77.0295 }} // Centro de Lima
+                  defaultCenter={{ lat: -12.1104, lng: -77.0050 }} // Centro de Lima
                   defaultZoom={13}
                   yesIWantToUseGoogleMapApiInternals
                   onGoogleApiLoaded={(props) => props && handleApiLoaded(props.map, props.maps)}
