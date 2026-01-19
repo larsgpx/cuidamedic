@@ -2,17 +2,39 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAPI } from "@/hooks/useAPI";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export function LocationsSection() {
+export function LocationsSection({ title }) {
   const API_SUCURSALES = '/api/sucursales?populate=*';
   const { data: dataSucursalesAPI } = useAPI(API_SUCURSALES);
   const [dataSucursales, setDataSucursales] = useState(null);
+  const titleRef = useRef(null);
+
     useEffect(() => {
       if (dataSucursalesAPI) {
         setDataSucursales(dataSucursalesAPI?.data);
       }
     }, [dataSucursalesAPI]);
+
+    useEffect(() => {
+      if (titleRef.current && title) {
+        const titleText = title.trim();
+        const words = titleText.split(' ');
+        
+        // Solo aplicar la lógica si hay más de una palabra
+        if (words.length > 1) {
+          const lastWord = words[words.length - 1];
+          const otherWords = words.slice(0, -1).join(' ');
+          
+          titleRef.current.innerHTML = `
+            ${otherWords} <span class="font-medium text-color-orange">${lastWord}</span>
+          `;
+        } else {
+          // Si solo hay una palabra, dejar el texto original
+          titleRef.current.innerHTML = titleText;
+        }
+      }
+    }, [title]);
   
     // Función para manejar la navegación
   const handleNavigate = (url) => {
@@ -37,7 +59,7 @@ export function LocationsSection() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6 title-orange">
+          <h2 ref={titleRef} className="text-4xl font-semibold mb-6 title-orange">
             Nuestras <span>Sucursales</span>
           </h2>
         </div>

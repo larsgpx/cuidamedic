@@ -5,7 +5,7 @@ import GoogleMapReact from 'google-map-react';
 import Marker from '@/components/Marker';
 import { LocationsSection } from "@/components/LocationsSection";
 import { useAPI } from "@/hooks/useAPI";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function Contactanos() {
   const STRAPI_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -14,11 +14,33 @@ export function Contactanos() {
   const { data } = useAPI(API_CONTACTANOS);
   const { data: dataSucursalesAPI } = useAPI(API_SUCURSALES);
   const [dataSucursales, setDataSucursales] = useState(null);
+  const titleRef = useRef(null);
+
   useEffect(() => {
     if (dataSucursalesAPI) {
       setDataSucursales(dataSucursalesAPI?.data);
     }
   }, [dataSucursalesAPI]);
+
+  useEffect(() => {
+    if (titleRef.current && data?.data?.tituloDondeNosUbicamos) {
+      const titleText = data?.data?.tituloDondeNosUbicamos.trim();
+      const words = titleText.split(' ');
+      
+      // Solo aplicar la lógica si hay más de una palabra
+      if (words.length > 1) {
+        const lastWord = words[words.length - 1];
+        const otherWords = words.slice(0, -1).join(' ');
+        
+        titleRef.current.innerHTML = `
+          ${otherWords} <span class="font-medium text-color-orange">${lastWord}</span>
+        `;
+      } else {
+        // Si solo hay una palabra, dejar el texto original
+        titleRef.current.innerHTML = titleText;
+      }
+    }
+  }, [data]);
 
   useSEO({
     title: data?.data?.Seo?.title || 'Contáctanos - Cuidamedic',
@@ -104,7 +126,7 @@ export function Contactanos() {
       {/* Contact Information Section */}
       <section className="pt-10 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16 title-orange">
+          <h2 ref={titleRef} className="text-4xl font-bold text-center mb-16 title-orange">
             ¿Donde nos <span>Ubicamos</span>?
           </h2>
 
@@ -131,7 +153,7 @@ export function Contactanos() {
       {/* Map Section */}
       <section className="bg-white mb-8">
         <div className="container mx-auto">
-          <LocationsSection />
+          <LocationsSection title={data?.data?.tituloSucursales} />
           <div className="max-w-6xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="h-96 w-full">

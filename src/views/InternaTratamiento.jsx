@@ -173,7 +173,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
             {/* Product/Benefits Section */}
             <section className="py-16 bg-orange-50">
                 <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12">
                     
                     {/* Product Image */}
                     <div className="lg:order-1">
@@ -191,14 +191,7 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                     <div className="lg:order-2">
                     <div className="max-w-lg">
                         <Tabs defaultValue={0} className="w-full">
-                        <TabsList className="grid w-full grid-cols-3 tab-list-orange">
-                            {
-                                info?.Tabs?.map((tab, index) => (
-                                    <TabsTrigger key={index} value={index}>{tab.Titulo}</TabsTrigger>
-                                ))
-                            }
-                        </TabsList>
-                        <div className="flex flex-row gap-16 mt-4 justify-start">
+                        <div className="flex flex-row gap-16 mb-4 justify-center md:justify-start">
                             {info?.Servicios?.map((service, index) => {
                                 const IconoComponente = getIcono(service.Iconos);
                                 return (
@@ -210,6 +203,13 @@ export function InternaTratamiento({ data, title, typeEstetica = 'esteticas-faci
                                 );
                             })}
                         </div>
+                        <TabsList className="grid w-full grid-cols-3 tab-list-orange">
+                            {
+                                info?.Tabs?.map((tab, index) => (
+                                    <TabsTrigger key={index} value={index}>{tab.Titulo}</TabsTrigger>
+                                ))
+                            }
+                        </TabsList>
                         {
                             info?.Tabs?.map((tab, index) => (
                                 <TabsContent key={index} className="mt-6 pb-4" value={index}>

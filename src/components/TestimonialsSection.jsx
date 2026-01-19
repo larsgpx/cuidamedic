@@ -4,15 +4,16 @@ import Image from "next/image";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SingleSlider } from "@/components/ui/compareImageslider";
 
 
 export function SuccessCasesSection({ casosTexto, casosData }) {
   const [cases, setCases] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
+
   useEffect(() => {
-    setCases(casosData?.map((caso) => ({
+    setCases(casosData?.map((caso, title) => ({
       id: caso.id,
       title: caso.titulo,
       image: caso.antes?.url,
@@ -85,7 +86,8 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
   );
 }
 
-export function TestimonialsSection({ data }) {
+export function TestimonialsSection({ data, title }) {
+  const titleRef = useRef(null);
   const responsive = {
     desktop: {
       breakpoint: { max: 2800, min: 1024 },
@@ -136,6 +138,26 @@ export function TestimonialsSection({ data }) {
     }
   ];
 
+  useEffect(() => {
+    if (titleRef.current && title) {
+      const titleText = title.trim();
+      const words = titleText.split(' ');
+      
+      // Solo aplicar la lógica si hay más de una palabra
+      if (words.length > 1) {
+        const lastWord = words[words.length - 1];
+        const otherWords = words.slice(0, -1).join(' ');
+        
+        titleRef.current.innerHTML = `
+          ${otherWords} <span class="font-medium text-color-orange">${lastWord}</span>
+        `;
+      } else {
+        // Si solo hay una palabra, dejar el texto original
+        titleRef.current.innerHTML = titleText;
+      }
+    }
+  }, [title]);
+
   // Usar data de Strapi si existe, sino usar datos por defecto
   const testimonialsToUse = data && Array.isArray(data) && data.length > 0 
     ? data.map((testimonial) => ({
@@ -149,7 +171,7 @@ export function TestimonialsSection({ data }) {
     <section className="py-12 bg-[#f8f8f8]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-semibold mb-6 title-orange">
+          <h2 ref={titleRef} className="text-4xl font-semibold mb-6 title-orange">
             Testimonios <b className="text-yellow-500 font-semibold">Reales</b>
           </h2>
         </div>

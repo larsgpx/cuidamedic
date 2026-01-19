@@ -1,6 +1,21 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from 'next/image';
+import { useAPI } from "@/hooks/useAPI";
 
 export function Footer() {
+  const API_GLOBAL = '/api/global';
+  const { data } = useAPI(API_GLOBAL);
+  const [dataGlobal, setDataGlobal] = useState(null);
+
+  useEffect(() => {
+    if (data) {
+      setDataGlobal(data?.data);
+    }
+  }, [data]);
+
+
   return (
     <footer className="bg-white text-white py-2">
       <div className="container mx-auto px-4 border-t border-gray-200 pt-10">
@@ -54,7 +69,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-gray-200 mt-12 pt-8 text-center text-gray-400">
-          <p>Todos los Derechos Reservados © 2023 - Diseñado y personalizado por CUIDAMEDIC E.I.R.L.</p>
+          <p>{dataGlobal?.DerechosReservados ? dataGlobal?.DerechosReservados : 'Todos los Derechos Reservados © 2023 - Diseñado y personalizado por CUIDAMEDIC E.I.R.L.'}</p>
         </div>
       </div>
     </footer>

@@ -41,8 +41,8 @@ export function Home() {
       <BrandsSection />
       <DoctorEvaluationCard />
       <SuccessCasesSection casosTexto={dataHomeData?.casosDeExitoDescription} casosData={dataHomeData?.casosDeExito} />
-      <TestimonialsSection data={dataHomeData?.testimonios} />
-      <LocationsSection />
+      <TestimonialsSection data={dataHomeData?.testimonios} title={dataHomeData?.tituloTestimonios} />
+      <LocationsSection title={dataHomeData?.tituloSucursales} />
     </Layout>
   );
 }
