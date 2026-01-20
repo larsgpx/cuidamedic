@@ -72,7 +72,7 @@ export function LimpiezasFaciales() {
     }
   }, [dataLimpiezasFacialesAPI, dataEsteticaAPI]);
 
-  console.log('dataEstetica', dataEstetica);
+  //console.log('dataEstetica', dataEstetica);
 
   return (
     <div className="min-h-screen">

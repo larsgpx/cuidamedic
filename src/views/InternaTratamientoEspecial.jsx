@@ -27,7 +27,7 @@ export function InternaTratamientoEspecial({ data, title }) {
         }
       }, [data]);
 
-      console.log('treatmentSpecial', data?.Tratamientos)
+      //console.log('treatmentSpecial', data?.Tratamientos)
 
     return (
         <>

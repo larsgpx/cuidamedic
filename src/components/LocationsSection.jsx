@@ -54,7 +54,7 @@ export function LocationsSection({ title }) {
     }
   };
 
-  console.log('📊 dataSucursales:', dataSucursales);
+  //console.log('📊 dataSucursales:', dataSucursales);
   return (
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">

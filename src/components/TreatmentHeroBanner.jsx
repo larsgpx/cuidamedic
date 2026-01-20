@@ -25,7 +25,7 @@ export function TreatmentHeroBanner({ title, subtitle, backgroundImage }) {
     }
   }, [title]);
 
-  console.log('backgroundImage', `url('${backgroundImage?.includes('http') ? backgroundImage : process.env.NEXT_PUBLIC_BASE_URL}${backgroundImage}')'}))`)
+  //console.log('backgroundImage', `url('${backgroundImage?.includes('http') ? backgroundImage : process.env.NEXT_PUBLIC_BASE_URL}${backgroundImage}')'}))`)
 
   return (
     <section className={`relative h-[400px] bg-gradient-to-r from-orange-100 to-orange-200 flex items-center justify-start`}>

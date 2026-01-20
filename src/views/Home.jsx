@@ -32,7 +32,7 @@ export function Home() {
     url: process.env.NEXT_PUBLIC_URL + '/',
   });
 
-  console.log('dataHomeData', dataHomeData);
+  //console.log('dataHomeData', dataHomeData);
   return (
     <Layout>
       <HeroSection dataBanners={dataHomeData?.Banner} dataHighlights={dataHomeHighlights} />

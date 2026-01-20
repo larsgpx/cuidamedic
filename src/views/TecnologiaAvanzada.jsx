@@ -74,7 +74,7 @@ export function TecnologiaAvanzada() {
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/tecnologia-avanzada',
   });
 
-  console.log('dataTecnologia', dataTecnologia);
+  //console.log('dataTecnologia', dataTecnologia);
  
   return (
     <div className="min-h-screen">

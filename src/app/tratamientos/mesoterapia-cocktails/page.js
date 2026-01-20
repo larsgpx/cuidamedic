@@ -48,7 +48,7 @@ export default function MesoterapiaCocktails() {
 
   }, [mesoterapiaCocktailAPI, dataEsteticaAPI]);
   // Datos específicos para limpiezas faciales
-  console.log('📊 mesoterapiaCocktail:', mesoterapiaCocktail);
+  //console.log('📊 mesoterapiaCocktail:', mesoterapiaCocktail);
 
   return (
     <div className="min-h-screen">

@@ -21,6 +21,6 @@ export function Toxina() {
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/toxina',
   });
 
-  console.log('dataToxina', dataToxina);
+  //console.log('dataToxina', dataToxina);
 return <InternaTratamiento data={dataToxina} title='Tratamientos Faciales' />
 }

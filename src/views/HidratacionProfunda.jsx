@@ -21,6 +21,6 @@ export function HidratacionProfunda() {
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/hidratacion-profunda',
   });
 
-  console.log('dataHidratacion', dataHidratacion);
+  //console.log('dataHidratacion', dataHidratacion);
 return <InternaTratamiento data={dataHidratacion} title='Tratamientos Faciales' />
 }

@@ -104,7 +104,7 @@ export function Contactanos() {
     if (!url) return;
     window.open(url, '_blank');
   };
-  console.log('contactInfo', data);
+  //console.log('contactInfo', data);
   return (
     <Layout>
       {/* Hero Section */}
