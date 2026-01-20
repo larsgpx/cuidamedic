@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 export function DoctorEvaluationCard() {
-  const API_GLOBAL = '/api/global';
+  const API_GLOBAL = '/api/global-data';
   const { data } = useAPI(API_GLOBAL);
   const router = useRouter();
   const [dataGlobal, setDataGlobal] = useState(null);

@@ -13,7 +13,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileMenus, setOpenMobileMenus] = useState({});
-  const API_GLOBAL = '/api/global';
+  const API_GLOBAL = '/api/global-data';
   const { data } = useAPI(API_GLOBAL);
   const [dataGlobal, setDataGlobal] = useState(null);
   const pathname = usePathname();

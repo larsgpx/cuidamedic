@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useAPI } from "@/hooks/useAPI";
 
 export function Footer() {
-  const API_GLOBAL = '/api/global';
+  const API_GLOBAL = '/api/global-data';
   const { data } = useAPI(API_GLOBAL);
   const [dataGlobal, setDataGlobal] = useState(null);
 
@@ -28,13 +28,13 @@ export function Footer() {
             
             {/* Social Media Icons */}
             <div className="flex justify-center md:justify-start md:ml-8 mx-auto space-x-4">
-              <a href="#" className="flex items-center justify-center transition-colors">
+              <a href={dataGlobal?.FacebookUrl} className="flex items-center justify-center transition-colors">
                 <Image src="/icons/facebook.svg" alt="Facebook" width={25} height={25} />
               </a>
-              <a href="#" className="flex items-center justify-center transition-colors">
+              <a href={dataGlobal?.TiktokUrl} className="flex items-center justify-center transition-colors">
                 <Image src="/icons/tiktok.svg" alt="Instagram" width={25} height={25} />
               </a>
-              <a href="#" className="flex items-center justify-center transition-colors">
+              <a href={dataGlobal?.InstagramUrl} className="flex items-center justify-center transition-colors">
                 <Image src="/icons/instagram.svg" alt="Youtube" width={25} height={25} />
               </a>
             </div>

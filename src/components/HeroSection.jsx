@@ -45,7 +45,7 @@ export function HeroSection({ dataBanners, dataHighlights }) {
   if (!data) return null;
 
   return (
-    <section className="relative min-h-[75vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-100 to-orange-150">
+    <section className="relative min-h-[77vh] md:min-h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-orange-100 to-orange-150">
       {/* Carousel Container */}
       <div className="absolute inset-0">
         <div 
@@ -65,7 +65,7 @@ export function HeroSection({ dataBanners, dataHighlights }) {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center w-full mb-20 md:mb-2">
-        <div className="max-w-1xl md:max-w-2xl text-left">
+        <div className="max-w-1xl md:max-w-2xl text-left pt-20 pb-30 md:pt-2 md:pb-4">
           {/* Main Heading */}
           <h1 className="pt-0 pr-4 md:pr-0 md:pt-5 text-3xl md:text-4xl 2xl:text-5xl mb-6 font-semibold transition-all duration-500 titulo-hero text-gray-600 [&>p>strong]:text-[#DC9E26] [&>p>strong]:font-semibold">
             {data[currentSlide]?.Titulo ? (
