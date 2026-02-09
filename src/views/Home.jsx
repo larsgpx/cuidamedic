@@ -36,7 +36,7 @@ export function Home() {
   return (
     <Layout>
       <HeroSection dataBanners={dataHomeData?.Banner} dataHighlights={dataHomeHighlights} />
-      <WhyChooseUsSection image={dataHomeData?.porqueElegirnosImg?.url} description={dataHomeData?.porqueElegirnosDescription} />
+      <WhyChooseUsSection image={dataHomeData?.porqueElegirnosImg?.formats?.medium?.url} description={dataHomeData?.porqueElegirnosDescription} />
       <ServicesSection servicesData={dataHomeData?.Servicios} />
       <BrandsSection />
       <DoctorEvaluationCard />

@@ -79,7 +79,7 @@ export function LocationsSection({ title }) {
                 </div>
 
                 {/* Location Image Placeholder */}
-                <div className="w-full h-64 object-contain bg-gray-200 rounded-2xl mb-6 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url('${location?.Imagen?.url.includes('http') ? location?.Imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${location?.Imagen?.url}')` }}>
+                <div className="w-full h-64 object-contain bg-gray-200 rounded-2xl mb-6 flex items-center justify-center bg-cover bg-center" style={{ backgroundImage: `url('${location?.Imagen?.formats?.small?.url?.includes('http') ? location?.Imagen?.formats?.small?.url : process.env.NEXT_PUBLIC_BASE_URL}${location?.Imagen?.formats?.small?.url}')` }}>
                 </div>
                 {/* Location Info */}
                 <h3 className="text-lg font-semibold mb-2 text-center">{location.Lugar}</h3>

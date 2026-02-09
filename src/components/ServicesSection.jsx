@@ -239,7 +239,7 @@ export function ServicesSection({ servicesData }) {
                         <CardContent className="p-0 h-full">
                           <div 
                             className={`h-full relative flex items-center justify-center bg-cover bg-center bg-no-repeat transition-all duration-300 bg-gradient-to-br from-gray-100 to-gray-200`}
-                            style={{ backgroundImage: `url('${service?.imagen?.url.includes('http') ? service?.imagen?.url : process.env.NEXT_PUBLIC_BASE_URL}${service?.imagen?.url}')` }}
+                            style={{ backgroundImage: `url('${service?.imagen?.formats?.small?.url?.includes('http') ? service?.imagen?.formats?.small?.url : process.env.NEXT_PUBLIC_BASE_URL}${service?.imagen?.formats?.small?.url}')` }}
                           >
                             {/* Overlay para cards normales */}
                             <div className={`absolute inset-0 bg-gradient-to-br  transition-all duration-300 group-hover:backdrop-blur-sm`}></div>

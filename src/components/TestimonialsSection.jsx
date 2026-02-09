@@ -16,8 +16,8 @@ export function SuccessCasesSection({ casosTexto, casosData }) {
     setCases(casosData?.map((caso, title) => ({
       id: caso.id,
       title: caso.titulo,
-      image: caso.antes?.url,
-      afterImage: caso.despues?.url
+      image: caso.antes?.formats?.small?.url,
+      afterImage: caso.despues?.formats?.small?.url
     })));
   }, [casosData]);
 
