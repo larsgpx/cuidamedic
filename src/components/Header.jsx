@@ -34,13 +34,13 @@ export function Header() {
               {
                 title: "Tratamientos Faciales",
                 submenu: [
-                    { title: "Toxina Botulinica", href: "/tratamientos/esteticos-faciales/toxina" },
-                    { title: "Acido Hialurónico", href: "/tratamientos/esteticos-faciales/ah" },
-                    { title: "Enzimas Recombinantes", href: "/tratamientos/esteticos-faciales/enzimas" },
+                    { title: "Toxina Botulinica", href: "/tratamientos/esteticos-faciales/toxina-botulinica" },
+                    { title: "Acido Hialurónico", href: "/tratamientos/esteticos-faciales/acido-hialuronico" },
+                    { title: "Enzimas Recombinantes", href: "/tratamientos/esteticos-faciales/enzimas-recombinantes" },
                     { title: "Exosomas", href: "/tratamientos/esteticos-faciales/exosomas" },
-                    { title: "Bioestimuladores de Colágeno", href: "/tratamientos/esteticos-faciales/biorem-bioest" },
-                    { title: "Bioremodeladores de Colágeno PROFHILO", href: "/tratamientos/esteticos-faciales/bioremodelador" },
-                    { title: "NCTF", href: "/tratamientos/esteticos-faciales/mesoterapias" },
+                    { title: "Bioestimuladores de Colágeno", href: "/tratamientos/esteticos-faciales/bioestimuladores-de-colageno" },
+                    { title: "Profhilo", href: "/tratamientos/esteticos-faciales/profhilo" },
+                    { title: "NCTF", href: "/tratamientos/esteticos-faciales/nctf" },
                     { title: "Aclaramiento Facial", href: "/tratamientos/esteticos-faciales/aclaramiento-facial" },
                     { title: "Hidratacion Profunda", href: "/tratamientos/esteticos-faciales/hidratacion-profunda" },
                 ],
@@ -48,10 +48,10 @@ export function Header() {
             {
                 title: "Tratamientos Corporales",
                 submenu: [
-                    { title: "Reducción de Medidas", href: "/tratamientos/esteticos-corporales/enzimas" },
-                    { title: "Aclaramiento Corporal", href: "/tratamientos/esteticos-corporales/exosomas" },
-                    { title: "Bioestimulador Corporal", href: "/tratamientos/esteticos-corporales/biorem-bioest" },
-                    { title: "Radiofrecuencia", href: "/tratamientos/esteticos-corporales/mesoterapias" },
+                    { title: "Reducción de Medidas", href: "/tratamientos/esteticos-corporales/reduccion-de-medidas" },
+                    { title: "Aclaramiento Corporal", href: "/tratamientos/esteticos-corporales/aclaramiento-corporal" },
+                    { title: "Bioestimulador Corporal", href: "/tratamientos/esteticos-corporales/bioestimulador-corporal" },
+                    { title: "Radiofrecuencia Corporal", href: "/tratamientos/esteticos-corporales/radiofrecuencia-corporal" },
                 ],
             },
             {
@@ -64,7 +64,7 @@ export function Header() {
             },
             {
               title: "Tecnología Avanzada",
-              href: "/tratamientos/tecnologia-avanzada",
+              href: "/tratamientos/tecnologia-avanzada/exion",
             }
         ],
     },
@@ -213,7 +213,7 @@ export function Header() {
                                 </div>
 
                                 <Link
-                                    href="/tratamientos/tecnologia-avanzada"
+                                    href="/tratamientos/tecnologia-avanzada/exion"
                                     className="group flex items-start space-x-3 p-3 rounded-lg hover:bg-orange-50 transition-colors"
                                   >
                                     <div>
