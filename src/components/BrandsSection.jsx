@@ -26,8 +26,8 @@ export function BrandsSection() {
     ? brandsData?.data?.map((brand) => ({
         id: brand.id || brand.documentId,
         nombre: brand?.nombre,
-        imagen: brand?.imagen?.formats?.small?.url 
-          ? `${brand?.imagen?.formats?.small?.url}` 
+        imagen: brand?.imagen?.url 
+          ? `${brand?.imagen?.url}` 
           : `/marcas/${brand?.nombre?.toLowerCase()}`
       }))
     : defaultBrands;
