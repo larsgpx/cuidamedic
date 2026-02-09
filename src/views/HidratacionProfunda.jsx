@@ -15,8 +15,8 @@ export function HidratacionProfunda() {
   }, [dataHidratacionAPI]);
 
   useSEO({
-    title: dataHidratacion?.Interna?.Seo?.titulo || 'Hidratacion Profunda - Cuidamedic',
-    description: dataHidratacion?.Interna?.Seo?.descripcion || 'Descubre los beneficios de la hidratacion profunda y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    title: dataHidratacion?.Interna?.Seo?.metaTitle || 'Hidratacion Profunda - Cuidamedic',
+    description: dataHidratacion?.Interna?.Seo?.metaDescription || 'Descubre los beneficios de la hidratacion profunda y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
     keywords: dataHidratacion?.Interna?.Seo?.keywords || 'hidratacion profunda, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/hidratacion-profunda',
   });

@@ -16,7 +16,7 @@ export function AclaramientoFacial() {
 
   useSEO({
     title: dataToxina?.Contenido?.Seo?.titulo || 'Toxina - Cuidamedic',
-    description: dataToxina?.data?.Seo?.descripcion || 'Descubre los beneficios de la toxina botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    description: dataToxina?.data?.Seo?.metaDescription || 'Descubre los beneficios de la toxina botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
     keywords: dataToxina?.data?.Seo?.keywords || 'toxina, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/toxina',
   });

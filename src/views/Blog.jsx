@@ -11,8 +11,8 @@ export function Blog() {
   const { data } = useAPI(API_BLOG);
   
   useSEO({
-    title: data?.data?.Seo?.title || 'Blog - Cuidamedic',
-    description: data?.data?.Seo?.descripcion || 'Descubre los últimos artículos y noticias sobre medicina estética en Cuidamedic.',
+    title: data?.data?.Seo?.metaTitle || 'Blog - Cuidamedic',
+    description: data?.data?.Seo?.metaDescription || 'Descubre los últimos artículos y noticias sobre medicina estética en Cuidamedic.',
     keywords: data?.data?.Seo?.keywords || 'blog, medicina estética, noticias, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/blog',
   });

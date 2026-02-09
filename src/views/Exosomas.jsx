@@ -15,8 +15,8 @@ export function Exosomas() {
   }, [dataEnzimaAPI]);
 
   useSEO({
-    title: dataEnzima?.Interna?.Seo?.titulo || 'Enzimas Faciales - Cuidamedic',
-    description: dataEnzima?.data?.Seo?.descripcion || 'Descubre los beneficios de la toxina botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    title: dataEnzima?.Interna?.Seo?.metaTitle || 'Enzimas Faciales - Cuidamedic',
+    description: dataEnzima?.data?.Seo?.metaDescription || 'Descubre los beneficios de la toxina botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
     keywords: dataEnzima?.data?.Seo?.keywords || 'toxina, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/toxina',
   });

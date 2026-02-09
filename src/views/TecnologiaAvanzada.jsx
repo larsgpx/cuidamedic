@@ -68,8 +68,8 @@ export function TecnologiaAvanzada() {
   }, [dataTecnologiaAPI, dataEsteticaAPI]);
 
   useSEO({
-    title: dataTecnologia?.Interna?.Seo?.titulo || 'Tecnologia Avanzada - Cuidamedic',
-    description: dataTecnologia?.data?.Seo?.descripcion || 'Descubre los beneficios de la tecnologia avanzada y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    title: dataTecnologia?.Interna?.Seo?.metaTitle || 'Tecnologia Avanzada - Cuidamedic',
+    description: dataTecnologia?.data?.Seo?.metaDescription || 'Descubre los beneficios de la tecnologia avanzada y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
     keywords: dataTecnologia?.data?.Seo?.keywords || 'tecnologia, avanzada, cuidados, tratamiento, Cuidamedic', 
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/tecnologia-avanzada',
   });

@@ -15,8 +15,8 @@ export function BioremBioestCorporales() {
   }, [dataEnzimaAPI]);
 
   useSEO({
-    title: dataEnzima?.Interna?.Seo?.titulo || 'Biorem Bioest - Cuidamedic',
-    description: dataEnzima?.data?.Seo?.descripcion || 'Descubre los beneficios de la toxina botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    title: dataEnzima?.Interna?.Seo?.metaTitle || 'Biorem Bioest - Cuidamedic',
+    description: dataEnzima?.data?.Seo?.metaDescription || 'Descubre los beneficios de la toxina botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
     keywords: dataEnzima?.data?.Seo?.keywords || 'biorem, bioest, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/biorem-bioest',
   });

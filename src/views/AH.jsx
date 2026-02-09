@@ -15,8 +15,8 @@ export function AH() {
   }, [dataAHAPI]);
   //console.log('dataAH', dataAH);
   useSEO({
-    title: dataAH?.Interna?.Seo?.titulo || 'AH - Cuidamedic',
-    description: dataAH?.data?.Seo?.descripcion || 'Descubre los beneficios de la AH botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
+    title: dataAH?.Interna?.Seo?.metaTitle || 'AH - Cuidamedic',
+    description: dataAH?.data?.Seo?.metaDescription || 'Descubre los beneficios de la AH botulínica y los cuidados esenciales que debes seguir después del tratamiento para obtener los mejores resultados.',
     keywords: dataAH?.data?.Seo?.keywords || 'AH, botulínica, cuidados, tratamiento, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/AH',
   });

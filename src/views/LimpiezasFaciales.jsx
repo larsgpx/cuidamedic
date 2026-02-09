@@ -30,8 +30,8 @@ export function LimpiezasFaciales() {
 };
 
   useSEO({
-    title: dataLimpiezasFaciales?.data?.Seo?.title || 'Cuidamedic- Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
-    description: dataLimpiezasFaciales?.data?.Seo?.descripcion || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',
+    title: dataLimpiezasFaciales?.data?.Seo?.metaTitle || 'Cuidamedic- Tratamientos Médicos Estéticos de Calidad | Evaluación Gratuita',
+    description: dataLimpiezasFaciales?.data?.Seo?.metaDescription || 'Descubre los mejores tratamientos médicos estéticos en Cuidamedic. Más de 3200 pacientes satisfechos. Marcas seguras y médicos expertos. Solicita tu evaluación gratuita.',
     keywords: dataLimpiezasFaciales?.data?.Seo?.keywords || 'tratamientos médicos estéticos, medicina estética, evaluación gratuita, dermatología, cirugía estética, Cuidamedic',
     url: process.env.NEXT_PUBLIC_URL + '/tratamientos/limpiezas-faciales',
   });

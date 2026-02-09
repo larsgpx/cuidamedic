@@ -43,8 +43,8 @@ export function Nosotros() {
   const showCarousel = dataNosotros?.Doctores?.length > 3;
 
   useSEO({
-      title: dataNosotros?.Seo?.title || 'Nosotros - Cuidamedic',
-      description: dataNosotros?.Seo?.descripcion || 'Conoce más sobre Cuidamedic, nuestro equipo de médicos expertos y nuestra experiencia en medicina estética.',
+      title: dataNosotros?.Seo?.metaTitle || 'Nosotros - Cuidamedic',
+      description: dataNosotros?.Seo?.metaDescription || 'Conoce más sobre Cuidamedic, nuestro equipo de médicos expertos y nuestra experiencia en medicina estética.',
       keywords: dataNosotros?.Seo?.keywords || 'sobre nosotros, médicos expertos, experiencia, medicina estética',
       url: process.env.NEXT_PUBLIC_URL + '/nosotros',
   });
