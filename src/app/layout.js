@@ -2,8 +2,7 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { GlobalLoader } from "@/components/GlobalLoader";
 import Image from "next/image";
-import FacebookPixel from "@/components/FacebookPixel";
-import { Suspense } from "react";
+import { MetaPixel } from '@adkit.so/meta-pixel-next';
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -21,9 +20,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistMono.variable} antialiased overflow-x-hidden`}
       >
-        <Suspense fallback={null}>
-          <FacebookPixel />
-        </Suspense>
+        <MetaPixel />
         <GlobalLoader />
         {children}
 
@@ -36,3 +33,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

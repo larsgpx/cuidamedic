@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@adkit.so/meta-pixel-next": "^1.0.1",
     "@img-comparison-slider/react": "^8.0.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-avatar": "^1.1.10",
