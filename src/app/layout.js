@@ -24,15 +24,6 @@ export default function RootLayout({ children }) {
         <Suspense fallback={null}>
           <FacebookPixel />
         </Suspense>
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=1228635979396741&ev=PageView&noscript=1`}
-            alt="facebook-pixel"
-          />
-        </noscript>
         <GlobalLoader />
         {children}
 
