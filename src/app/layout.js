@@ -3,6 +3,7 @@ import "./globals.css";
 import { GlobalLoader } from "@/components/GlobalLoader";
 import Image from "next/image";
 import { MetaPixel } from '@adkit.so/meta-pixel-next';
+import { Suspense } from "react";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -20,7 +21,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistMono.variable} antialiased overflow-x-hidden`}
       >
-        <MetaPixel />
+        <Suspense fallback={null}>
+          <MetaPixel />
+        </Suspense>
         <GlobalLoader />
         {children}
 
