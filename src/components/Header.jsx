@@ -129,7 +129,7 @@ export function Header() {
               href="/"
               className="cursor-pointer"
             >
-              <img src="/logo-cuidamedic.png" alt="Cuidamedic" className="w-24 h-20 mt-8" />
+              <img src="/logo-cuidamedic.png" alt="Cuidamedic" className="w-24" />
             </Link>
           </div>
 
