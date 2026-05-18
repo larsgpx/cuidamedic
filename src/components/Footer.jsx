@@ -23,9 +23,9 @@ export function Footer() {
           {/* Logo and Social Media */}
           <div>
             <div className="flex items-center mb-2 justify-center md:justify-start">
-              <Image src="/cuidamedic-logo.png" alt="Cuidamedic" width={180} height={100} />
+              <Image src="/logo-cuidamedic.png" alt="Cuidamedic" width={180} height={100} />
             </div>
-            
+
             {/* Social Media Icons */}
             <div className="flex justify-center md:justify-start md:ml-8 mx-auto space-x-4">
               <a href={dataGlobal?.FacebookUrl} className="flex items-center justify-center transition-colors">

@@ -26,7 +26,7 @@ export const useSEO = (seoConfig) => {
     const updateMetaTag = (name, content, property = false) => {
       const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
       let metaTag = document.querySelector(selector);
-      
+
       if (!metaTag) {
         metaTag = document.createElement('meta');
         if (property) {
@@ -36,7 +36,7 @@ export const useSEO = (seoConfig) => {
         }
         document.head.appendChild(metaTag);
       }
-      
+
       metaTag.setAttribute('content', content);
     };
 
@@ -71,7 +71,7 @@ export const useSEO = (seoConfig) => {
 
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image');
-    
+
     if (seoConfig?.title) {
       updateMetaTag('twitter:title', seoConfig.title);
     }
